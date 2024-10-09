@@ -9,8 +9,7 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-`include "defines.v"
-`include "../utils/std_dffs.v"
+`include "../../defines/defines.v"
 
 module if_id_buf (
     input  wire                        clk,

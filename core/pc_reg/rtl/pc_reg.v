@@ -9,7 +9,7 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-`include "defines.v"
+`include "../../defines/defines.v"
 
 module pc_reg (
     input  wire                        clk,

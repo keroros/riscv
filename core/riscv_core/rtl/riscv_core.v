@@ -9,7 +9,7 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-`include "defines.v"
+`include "../../defines/defines.v"
 
 module riscv_core (
     input  wire                        clk,

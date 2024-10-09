@@ -9,7 +9,7 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-`include "D:/OneDrive/Project/riscv/rtl/core/defines.v"
+`include "/home/qidc/Nutstore/Project/riscv/defines/defines.v"
 
 module riscv_soc_tb;
 
@@ -57,7 +57,7 @@ module riscv_soc_tb;
     // 打印测试结果
     integer i;
     initial begin
-        $readmemh("../test/rv32ui-p-add.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_dual_port_bram.mem);
+        $readmemh("../../test/rv32ui-p-add.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_dual_port_bram.mem);
 
         while (1) begin
             @(posedge clk)
@@ -76,6 +76,8 @@ module riscv_soc_tb;
                 end
         end
 
+        #(ClockPeriod)
+        $finish;
         // $readmemh("../test/inst_txt/rv32ui-p-add.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_dual_port_bram.mem);
         // wait (x26 == 1);
         // #(ClockPeriod*2)

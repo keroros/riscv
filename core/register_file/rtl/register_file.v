@@ -9,7 +9,7 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-`include "defines.v"
+`include "../../defines/defines.v"
 
 module register_file (
     input  wire                       clk,

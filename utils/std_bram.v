@@ -9,7 +9,7 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-`include "../core/defines.v"
+`include "../../defines/defines.v"
 
 // 简单双口BRAM，只能A端口写B端口读
 module dual_port_bram #(

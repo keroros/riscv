@@ -3,3 +3,5 @@
 
 /home/qidc/Nutstore/Project/riscv/core/execute/rtl/execute.v
 /home/qidc/Nutstore/Project/riscv/core/execute/tb/execute_tb.v
+
+-f /home/qidc/Nutstore/Project/riscv/core/alu/QA_DIR/filelist.f

@@ -9,7 +9,7 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-`include "../core/defines.v"
+`include "../../defines/defines.v"
 
 module rom (
     input  wire                        clk,        // 读写为同一时钟
