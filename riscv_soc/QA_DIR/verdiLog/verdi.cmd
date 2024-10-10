@@ -45,3 +45,4 @@ wvSetCursor -win $_nWave2 32343.832817 -snap {("G2" 0)}
 wvSelectGroup -win $_nWave2 {G2}
 wvSetCursor -win $_nWave2 11459.345380 -snap {("G2" 0)}
 wvSelectSignal -win $_nWave2 {( "u_riscv_core" 3 )} 
+debExit

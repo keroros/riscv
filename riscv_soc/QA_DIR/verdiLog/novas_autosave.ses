@@ -18,7 +18,12 @@ AnnotationShow = 0
 Console = FALSE
 powerDumped = 0
 [hb]
-viewport = 70 27 2488 1174 0 0 189 851
+postSimFile = /home/qidc/Nutstore/Project/riscv/riscv_soc/QA_DIR/rtl.fsdb
+syncTime = 0
+viewport = 70 27 2490 1376 0 0 57 2486
+activeNode = "riscv_soc_tb.u_riscv_soc.u_riscv_core"
+activeScope = "riscv_soc_tb.u_riscv_soc.u_riscv_core"
+activeFile = "/home/qidc/Nutstore/Project/riscv/core/riscv_core/rtl/riscv_core.v"
 interactiveMode = False
 viewType = Source
 simulatorMode = False
@@ -39,12 +44,26 @@ DnDtraceCrossHierOnly = True
 traceIncTopPort = False
 leadingZero = False
 signalPane = False
+Scope1 = "riscv_soc_tb.u_riscv_soc.u_riscv_core"
+Scope2 = "dff_rs_ld"
+multipleSelection = 1 13 2 0 0
 sdfCheckUndef = FALSE
 simFlow = FALSE
+[hb.design]
+importCmd = "-dbdir" "/home/qidc/Nutstore/Project/riscv/riscv_soc/QA_DIR/simv.daidir" 
+invokeDir = /home/qidc/Nutstore/Project/riscv/riscv_soc/QA_DIR
+[hb.sourceTab.1]
+scope = riscv_soc_tb.u_riscv_soc.u_riscv_core
+File = /home/qidc/Nutstore/Project/riscv/core/riscv_core/rtl/riscv_core.v
+Line = 1
+[nMemoryManager]
+WaveformFile = /home/qidc/Nutstore/Project/riscv/riscv_soc/QA_DIR/rtl.fsdb
+UserActionNum = 0
+nMemWindowNum = 0
 [wave.0]
-viewPort = 0 28 2488 225 394 275
+viewPort = 0 28 2490 580 394 275
 primaryWindow = TRUE
-Empty = /home/qidc/Nutstore/Project/riscv/riscv_soc/QA_DIR/verdiLog/novas_autosave.ses.wave.0
+SessionFile = /home/qidc/Nutstore/Project/riscv/riscv_soc/QA_DIR/verdiLog/novas_autosave.ses.wave.0
 displayGrid = FALSE
 hierarchicalName = FALSE
 snap = TRUE
