@@ -15,3 +15,4 @@ verdi:
 clean:
 	rm -rf csrc simv* *.lib *.lib++ nLint*
 	rm -rf *.log *.vpd *.fsdb* *.key *log rtl.fsdb*
+

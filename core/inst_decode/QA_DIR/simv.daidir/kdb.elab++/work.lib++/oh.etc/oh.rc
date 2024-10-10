@@ -1,6 +1,0 @@
-@elabcom rc file Version 1.0
-[oh]
-invokeDir = /home/qidc/Nutstore/Project/riscv/core/inst_decode/QA_DIR
-hostCommand = -lib simv.daidir/work -saveLevel -elab simv.daidir/kdb -simflow -simdir simv.daidir/kdb_libs -top "dual_port_bram dff_rs_ld dff_rs dff inst_decode inst_decode_tb" -Lf work +disable_message+C00380+C00381 +disable_message+C00388+C00389 -SNPS_ELABCOM -saveEla\
-b
-simType = VCS

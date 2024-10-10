@@ -1,7 +1,0 @@
-/home/qidc/Nutstore/Project/config/cbb/dual_port_bram.v
-/home/qidc/Nutstore/Project/config/std_cell/dff.v
-/home/qidc/Nutstore/Project/config/std_cell/dff_rs.v
-/home/qidc/Nutstore/Project/config/std_cell/dff_rs_ld.v
-/home/qidc/Nutstore/Project/riscv/core/id_ex_buf/rtl/id_ex_buf.v
-/home/qidc/Nutstore/Project/riscv/core/id_ex_buf/tb/id_ex_buf_tb.v
-/home/qidc/Nutstore/Project/riscv/defines/defines.v

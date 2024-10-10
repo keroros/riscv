@@ -1,6 +1,0 @@
-/home/qidc/Nutstore/Project/config/cbb/dual_port_bram.v
-/home/qidc/Nutstore/Project/config/std_cell/dff.v
-/home/qidc/Nutstore/Project/config/std_cell/dff_rs.v
-/home/qidc/Nutstore/Project/config/std_cell/dff_rs_ld.v
-/home/qidc/Nutstore/Project/riscv/core/if_id_buf/rtl/if_id_buf.v
-/home/qidc/Nutstore/Project/riscv/core/if_id_buf/tb/if_id_buf_tb.v
