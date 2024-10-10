@@ -4,7 +4,17 @@
 /home/qidc/Nutstore/Project/riscv/riscv_soc/rtl/riscv_soc.v
 /home/qidc/Nutstore/Project/riscv/riscv_soc/tb/riscv_soc_tb.sv
 
--f /home/qidc/Nutstore/Project/riscv/core/riscv_core/QA_DIR/filelist.f
--f /home/qidc/Nutstore/Project/riscv/perips/ram/QA_DIR/filelist.f
--f /home/qidc/Nutstore/Project/riscv/perips/rom/QA_DIR/filelist.f
+/home/qidc/Nutstore/Project/riscv/core/riscv_core/rtl/riscv_core.v
+/home/qidc/Nutstore/Project/riscv/perips/ram/rtl/ram.v
+/home/qidc/Nutstore/Project/riscv/perips/rom/rtl/rom.v
+
+/home/qidc/Nutstore/Project/riscv/core/pc_reg/rtl/pc_reg.v
+/home/qidc/Nutstore/Project/riscv/core/if_id_buf/rtl/if_id_buf.v
+/home/qidc/Nutstore/Project/riscv/core/inst_decode/rtl/inst_decode.v
+/home/qidc/Nutstore/Project/riscv/core/id_ex_buf/rtl/id_ex_buf.v
+/home/qidc/Nutstore/Project/riscv/core/execute/rtl/execute.v
+/home/qidc/Nutstore/Project/riscv/core/register_file/rtl/register_file.v
+/home/qidc/Nutstore/Project/riscv/core/ctrl_unit/rtl/ctrl_unit.v
+
+/home/qidc/Nutstore/Project/riscv/core/alu/rtl/alu.v
 

@@ -9,7 +9,7 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-`include "../../defines/defines.v"
+`include "/home/qidc/Nutstore/Project/riscv/defines/defines.v"
 
 module alu (
     input  wire [`RV32_ADDR_WIDTH-1:0] inst_addr_i,

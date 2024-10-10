@@ -16,7 +16,7 @@ Disassembly of section .text.init:
   18:	00200193          	li	gp,2
   1c:	4ddf1663          	bne	t5,t4,4e8 <fail>
 
-  !!!break!!! 后续指令地址加 4
+  !!!break(00100073)!!! 后续指令地址加 4
 
 00000020 <test_3>:
   20:	00100093          	li	ra,1

@@ -1,0 +1,137 @@
+0 
+34
++itf+/home/qidc/Synopsys/vcs/O-2018.09-SP2/linux64/lib/vcsdp_lite.tab
++v2k
++vcsd1
++vpi
+-Mamsrun=
+-Masflags=
+-Mcc=gcc
+-Mcfl= -pipe -fPIC -O -I/home/qidc/Synopsys/vcs/O-2018.09-SP2/include
+-Mcplusplus=g++
+-Mcrt0=
+-Mcrtn=
+-Mcsrc=
+-Mexternalobj=
+-Mldflags=-L/usr/lib/x86_64-linux-gnu -L/lib/x86_64-linux-gnu -Wl,--no-as-needed -rdynamic
+-Mobjects= /home/qidc/Synopsys/vcs/O-2018.09-SP2/linux64/lib/libvirsim.so /home/qidc/Synopsys/vcs/O-2018.09-SP2/linux64/lib/liberrorinf.so /home/qidc/Synopsys/vcs/O-2018.09-SP2/linux64/lib/libsnpsmalloc.so /home/qidc/Synopsys/vcs/O-2018.09-SP2/linux64/lib/libvfs.so
+-Mout=simv
+-Msaverestoreobj=/home/qidc/Synopsys/vcs/O-2018.09-SP2/linux64/lib/vcs_save_restore_new.o
+-Msyslibs=/home/qidc/Synopsys/verdi/Verdi_O-2018.09-SP2/share/PLI/VCS/LINUX64/pli.a -ldl
+-Mvcsaceobjs=
+-Mxcflags= -pipe -fPIC -I/home/qidc/Synopsys/vcs/O-2018.09-SP2/include
+-P
+-Xufe=2steps
+-debug_access+all
+-f filelist.f
+-fsdb
+-full64
+-gen_obj
+-kdb
+-lca
+-picarchive
+-sverilog
+-timescale=1ns/1ns
+/home/qidc/Synopsys/vcs/O-2018.09-SP2/linux64/bin/vcs1
+/home/qidc/Synopsys/verdi/Verdi_O-2018.09-SP2/share/PLI/VCS/LINUX64/verdi.tab
+79
+sysc_uni_pwd=/home/qidc/Nutstore/Project/riscv/core/ctrl_unit/QA_DIR
+_P9K_TTY=/dev/pts/5
+_P9K_SSH_TTY=/dev/pts/5
+ZSH=/home/qidc/.oh-my-zsh
+XMODIFIERS=@im=ibus
+XDG_SESSION_TYPE=wayland
+XDG_SESSION_DESKTOP=ubuntu
+XDG_SESSION_CLASS=user
+XDG_RUNTIME_DIR=/run/user/1000
+XDG_MENU_PREFIX=gnome-
+XDG_DATA_DIRS=/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
+XDG_CURRENT_DESKTOP=ubuntu:GNOME
+XAUTHORITY=/run/user/1000/.mutter-Xwaylandauth.2FJEV2
+WAYLAND_DISPLAY=wayland-0
+VTE_VERSION=6800
+VMR_MODE_FLAG=64
+VERDI_HOME=/home/qidc/Synopsys/verdi/Verdi_O-2018.09-SP2
+VERDI_DIR=/home/qidc/Synopsys/verdi/Verdi_O-2018.09-SP2
+VCS_TARGET_ARCH=amd64
+VCS_MODE_FLAG=64
+VCS_LCAMSG_PRINT_OFF=1
+VCS_HOME=/home/qidc/Synopsys/vcs/O-2018.09-SP2
+VCS_DEPTH=0
+VCS_ARG_ADDED_FOR_TMP=1
+VCS_ARCH=linux64
+USERNAME=qidc
+UNAME=/bin/uname
+TOOL_HOME=/home/qidc/Synopsys/vcs/O-2018.09-SP2/linux64
+TMUX_PANE=%3
+TMUX=/tmp/tmux-1000/default,43496,0
+TERM_PROGRAM_VERSION=3.2a
+TERM_PROGRAM=tmux
+SYSTEMD_EXEC_PID=1536
+SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
+SSH_AGENT_LAUNCHER=gnome-keyring
+SNPS_VERDI_INTERNAL_LP_XML_NEW_FLOW=1
+SNPS_VCS_INTERNAL_UBUNTU_PRE_LDFLAGS= -no-pie  -Wl,--no-as-needed 
+SNPS_VCS_INTERNAL_LINKER_NEEDS_NO_AS_NEEDED=1
+SESSION_MANAGER=local/qidc:@/tmp/.ICE-unix/1305,unix/qidc:/tmp/.ICE-unix/1305
+SCRNAME=vcs
+SCRIPT_NAME=vcs
+QT_IM_MODULE=ibus
+QT_ACCESSIBILITY=1
+P9K_TTY=old
+P9K_SSH=0
+OVA_UUM=0
+NPI_PLATFORM=LINUX64_GNU_472
+NOVAS_INST_DIR=/home/qidc/Synopsys/verdi/Verdi_O-2018.09-SP2
+NOVAS_HOME=/home/qidc/Synopsys/verdi/Verdi_O-2018.09-SP2
+MFLAGS=
+MAKE_TERMOUT=/dev/pts/5
+MAKE_TERMERR=/dev/pts/5
+MAKELEVEL=1
+MAKEFLAGS=
+LSCOLORS=Gxfxcxdxbxegedabagacad
+LIBRARY_PATH=/usr/lib/x86_64-linux-gnu
+LESS=-R
+LC_TIME=zh_CN.UTF-8
+LC_TELEPHONE=zh_CN.UTF-8
+LC_PAPER=zh_CN.UTF-8
+LC_NUMERIC=zh_CN.UTF-8
+LC_NAME=zh_CN.UTF-8
+LC_MONETARY=zh_CN.UTF-8
+LC_MEASUREMENT=zh_CN.UTF-8
+LC_IDENTIFICATION=zh_CN.UTF-8
+LC_ALL=C
+LC_ADDRESS=zh_CN.UTF-8
+GTK_MODULES=gail:atk-bridge
+GNOME_TERMINAL_SERVICE=:1.293
+GNOME_TERMINAL_SCREEN=/org/gnome/Terminal/screen/a8db1f72_d5e7_4dc8_8ad3_09a7cbfffaa8
+GNOME_SHELL_SESSION_MODE=ubuntu
+GNOME_SETUP_DISPLAY=:1
+GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+GDMSESSION=ubuntu
+DVE_HOME=/home/qidc/Synopsys/vcs/O-2018.09-SP2/gui/dve
+DESKTOP_SESSION=ubuntu
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+CPATH=/usr/include/x86_64-linux-gnu
+COLORTERM=truecolor
+0
+12
+1728521124 /home/qidc/Nutstore/Project/riscv/defines/defines.v
+1728452411 /home/qidc/Nutstore/Project/riscv/core/ctrl_unit/tb/ctrl_unit_tb.v
+1728521063 /home/qidc/Nutstore/Project/riscv/core/ctrl_unit/rtl/ctrl_unit.v
+1728522866 /home/qidc/Nutstore/Project/config/std_cell/dff.v
+1728524430 /home/qidc/Nutstore/Project/config/std_cell/dff_rs.v
+1728524441 /home/qidc/Nutstore/Project/config/std_cell/dff_rs_ld.v
+1728523201 /home/qidc/Nutstore/Project/config/cbb/dual_port_bram.v
+1728524358 /home/qidc/Nutstore/Project/config/std_cell/std_cell.f
+1728524335 /home/qidc/Nutstore/Project/config/cbb/cbb.f
+1728521972 filelist.f
+1550753332 /home/qidc/Synopsys/verdi/Verdi_O-2018.09-SP2/share/PLI/VCS/LINUX64/verdi.tab
+1551421246 /home/qidc/Synopsys/vcs/O-2018.09-SP2/linux64/lib/vcsdp_lite.tab
+4
+1551422344 /home/qidc/Synopsys/vcs/O-2018.09-SP2/linux64/lib/libvirsim.so
+1551421792 /home/qidc/Synopsys/vcs/O-2018.09-SP2/linux64/lib/liberrorinf.so
+1551421768 /home/qidc/Synopsys/vcs/O-2018.09-SP2/linux64/lib/libsnpsmalloc.so
+1551421789 /home/qidc/Synopsys/vcs/O-2018.09-SP2/linux64/lib/libvfs.so
+1728524962 simv.daidir
+-1 partitionlib

@@ -1,0 +1,5 @@
+@elabcom rc file Version 1.0
+[oh]
+invokeDir = /home/qidc/Nutstore/Project/riscv/core/ctrl_unit/QA_DIR
+hostCommand = -lib simv.daidir/work -saveLevel -elab simv.daidir/kdb -simflow -simdir simv.daidir/kdb_libs -top "dual_port_bram dff_rs_ld dff ctrl_unit ctrl_unit_tb" -Lf work +disable_message+C00380+C00381 +disable_message+C00388+C00389 -SNPS_ELABCOM -saveElab
+simType = VCS

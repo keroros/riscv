@@ -9,7 +9,7 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-`include "../../defines/defines.v"
+`include "/home/qidc/Nutstore/Project/riscv/defines/defines.v"
 
 module register_file (
     input  wire                       clk,

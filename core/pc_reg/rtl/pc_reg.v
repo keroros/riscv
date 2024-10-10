@@ -9,7 +9,7 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-`include "../../defines/defines.v"
+`include "/home/qidc/Nutstore/Project/riscv/defines/defines.v"
 
 module pc_reg (
     input  wire                        clk,

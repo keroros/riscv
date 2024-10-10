@@ -1,2 +1,6 @@
-debImport "-sv" "-f" "filelist.f"
+wvCreateWindow
+wvOpenFile -win $_nWave2 \
+           {/home/qidc/Nutstore/Project/riscv/riscv_soc/QA_DIR/rtl.fsdb}
+wvRestoreSignal -win $_nWave2 "signal.rc" -overWriteAutoAlias on -appendSignals \
+           on
 debExit

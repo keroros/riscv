@@ -1,0 +1,44 @@
+{
+    "...MASTER...": [
+        "SIM",
+        "amcQw",
+        "module",
+        7
+    ],
+    "std": [
+        "std",
+        "reYIK",
+        "module",
+        1
+    ],
+    "dual_port_bram": [
+        "dual_port_bram",
+        "YeBdz",
+        "module",
+        2
+    ],
+    "dff_rs_ld": [
+        "dff_rs_ld",
+        "a3M3m",
+        "module",
+        3
+    ],
+    "dff": [
+        "dff",
+        "IWW0i",
+        "module",
+        4
+    ],
+    "id_ex_buf": [
+        "id_ex_buf",
+        "ixBkr",
+        "module",
+        5
+    ],
+    "id_ex_buf_tb": [
+        "id_ex_buf_tb",
+        "GvdVe",
+        "module",
+        6
+    ]
+}

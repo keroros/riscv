@@ -9,7 +9,7 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-`include "../../defines/defines.v"
+`include "/home/qidc/Nutstore/Project/riscv/defines/defines.v"
 
 module ram (
     input  wire                        clk,        // 读写为同一时钟

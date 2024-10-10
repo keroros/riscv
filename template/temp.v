@@ -8,8 +8,7 @@
 // Description: Verilog 模板
 // 
 //////////////////////////////////////////////////////////////////////////////////
-`include "../rtl/core/defines.v"
-`include "../rtl/utils/std_dffs.v"
+`include "/home/qidc/Nutstore/Project/riscv/defines/defines.v"
 
 module module_name #(
     parameter WIDTH = 32

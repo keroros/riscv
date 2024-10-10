@@ -1,0 +1,7 @@
+/home/qidc/Nutstore/Project/config/cbb/dual_port_bram.v
+/home/qidc/Nutstore/Project/config/std_cell/dff.v
+/home/qidc/Nutstore/Project/config/std_cell/dff_rs.v
+/home/qidc/Nutstore/Project/config/std_cell/dff_rs_ld.v
+/home/qidc/Nutstore/Project/riscv/core/inst_decode/rtl/inst_decode.v
+/home/qidc/Nutstore/Project/riscv/core/inst_decode/tb/inst_decode_tb.v
+/home/qidc/Nutstore/Project/riscv/defines/defines.v
