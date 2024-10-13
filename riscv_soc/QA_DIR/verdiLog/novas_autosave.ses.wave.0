@@ -16,7 +16,7 @@ signalSpacing 5
 
 ; windowTimeUnit is used for zoom, cursor & marker
 ; waveform viewport range
-zoom 0.000000 121713.165423
+zoom 0.000000 12480065.000000
 cursor 0.000000
 marker 0.000000
 
@@ -25,7 +25,7 @@ marker 0.000000
 ; visible top row signal index
 top 0
 ; marker line index
-markerPos 9
+markerPos 0
 
 ; event list
 ; addEvent event_name event_expression
@@ -45,18 +45,7 @@ COMPLEX_EVENT_END
 curSTATUS ByChange
 
 
-addGroup "u_riscv_core"
-activeDirFile "" "/home/qidc/Nutstore/Project/riscv/riscv_soc/QA_DIR/rtl.fsdb"
-addSignal -h 15 /riscv_soc_tb/u_riscv_soc/u_riscv_core/clk
-addSignal -h 15 -holdScope rst_n
-addSignal -h 15 -UNSIGNED -HEX -holdScope rom_inst_i[31:0]
-addSignal -h 15 -holdScope ram_rd_data_i[31:0]
-addSignal -h 15 -holdScope ram_rd_addr_o[31:0]
-addSignal -h 15 -holdScope ram_wr_addr_o[31:0]
-addSignal -h 15 -holdScope ram_wr_data_o[31:0]
-addSignal -h 15 -holdScope ram_wr_en_o[3:0]
-addSignal -h 15 -holdScope addr_rom_o[31:0]
-addGroup "G2"
+addGroup "G1"
 
 ; getSignalForm Scope Hierarchy Status
 ; active file of getSignalForm

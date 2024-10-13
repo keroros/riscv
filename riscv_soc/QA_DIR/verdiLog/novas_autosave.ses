@@ -20,14 +20,14 @@ powerDumped = 0
 [hb]
 postSimFile = /home/qidc/Nutstore/Project/riscv/riscv_soc/QA_DIR/rtl.fsdb
 syncTime = 0
-viewport = 70 27 2490 1376 0 0 57 2486
-activeNode = "riscv_soc_tb.u_riscv_soc.u_riscv_core"
-activeScope = "riscv_soc_tb.u_riscv_soc.u_riscv_core"
-activeFile = "/home/qidc/Nutstore/Project/riscv/core/riscv_core/rtl/riscv_core.v"
+viewport = 70 27 2490 1376 0 0 544 2488
+activeNode = "dff_rs_ld"
+activeScope = "dff_rs_ld"
+activeFile = "/home/qidc/Nutstore/Project/config/std_cell/dff_rs_ld.v"
 interactiveMode = False
 viewType = Source
 simulatorMode = False
-sourceBeginLine = 0
+sourceBeginLine = 12
 baMode = False
 srcLineNum = True
 AutoWrap = True
@@ -44,18 +44,17 @@ DnDtraceCrossHierOnly = True
 traceIncTopPort = False
 leadingZero = False
 signalPane = False
-Scope1 = "riscv_soc_tb.u_riscv_soc.u_riscv_core"
-Scope2 = "dff_rs_ld"
-multipleSelection = 1 13 2 0 0
+Scope1 = "dff_rs_ld"
+multipleSelection = 1 12 2 0 0
 sdfCheckUndef = FALSE
 simFlow = FALSE
 [hb.design]
 importCmd = "-dbdir" "/home/qidc/Nutstore/Project/riscv/riscv_soc/QA_DIR/simv.daidir" 
 invokeDir = /home/qidc/Nutstore/Project/riscv/riscv_soc/QA_DIR
 [hb.sourceTab.1]
-scope = riscv_soc_tb.u_riscv_soc.u_riscv_core
-File = /home/qidc/Nutstore/Project/riscv/core/riscv_core/rtl/riscv_core.v
-Line = 1
+scope = dff_rs_ld
+File = /home/qidc/Nutstore/Project/config/std_cell/dff_rs_ld.v
+Line = 13
 [nMemoryManager]
 WaveformFile = /home/qidc/Nutstore/Project/riscv/riscv_soc/QA_DIR/rtl.fsdb
 UserActionNum = 0
