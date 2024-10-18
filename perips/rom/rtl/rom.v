@@ -21,17 +21,16 @@ module rom (
 );
 
     // 实例化简单双口BRAM
-    dual_port_bram #(
+    simple_dp_ram #(
         .DATA_WIDTH(`RV32_INST_WIDTH),
         .ADDR_WIDTH(`ROM_ADDR_WIDTH - 2)  // 地址位宽减2，即地址除以4，得到每条指令的地址
-    ) u_dual_port_bram (
-        .rst_n(1'b1),                            // ROM不需要复位，直接置1
+    ) u_simple_dp_ram (
         .clka (clk),
-        .ena  (wr_en_i),                         // rom写使能
+        .wea  (wr_en_i),                         // rom写使能
         .addra(wr_addr_i[`ROM_ADDR_WIDTH-1:2]),  // 取指令地址的[11:2]位
         .dina (wr_data_i),
         .clkb (clk),
-        .enb  (`RD_ENABLE),                      // ROM不需要读使能信号，直接置1
+        .enb  (`RD_PORT_ENABLE),
         .addrb(rd_addr_i[`ROM_ADDR_WIDTH-1:2]),  // 取指令地址的[11:2]位
         .doutb(rd_data_o)
     );
