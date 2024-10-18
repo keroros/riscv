@@ -58,7 +58,7 @@ module riscv_soc_tb;
     integer i;
     initial begin
 /*----------------  by Qidc 2024-10-10  ---------------------
-        $readmemh("../../test/rv32ui-p-add.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_dual_port_bram.mem);
+        $readmemh("../../test/rv32ui-p-add.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_simple_dp_ram.mem);
 
         while (1) begin
             @(posedge clk)
@@ -80,7 +80,7 @@ module riscv_soc_tb;
         #(ClockPeriod)
         $finish;
 ------------------  by Qidc 2024-10-10  -------------------*/
-        $readmemh("../../test/inst_txt/rv32ui-p-add.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_dual_port_bram.mem);
+        $readmemh("../../test/inst_txt/rv32ui-p-add.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_simple_dp_ram.mem);
         wait (x26 == 1);
         #(ClockPeriod*2)
         if (x27 == 1) begin
@@ -93,7 +93,7 @@ module riscv_soc_tb;
         rst_n = 0;
         #ClockPeriod rst_n = 1;
         $display("At time %0t ns", $time);
-        $readmemh("../../test/inst_txt/rv32ui-p-sub.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_dual_port_bram.mem);
+        $readmemh("../../test/inst_txt/rv32ui-p-sub.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_simple_dp_ram.mem);
         wait (x26 == 1);
         #(ClockPeriod*2)
         if (x27 == 1) begin
@@ -106,7 +106,7 @@ module riscv_soc_tb;
         rst_n = 0;
         #ClockPeriod rst_n = 1;
         $display("At time %0t ns", $time);
-        $readmemh("../../test/inst_txt/rv32ui-p-sll.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_dual_port_bram.mem);
+        $readmemh("../../test/inst_txt/rv32ui-p-sll.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_simple_dp_ram.mem);
         wait (x26 == 1);
         #(ClockPeriod*2)
         if (x27 == 1) begin
@@ -119,7 +119,7 @@ module riscv_soc_tb;
         rst_n = 0;
         #ClockPeriod rst_n = 1;
         $display("At time %0t ns", $time);
-        $readmemh("../../test/inst_txt/rv32ui-p-slt.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_dual_port_bram.mem);
+        $readmemh("../../test/inst_txt/rv32ui-p-slt.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_simple_dp_ram.mem);
         wait (x26 == 1);
         #(ClockPeriod*2)
         if (x27 == 1) begin
@@ -132,7 +132,7 @@ module riscv_soc_tb;
         rst_n = 0;
         #ClockPeriod rst_n = 1;
         $display("At time %0t ns", $time);
-        $readmemh("../../test/inst_txt/rv32ui-p-sltu.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_dual_port_bram.mem);
+        $readmemh("../../test/inst_txt/rv32ui-p-sltu.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_simple_dp_ram.mem);
         wait (x26 == 1);
         #(ClockPeriod*2)
         if (x27 == 1) begin
@@ -145,7 +145,7 @@ module riscv_soc_tb;
         rst_n = 0;
         #ClockPeriod rst_n = 1;
         $display("At time %0t ns", $time);
-        $readmemh("../../test/inst_txt/rv32ui-p-xor.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_dual_port_bram.mem);
+        $readmemh("../../test/inst_txt/rv32ui-p-xor.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_simple_dp_ram.mem);
         wait (x26 == 1);
         #(ClockPeriod*2)
         if (x27 == 1) begin
@@ -158,7 +158,7 @@ module riscv_soc_tb;
         rst_n = 0;
         #ClockPeriod rst_n = 1;
         $display("At time %0t ns", $time);
-        $readmemh("../../test/inst_txt/rv32ui-p-srl.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_dual_port_bram.mem);
+        $readmemh("../../test/inst_txt/rv32ui-p-srl.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_simple_dp_ram.mem);
         wait (x26 == 1);
         #(ClockPeriod*2)
         if (x27 == 1) begin
@@ -171,7 +171,7 @@ module riscv_soc_tb;
         rst_n = 0;
         #ClockPeriod rst_n = 1;
         $display("At time %0t ns", $time);
-        $readmemh("../../test/inst_txt/rv32ui-p-sra.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_dual_port_bram.mem);
+        $readmemh("../../test/inst_txt/rv32ui-p-sra.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_simple_dp_ram.mem);
         wait (x26 == 1);
         #(ClockPeriod*2)
         if (x27 == 1) begin
@@ -184,7 +184,7 @@ module riscv_soc_tb;
         rst_n = 0;
         #ClockPeriod rst_n = 1;
         $display("At time %0t ns", $time);
-        $readmemh("../../test/inst_txt/rv32ui-p-or.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_dual_port_bram.mem);
+        $readmemh("../../test/inst_txt/rv32ui-p-or.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_simple_dp_ram.mem);
         wait (x26 == 1);
         #(ClockPeriod*2)
         if (x27 == 1) begin
@@ -197,7 +197,7 @@ module riscv_soc_tb;
         rst_n = 0;
         #ClockPeriod rst_n = 1;
         $display("At time %0t ns", $time);
-        $readmemh("../../test/inst_txt/rv32ui-p-and.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_dual_port_bram.mem);
+        $readmemh("../../test/inst_txt/rv32ui-p-and.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_simple_dp_ram.mem);
         wait (x26 == 1);
         #(ClockPeriod*2)
         if (x27 == 1) begin
@@ -210,7 +210,7 @@ module riscv_soc_tb;
         rst_n = 0;
         #ClockPeriod rst_n = 1;
         $display("At time %0t ns", $time);
-        $readmemh("../../test/inst_txt/rv32ui-p-addi.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_dual_port_bram.mem);
+        $readmemh("../../test/inst_txt/rv32ui-p-addi.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_simple_dp_ram.mem);
         wait (x26 == 1);
         #(ClockPeriod*2)
         if (x27 == 1) begin
@@ -223,7 +223,7 @@ module riscv_soc_tb;
         rst_n = 0;
         #ClockPeriod rst_n = 1;
         $display("At time %0t ns", $time);
-        $readmemh("../../test/inst_txt/rv32ui-p-slti.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_dual_port_bram.mem);
+        $readmemh("../../test/inst_txt/rv32ui-p-slti.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_simple_dp_ram.mem);
         wait (x26 == 1);
         #(ClockPeriod*2)
         if (x27 == 1) begin
@@ -236,7 +236,7 @@ module riscv_soc_tb;
         rst_n = 0;
         #ClockPeriod rst_n = 1;
         $display("At time %0t ns", $time);
-        $readmemh("../../test/inst_txt/rv32ui-p-sltiu.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_dual_port_bram.mem);
+        $readmemh("../../test/inst_txt/rv32ui-p-sltiu.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_simple_dp_ram.mem);
         wait (x26 == 1);
         #(ClockPeriod*2)
         if (x27 == 1) begin
@@ -249,7 +249,7 @@ module riscv_soc_tb;
         rst_n = 0;
         #ClockPeriod rst_n = 1;
         $display("At time %0t ns", $time);
-        $readmemh("../../test/inst_txt/rv32ui-p-xori.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_dual_port_bram.mem);
+        $readmemh("../../test/inst_txt/rv32ui-p-xori.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_simple_dp_ram.mem);
         wait (x26 == 1);
         #(ClockPeriod*2)
         if (x27 == 1) begin
@@ -262,7 +262,7 @@ module riscv_soc_tb;
         rst_n = 0;
         #ClockPeriod rst_n = 1;
         $display("At time %0t ns", $time);
-        $readmemh("../../test/inst_txt/rv32ui-p-ori.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_dual_port_bram.mem);
+        $readmemh("../../test/inst_txt/rv32ui-p-ori.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_simple_dp_ram.mem);
         wait (x26 == 1);
         #(ClockPeriod*2)
         if (x27 == 1) begin
@@ -275,7 +275,7 @@ module riscv_soc_tb;
         rst_n = 0;
         #ClockPeriod rst_n = 1;
         $display("At time %0t ns", $time);
-        $readmemh("../../test/inst_txt/rv32ui-p-andi.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_dual_port_bram.mem);
+        $readmemh("../../test/inst_txt/rv32ui-p-andi.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_simple_dp_ram.mem);
         wait (x26 == 1);
         #(ClockPeriod*2)
         if (x27 == 1) begin
@@ -288,7 +288,7 @@ module riscv_soc_tb;
         rst_n = 0;
         #ClockPeriod rst_n = 1;
         $display("At time %0t ns", $time);
-        $readmemh("../../test/inst_txt/rv32ui-p-slli.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_dual_port_bram.mem);
+        $readmemh("../../test/inst_txt/rv32ui-p-slli.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_simple_dp_ram.mem);
         wait (x26 == 1);
         #(ClockPeriod*2)
         if (x27 == 1) begin
@@ -301,7 +301,7 @@ module riscv_soc_tb;
         rst_n = 0;
         #ClockPeriod rst_n = 1;
         $display("At time %0t ns", $time);
-        $readmemh("../../test/inst_txt/rv32ui-p-srli.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_dual_port_bram.mem);
+        $readmemh("../../test/inst_txt/rv32ui-p-srli.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_simple_dp_ram.mem);
         wait (x26 == 1);
         #(ClockPeriod*2)
         if (x27 == 1) begin
@@ -314,7 +314,7 @@ module riscv_soc_tb;
         rst_n = 0;
         #ClockPeriod rst_n = 1;
         $display("At time %0t ns", $time);
-        $readmemh("../../test/inst_txt/rv32ui-p-srai.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_dual_port_bram.mem);
+        $readmemh("../../test/inst_txt/rv32ui-p-srai.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_simple_dp_ram.mem);
         wait (x26 == 1);
         #(ClockPeriod*2)
         if (x27 == 1) begin
@@ -327,7 +327,7 @@ module riscv_soc_tb;
         rst_n = 0;
         #ClockPeriod rst_n = 1;
         $display("At time %0t ns", $time);
-        $readmemh("../../test/inst_txt/rv32ui-p-beq.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_dual_port_bram.mem);
+        $readmemh("../../test/inst_txt/rv32ui-p-beq.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_simple_dp_ram.mem);
         wait (x26 == 1);
         #(ClockPeriod*2)
         if (x27 == 1) begin
@@ -340,7 +340,7 @@ module riscv_soc_tb;
         rst_n = 0;
         #ClockPeriod rst_n = 1;
         $display("At time %0t ns", $time);
-        $readmemh("../../test/inst_txt/rv32ui-p-bne.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_dual_port_bram.mem);
+        $readmemh("../../test/inst_txt/rv32ui-p-bne.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_simple_dp_ram.mem);
         wait (x26 == 1);
         #(ClockPeriod*2)
         if (x27 == 1) begin
@@ -353,7 +353,7 @@ module riscv_soc_tb;
         rst_n = 0;
         #ClockPeriod rst_n = 1;
         $display("At time %0t ns", $time);
-        $readmemh("../../test/inst_txt/rv32ui-p-blt.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_dual_port_bram.mem);
+        $readmemh("../../test/inst_txt/rv32ui-p-blt.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_simple_dp_ram.mem);
         wait (x26 == 1);
         #(ClockPeriod*2)
         if (x27 == 1) begin
@@ -366,7 +366,7 @@ module riscv_soc_tb;
         rst_n = 0;
         #ClockPeriod rst_n = 1;
         $display("At time %0t ns", $time);
-        $readmemh("../../test/inst_txt/rv32ui-p-bge.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_dual_port_bram.mem);
+        $readmemh("../../test/inst_txt/rv32ui-p-bge.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_simple_dp_ram.mem);
         wait (x26 == 1);
         #(ClockPeriod*2)
         if (x27 == 1) begin
@@ -379,7 +379,7 @@ module riscv_soc_tb;
         rst_n = 0;
         #ClockPeriod rst_n = 1;
         $display("At time %0t ns", $time);
-        $readmemh("../../test/inst_txt/rv32ui-p-bltu.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_dual_port_bram.mem);
+        $readmemh("../../test/inst_txt/rv32ui-p-bltu.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_simple_dp_ram.mem);
         wait (x26 == 1);
         #(ClockPeriod*2)
         if (x27 == 1) begin
@@ -392,7 +392,7 @@ module riscv_soc_tb;
         rst_n = 0;
         #ClockPeriod rst_n = 1;
         $display("At time %0t ns", $time);
-        $readmemh("../../test/inst_txt/rv32ui-p-bgeu.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_dual_port_bram.mem);
+        $readmemh("../../test/inst_txt/rv32ui-p-bgeu.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_simple_dp_ram.mem);
         wait (x26 == 1);
         #(ClockPeriod*2)
         if (x27 == 1) begin
@@ -405,7 +405,7 @@ module riscv_soc_tb;
         rst_n = 0;
         #ClockPeriod rst_n = 1;
         $display("At time %0t ns", $time);
-        $readmemh("../../test/inst_txt/rv32ui-p-jal.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_dual_port_bram.mem);
+        $readmemh("../../test/inst_txt/rv32ui-p-jal.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_simple_dp_ram.mem);
         wait (x26 == 1);
         #(ClockPeriod*2)
         if (x27 == 1) begin
@@ -418,7 +418,7 @@ module riscv_soc_tb;
         rst_n = 0;
         #ClockPeriod rst_n = 1;
         $display("At time %0t ns", $time);
-        $readmemh("../../test/inst_txt/rv32ui-p-jalr.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_dual_port_bram.mem);
+        $readmemh("../../test/inst_txt/rv32ui-p-jalr.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_simple_dp_ram.mem);
         wait (x26 == 1);
         #(ClockPeriod*2)
         if (x27 == 1) begin
@@ -431,7 +431,7 @@ module riscv_soc_tb;
         rst_n = 0;
         #ClockPeriod rst_n = 1;
         $display("At time %0t ns", $time);
-        $readmemh("../../test/inst_txt/rv32ui-p-lui.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_dual_port_bram.mem);
+        $readmemh("../../test/inst_txt/rv32ui-p-lui.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_simple_dp_ram.mem);
         wait (x26 == 1);
         #(ClockPeriod*2)
         if (x27 == 1) begin
@@ -444,7 +444,7 @@ module riscv_soc_tb;
         rst_n = 0;
         #ClockPeriod rst_n = 1;
         $display("At time %0t ns", $time);
-        $readmemh("../../test/inst_txt/rv32ui-p-jalr.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_dual_port_bram.mem);
+        $readmemh("../../test/inst_txt/rv32ui-p-jalr.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_simple_dp_ram.mem);
         wait (x26 == 1);
         #(ClockPeriod*2)
         if (x27 == 1) begin
@@ -457,11 +457,11 @@ module riscv_soc_tb;
         rst_n = 0;
         #ClockPeriod rst_n = 1;
         $display("At time %0t ns", $time);
-        $readmemh("../../test/ram_lb/test0.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_dual_port_bram_0.mem);
-        $readmemh("../../test/ram_lb/test1.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_dual_port_bram_1.mem);
-        $readmemh("../../test/ram_lb/test2.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_dual_port_bram_2.mem);
-        $readmemh("../../test/ram_lb/test3.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_dual_port_bram_3.mem);
-        $readmemh("../../test/inst_txt/rv32ui-p-lb.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_dual_port_bram.mem);
+        $readmemh("../../test/ram_lb/test0.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_simple_dp_ram_0.mem);
+        $readmemh("../../test/ram_lb/test1.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_simple_dp_ram_1.mem);
+        $readmemh("../../test/ram_lb/test2.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_simple_dp_ram_2.mem);
+        $readmemh("../../test/ram_lb/test3.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_simple_dp_ram_3.mem);
+        $readmemh("../../test/inst_txt/rv32ui-p-lb.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_simple_dp_ram.mem);
         wait (x26 == 1);
         #(ClockPeriod*2)
         if (x27 == 1) begin
@@ -474,11 +474,11 @@ module riscv_soc_tb;
         rst_n = 0;
         #ClockPeriod rst_n = 1;
         $display("At time %0t ns", $time);
-        $readmemh("../../test/ram_lh/test0.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_dual_port_bram_0.mem);
-        $readmemh("../../test/ram_lh/test1.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_dual_port_bram_1.mem);
-        $readmemh("../../test/ram_lh/test2.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_dual_port_bram_2.mem);
-        $readmemh("../../test/ram_lh/test3.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_dual_port_bram_3.mem);
-        $readmemh("../../test/inst_txt/rv32ui-p-lh.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_dual_port_bram.mem);
+        $readmemh("../../test/ram_lh/test0.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_simple_dp_ram_0.mem);
+        $readmemh("../../test/ram_lh/test1.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_simple_dp_ram_1.mem);
+        $readmemh("../../test/ram_lh/test2.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_simple_dp_ram_2.mem);
+        $readmemh("../../test/ram_lh/test3.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_simple_dp_ram_3.mem);
+        $readmemh("../../test/inst_txt/rv32ui-p-lh.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_simple_dp_ram.mem);
         wait (x26 == 1);
         #(ClockPeriod*2)
         if (x27 == 1) begin
@@ -491,11 +491,11 @@ module riscv_soc_tb;
         rst_n = 0;
         #ClockPeriod rst_n = 1;
         $display("At time %0t ns", $time);
-        $readmemh("../../test/ram_lw/test0.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_dual_port_bram_0.mem);
-        $readmemh("../../test/ram_lw/test1.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_dual_port_bram_1.mem);
-        $readmemh("../../test/ram_lw/test2.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_dual_port_bram_2.mem);
-        $readmemh("../../test/ram_lw/test3.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_dual_port_bram_3.mem);
-        $readmemh("../../test/inst_txt/rv32ui-p-lw.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_dual_port_bram.mem);
+        $readmemh("../../test/ram_lw/test0.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_simple_dp_ram_0.mem);
+        $readmemh("../../test/ram_lw/test1.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_simple_dp_ram_1.mem);
+        $readmemh("../../test/ram_lw/test2.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_simple_dp_ram_2.mem);
+        $readmemh("../../test/ram_lw/test3.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_simple_dp_ram_3.mem);
+        $readmemh("../../test/inst_txt/rv32ui-p-lw.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_simple_dp_ram.mem);
         wait (x26 == 1);
         #(ClockPeriod*2)
         if (x27 == 1) begin
@@ -508,11 +508,11 @@ module riscv_soc_tb;
         rst_n = 0;
         #ClockPeriod rst_n = 1;
         $display("At time %0t ns", $time);
-        $readmemh("../../test/ram_lbu/test0.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_dual_port_bram_0.mem);
-        $readmemh("../../test/ram_lbu/test1.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_dual_port_bram_1.mem);
-        $readmemh("../../test/ram_lbu/test2.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_dual_port_bram_2.mem);
-        $readmemh("../../test/ram_lbu/test3.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_dual_port_bram_3.mem);
-        $readmemh("../../test/inst_txt/rv32ui-p-lbu.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_dual_port_bram.mem);
+        $readmemh("../../test/ram_lbu/test0.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_simple_dp_ram_0.mem);
+        $readmemh("../../test/ram_lbu/test1.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_simple_dp_ram_1.mem);
+        $readmemh("../../test/ram_lbu/test2.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_simple_dp_ram_2.mem);
+        $readmemh("../../test/ram_lbu/test3.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_simple_dp_ram_3.mem);
+        $readmemh("../../test/inst_txt/rv32ui-p-lbu.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_simple_dp_ram.mem);
         wait (x26 == 1);
         #(ClockPeriod*2)
         if (x27 == 1) begin
@@ -525,11 +525,11 @@ module riscv_soc_tb;
         rst_n = 0;
         #ClockPeriod rst_n = 1;
         $display("At time %0t ns", $time);
-        $readmemh("../../test/ram_lhu/test0.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_dual_port_bram_0.mem);
-        $readmemh("../../test/ram_lhu/test1.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_dual_port_bram_1.mem);
-        $readmemh("../../test/ram_lhu/test2.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_dual_port_bram_2.mem);
-        $readmemh("../../test/ram_lhu/test3.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_dual_port_bram_3.mem);
-        $readmemh("../../test/inst_txt/rv32ui-p-lhu.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_dual_port_bram.mem);
+        $readmemh("../../test/ram_lhu/test0.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_simple_dp_ram_0.mem);
+        $readmemh("../../test/ram_lhu/test1.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_simple_dp_ram_1.mem);
+        $readmemh("../../test/ram_lhu/test2.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_simple_dp_ram_2.mem);
+        $readmemh("../../test/ram_lhu/test3.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_simple_dp_ram_3.mem);
+        $readmemh("../../test/inst_txt/rv32ui-p-lhu.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_simple_dp_ram.mem);
         wait (x26 == 1);
         #(ClockPeriod*2)
         if (x27 == 1) begin
@@ -542,11 +542,11 @@ module riscv_soc_tb;
         rst_n = 0;
         #ClockPeriod rst_n = 1;
         $display("At time %0t ns", $time);
-        $readmemh("../../test/ram_sb/test0.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_dual_port_bram_0.mem);
-        $readmemh("../../test/ram_sb/test1.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_dual_port_bram_1.mem);
-        $readmemh("../../test/ram_sb/test2.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_dual_port_bram_2.mem);
-        $readmemh("../../test/ram_sb/test3.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_dual_port_bram_3.mem);
-        $readmemh("../../test/inst_txt/rv32ui-p-sb.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_dual_port_bram.mem);
+        $readmemh("../../test/ram_sb/test0.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_simple_dp_ram_0.mem);
+        $readmemh("../../test/ram_sb/test1.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_simple_dp_ram_1.mem);
+        $readmemh("../../test/ram_sb/test2.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_simple_dp_ram_2.mem);
+        $readmemh("../../test/ram_sb/test3.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_simple_dp_ram_3.mem);
+        $readmemh("../../test/inst_txt/rv32ui-p-sb.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_simple_dp_ram.mem);
         wait (x26 == 1);
         #(ClockPeriod*2)
         if (x27 == 1) begin
@@ -559,11 +559,11 @@ module riscv_soc_tb;
         rst_n = 0;
         #ClockPeriod rst_n = 1;
         $display("At time %0t ns", $time);
-        $readmemh("../../test/ram_sh/test0.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_dual_port_bram_0.mem);
-        $readmemh("../../test/ram_sh/test1.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_dual_port_bram_1.mem);
-        $readmemh("../../test/ram_sh/test2.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_dual_port_bram_2.mem);
-        $readmemh("../../test/ram_sh/test3.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_dual_port_bram_3.mem);
-        $readmemh("../../test/inst_txt/rv32ui-p-sh.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_dual_port_bram.mem);
+        $readmemh("../../test/ram_sh/test0.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_simple_dp_ram_0.mem);
+        $readmemh("../../test/ram_sh/test1.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_simple_dp_ram_1.mem);
+        $readmemh("../../test/ram_sh/test2.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_simple_dp_ram_2.mem);
+        $readmemh("../../test/ram_sh/test3.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_simple_dp_ram_3.mem);
+        $readmemh("../../test/inst_txt/rv32ui-p-sh.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_simple_dp_ram.mem);
         wait (x26 == 1);
         #(ClockPeriod*2)
         if (x27 == 1) begin
@@ -576,11 +576,11 @@ module riscv_soc_tb;
         rst_n = 0;
         #ClockPeriod rst_n = 1;
         $display("At time %0t ns", $time);
-        $readmemh("../../test/ram_sw/test0.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_dual_port_bram_0.mem);
-        $readmemh("../../test/ram_sw/test1.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_dual_port_bram_1.mem);
-        $readmemh("../../test/ram_sw/test2.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_dual_port_bram_2.mem);
-        $readmemh("../../test/ram_sw/test3.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_dual_port_bram_3.mem);
-        $readmemh("../../test/inst_txt/rv32ui-p-sw.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_dual_port_bram.mem);
+        $readmemh("../../test/ram_sw/test0.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_simple_dp_ram_0.mem);
+        $readmemh("../../test/ram_sw/test1.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_simple_dp_ram_1.mem);
+        $readmemh("../../test/ram_sw/test2.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_simple_dp_ram_2.mem);
+        $readmemh("../../test/ram_sw/test3.txt", riscv_soc_tb.u_riscv_soc.u_ram.u_simple_dp_ram_3.mem);
+        $readmemh("../../test/inst_txt/rv32ui-p-sw.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_simple_dp_ram.mem);
         wait (x26 == 1);
         #(ClockPeriod*2)
         if (x27 == 1) begin

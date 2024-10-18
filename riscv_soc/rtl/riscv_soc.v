@@ -57,7 +57,6 @@ module riscv_soc (
         .wr_en_i  (ram_wr_en),
         .wr_addr_i(ram_wr_addr),
         .wr_data_i(ram_wr_data),
-        .rd_en_i  (`RD_DISABLE),  // 暂时禁止读使能
         .rd_addr_i(ram_rd_addr),
         .rd_data_o(ram_rd_data)
     );
