@@ -15,6 +15,7 @@
 `define REG_ADDR_WIDTH  5               // RV32寄存器地址位宽
 `define REG_NUM         32              // RV32寄存器数量
 `define DATA_WIDTH      32              // 数据位宽
+`define CACHE_BANK_WIDTH 128            // Cache的Bank位宽
 
 `define ROM_ADDR_WIDTH  12              // ROM地址位宽
 `define RAM_ADDR_WIDTH  12              // ROM地址位宽
