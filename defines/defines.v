@@ -15,11 +15,17 @@
 `define REG_ADDR_WIDTH  5               // RV32寄存器地址位宽
 `define REG_NUM         32              // RV32寄存器数量
 `define DATA_WIDTH      32              // 数据位宽
-`define CACHE_BANK_WIDTH 128            // Cache的Bank位宽
 
+// ROM和RAM相关常量
 `define ROM_ADDR_WIDTH  12              // ROM地址位宽
-`define RAM_ADDR_WIDTH  12              // ROM地址位宽
 `define ROM_DEPTH  1 << ROM_ADDR_WIDTH  // ROM深度为4096
+`define RAM_ADDR_WIDTH  12              // RAM地址位宽
+`define RAM_NUM         4               // RAM数量
+
+// Cache相关常量
+`define CACHE_BANK_WIDTH 128            // Cache的Bank位宽
+`define CACHE_WAY_NUM   2               // Cache有几路
+`define CACHE_DEPTH     256             // Cache的深度
 
 // 复位
 `define RST_ENABLE      1'b0            // 复位使能

@@ -1,0 +1,38 @@
+{
+    "std": [
+        "std",
+        "reYIK",
+        "module",
+        1
+    ],
+    "...MASTER...": [
+        "SIM",
+        "amcQw",
+        "module",
+        6
+    ],
+    "dff_rs_ld": [
+        "dff_rs_ld",
+        "a3M3m",
+        "module",
+        2
+    ],
+    "dff": [
+        "dff",
+        "IWW0i",
+        "module",
+        3
+    ],
+    "riscv_soc_tb": [
+        "riscv_soc_tb",
+        "apb6g",
+        "module",
+        4
+    ],
+    "register_file": [
+        "register_file",
+        "zZrks",
+        "module",
+        5
+    ]
+}
