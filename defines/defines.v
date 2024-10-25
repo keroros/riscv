@@ -24,11 +24,12 @@
 `define RAM_NUM           4                     // RAM数量，一个32位的字需要四个8位的RAM
 
 // Cache相关常量
-`define CACHE_BANK_WIDTH  128                   // Cache的Bank位宽
-`define CACHE_WAY_NUM     2                     // Cache有几路
-`define CACHE_DEPTH       256                   // Cache的深度为256
-`define CACHE_RAM_AW      $clog2(CACHE_DEPTH)+2 // Cache的RAM的地址位宽为10，高8位指示行号，低2位指示字节
-`define CACHE_BANK_NUM    4                     // 一个Cache行有四个Bank
+`define CACHE_BANK_WIDTH 128                    // Cache的Bank位宽
+`define CACHE_DEPTH      256                    // Cache的深度为256
+`define CACHE_INDEX_AW   $clog2(CACHE_DEPTH)    // Cache的Index位宽为8
+`define CACHE_OFFSET_AW  4                      // Cache的Offset位宽为4，指示16个字节
+`define CACHE_WAY_NUM    2                      // Cache有几路
+`define CACHE_BANK_NUM   4                      // 一个Cache行有四个Bank
 
 // 复位
 `define RST_ENABLE        1'b0                  // 复位使能
