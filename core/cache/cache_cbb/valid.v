@@ -2,10 +2,10 @@
 // Project Name  : Tiny RISC-V
 // Author        : Qidc
 // Email         : qidc@stu.pku.edu.cn
-// Created On    : 2024/10/25 12:22
-// Last Modified : 2024/10/26 22:31
-// File Name     : dirty.v
-// Description   : 256*1的Dirty表
+// Created On    : 2024/10/26 14:47
+// Last Modified : 2024/10/26 15:03
+// File Name     : valid.v
+// Description   : 256*1的Valid表
 //         
 // Copyright (c) 2024 Peking University.
 // ALL RIGHTS RESERVED
@@ -14,37 +14,37 @@
 // Modification History:
 // Date         By              Version                 Change Description
 // ---------------------------------------------------------------------------------
-// 2024/10/25   Qidc            1.0                     Original
+// 2024/10/26   Qidc            1.0                     Original
 // -FHDR----------------------------------------------------------------------------
 
 `timescale 1ns / 1ps
 
 `include "/home/qidc/Nutstore/Project/riscv/defines/defines.v"
 
-module dirty (
+module valid (
     input  wire clk                          ,
     input  wire [`CACHE_DEPTH-1:0] index_i   , // Index作为地址
     input  wire wr_en_i                      ,
-    input  wire wr_dirty_i                   ,
-    output wire rd_dirty_o
+    input  wire wr_valid_i ,
+    output wire rd_valid_o
 );
 
-   reg dirty [0:`CACHE_DEPTH-1];
-   reg rd_dirty;
+   reg valid [0:`CACHE_DEPTH-1];
+   reg rd_valid;
 
-   // 写入dirty
+   // 写入valid
    always @(posedge clk) begin
        if (wr_en_i) begin
-            dirty[index_i] <= wr_dirty_i;
+            valid[index_i] <= wr_valid_i;
        end
    end
 
-   // 读出dirty
+   // 读出valid
    always @(posedge clk) begin
-        rd_dirty <= dirty[index_i];
+        rd_valid <= valid[index_i];
     end
 
-    assign rd_dirty_o = rd_dirty;
+    assign rd_valid_o = rd_valid;
 
 endmodule
 

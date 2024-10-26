@@ -3,7 +3,7 @@
 // Author        : Qidc
 // Email         : qidc@stu.pku.edu.cn
 // Created On    : 2024/10/24 16:56
-// Last Modified : 2024/10/25 19:43
+// Last Modified : 2024/10/26 14:25
 // File Name     : data.v
 // Description   : 一个Cache行的Data包括四个Bank
 //
@@ -23,7 +23,6 @@
 
 module data (
     input  wire                        clk       ,
-    input  wire                        rst_n     ,
     input  wire [`CACHE_DEPTH-1:0]     index_i   , // Index作为读写地址，8bit
     input  wire [`CACHE_OFFSET_AW-1:0] offset_i  , // Offset指示要写入的bank
     input  wire [`RAM_NUM-1:0]         wr_en_i   , //指示要写入的字节
@@ -50,7 +49,6 @@ module data (
         for (i = 0; i < `CACHE_BANK_NUM; i = i + 1) begin : data
             bank u_bank(
                 .clk       (clk                        ),
-                .rst_n     (rst_n                      ),
                 .index_i   (index_i                    ),
                 .wr_en_i   ({4{wr_bank[i]}} & wr_en_i  ), // wr_bank控制bank，wr_en控制字节
                 .wr_data_i (wr_data_i[(i+1)*32-1:i*32] ),
