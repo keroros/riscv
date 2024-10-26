@@ -3,7 +3,7 @@
 // Author        : Qidc
 // Email         : qidc@stu.pku.edu.cn
 // Created On    : 2024/10/24 15:19
-// Last Modified : 2024/10/25 19:43
+// Last Modified : 2024/10/26 11:16
 // File Name     : tag.v
 // Description   : 256*20的Tag表
 //         
@@ -23,13 +23,24 @@
 `include "/home/qidc/Nutstore/Project/riscv/defines/defines.v"
 
 module tag (
-    input wire clk ,
-    input wire rst_n ,
-    input wire [`CACHE_DEPTH-1:0] index_i ,
-    input wire [`]
+    input  wire clk                          ,
+    input  wire rst_n                        ,
+    input  wire [`CACHE_DEPTH-1:0] index_i   , // Index作为地址
+    input  wire wr_en_i                      ,
+    input  wire [`CACHE_TAG_WIDTH-1:0] wr_tag_i ,
+    output wire [`CACHE_TAG_WIDTH-1:0] rd_tag_o
 );
 
+    sp_ram #(
+        .DATA_WIDTH (`CACHE_TAG_WIDTH),
+        .ADDR_WIDTH (1)
+    ) u_sp_ram (
+        .clka  (clk             ),
+        .ena   (`WR_PORT_ENABLE ),
+        .wea   (wr_tag_i ),
+        .addra (index_i         ),
+        .dina  (wr_data_i       ),
+        .douta (rd_data_o       )
+    );
 
-
-
-module
+endmodule
