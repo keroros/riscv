@@ -37,6 +37,9 @@
 `define RST_RAM_ADDR      32'h0000_0000         // 复位ram地址
 `define RST_REG_ADDR      5'h0                  // 寄存器复位地址
 `define RST_DATA          32'h0000_0000         // 复位数据
+`define RST_CACHE_INDEX   8'b0000_0000          // Cache的复位Index
+`define RST_CACHE_TAG     20'h00000             // Cache的复位Tag
+`define RST_CACHE_OFFSET  4'b0000               // Cache的复位Offset
 
 // 使能
 `define LOAD_ENABLE       1'b1                  // 加载使能
