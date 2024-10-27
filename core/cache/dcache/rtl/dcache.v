@@ -3,7 +3,7 @@
 // Author        : Qidc
 // Email         : qidc@stu.pku.edu.cn
 // Created On    : 2024/10/23 10:18
-// Last Modified : 2024/10/26 22:46
+// Last Modified : 2024/10/28 00:37
 // File Name     : dcache.v
 // Description   : DCache 模块
 //
@@ -51,6 +51,11 @@ module dcache (
     output wire [`RV32_ADDR_WIDTH-1:0]  ram_wr_addr_o  , // 写起始地址
     output wire [`DATA_WIDTH*4-1:0]     ram_wr_data_o  // 写数据
 );
+
+    // 定义reg型输出
+    reg ram_wr_req;
+
+    assign ram_wr_req_o = ram_wr_req;
 
     // 获取当前Index索引到的两路Tag、V、D、Data
     wire [`CACHE_TAG_WIDTH-1:0] way0_tag;
@@ -159,6 +164,7 @@ module dcache (
     reg [4:0] main_state;
     reg [4:0] next_main_state;
 
+    // Main状态输出
     always @(*) begin
         case (main_state)
             MAIN_IDLE: begin
@@ -170,6 +176,7 @@ module dcache (
                 req_buf_wr_data      <= `RST_DATA;
                 miss_buf_replace_way <= 1'b0;
                 miss_buf_ret_num     <= 2'b00;
+                ram_wr_req           <= 1'b0;
             end
             MAIN_LOOKUP: begin
                 req_buf_op           <= cpu_op_i;
@@ -180,9 +187,18 @@ module dcache (
                 req_buf_wr_data      <= cpu_wr_data_i;
                 miss_buf_replace_way <= 1'b0;
                 miss_buf_ret_num     <= 2'b00;
+                ram_wr_req           <= 1'b0;
             end
             MAIN_MISS: begin
-
+                req_buf_op           <= req_buf_op;
+                req_buf_index        <= req_buf_index;
+                req_buf_tag          <= req_buf_tag;
+                req_buf_offset       <= req_buf_offset;
+                req_buf_wr_en        <= req_buf_wr_en;
+                req_buf_wr_data      <= req_buf_wr_data;
+                miss_buf_replace_way <=
+                miss_buf_ret_num     <=
+                ram_wr_req           <= 1'b0;
             end
             MAIN_REPLACE: begin
 
@@ -203,19 +219,33 @@ module dcache (
         endcase
     end
 
+    // Main状态切换逻辑
     always @(*) begin
         case (main_state)
             MAIN_IDLE: begin
-
+                if (cpu_req_i == 1'b1) begin
+                    next_main_state = MAIN_LLOKUP;
+                end else begin
+                    next_main_state = MAIN_IDLE;
+                end
             end
             MAIN_LOOKUP: begin
-
+                if (cache_hit == 1'b1) begin
+                    if (cpu_req_i == 1'b1) begin
+                        next_main_state = MAIN_LOOKUP;
+                    end else begin
+                        next_state_state = MAIN_IDLE;
+                    end
+                end else begin
+                    next_main_state = MAIN_MISS;
+                end
             end
             MAIN_MISS: begin
-
-            end
-            MAIN_MISS: begin
-
+                if (ram_wr_rdy_i == 1'b1) begin
+                    next_main_state = MAIN_REPLACE;
+                end else begin
+                    next_main_state = MAIN_MISS;
+                end
             end
             MAIN_REPLACE: begin
 
@@ -229,6 +259,7 @@ module dcache (
         endcase
     end
 
+    // Main状态切换
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
             main_state <= IDLE;
