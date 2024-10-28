@@ -3,13 +3,13 @@
 // Author        : Qidc
 // Email         : qidc@stu.pku.edu.cn
 // Created On    : 2024/10/26 14:53
-// Last Modified : 2024/10/26 22:39
+// Last Modified : 2024/10/28 19:26
 // File Name     : cache_way.v
 // Description   : 一个Cache路包含一个Tag、一个Valid、一个Dirty和一个Data
-//         
+//
 // Copyright (c) 2024 Peking University.
 // ALL RIGHTS RESERVED
-// 
+//
 // ---------------------------------------------------------------------------------
 // Modification History:
 // Date         By              Version                 Change Description
@@ -31,6 +31,7 @@ module cache_way (
     input wire wr_tag_en_i,
     input wire wr_valid_en_i,
     input wire wr_dirty_en_i,
+    input wire wr_full_bank_i,
     input wire [`RAM_NUM-1:0] wr_data_en_i,
     input wire wr_lru_en_i,
     // 写数据
@@ -49,48 +50,49 @@ module cache_way (
 
     // 例化256*20的Tag表
     tag u_tag(/*autoinst*/
-        .clk      (clk         ), //
-        .index_i  (index_i     ), //
-        .wr_en_i  (wr_tag_en_i ), //
-        .wr_tag_i (wr_tag_i    ), //
-        .rd_tag_o (rd_tag_o    )  //
+        .clk      (clk         ),
+        .index_i  (index_i     ),
+        .wr_en_i  (wr_tag_en_i ),
+        .wr_tag_i (wr_tag_i    ),
+        .rd_tag_o (rd_tag_o    )
     );
 
     // 例化256*1的Valid表
     valid u_valid(/*autoinst*/
-        .clk        (clk           ), //
-        .index_i    (index_i       ), //
-        .wr_en_i    (wr_valid_en_i ), //
-        .wr_valid_i (wr_valid_i    ), //
-        .rd_valid_o (rd_valid_o    )  //
+        .clk        (clk           ),
+        .index_i    (index_i       ),
+        .wr_en_i    (wr_valid_en_i ),
+        .wr_valid_i (wr_valid_i    ),
+        .rd_valid_o (rd_valid_o    )
     );
 
     // 例化256*1的Dirty表
     dirty u_dirty(/*autoinst*/
-        .clk        (clk           ), //
-        .index_i    (index_i       ), //
-        .wr_en_i    (wr_dirty_en_i ), //
-        .wr_dirty_i (wr_dirty_i    ), //
-        .rd_dirty_o (rd_dirty_o    )  //
+        .clk        (clk           ),
+        .index_i    (index_i       ),
+        .wr_en_i    (wr_dirty_en_i ),
+        .wr_dirty_i (wr_dirty_i    ),
+        .rd_dirty_o (rd_dirty_o    )
     );
 
     // 例化256*128的Data表，包含四张256*32的Bank表
     data u_data(/*autoinst*/
-        .clk       (clk          ), //
-        .index_i   (index_i      ), //
-        .offset_i  (offset_i     ), //
-        .wr_en_i   (wr_data_en_i ), //
-        .wr_data_i (wr_data_i    ), //
-        .rd_data_o (rd_data_o    )  //
+        .clk            (clk            ),
+        .index_i        (index_i        ),
+        .offset_i       (offset_i       ),
+        .wr_full_bank_i (wr_full_bank_i ),
+        .wr_en_i        (wr_data_en_i   ),
+        .wr_data_i      (wr_data_i      ),
+        .rd_data_o      (rd_data_o      )
     );
 
     // 例化256*1的lru记录表
     lru u_lru(/*autoinst*/
-        .clk      (clk         ), //
-        .index_i  (index_i     ), //
-        .wr_en_i  (wr_lru_en_i ), //
-        .wr_lru_i (wr_lru_i    ), //
-        .rd_lru_o (rd_lru_o    )  //
+        .clk      (clk         ),
+        .index_i  (index_i     ),
+        .wr_en_i  (wr_lru_en_i ),
+        .wr_lru_i (wr_lru_i    ),
+        .rd_lru_o (rd_lru_o    )
     );
 
 endmodule
