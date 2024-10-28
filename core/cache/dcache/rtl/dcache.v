@@ -3,7 +3,7 @@
 // Author        : Qidc
 // Email         : qidc@stu.pku.edu.cn
 // Created On    : 2024/10/23 10:18
-// Last Modified : 2024/10/28 20:15
+// Last Modified : 2024/10/28 23:19
 // File Name     : dcache.v
 // Description   : DCache 模块
 //
@@ -386,7 +386,7 @@ module dcache (
 
     // 生成所有表的使能信号
     wire way0_wr_tag_en;
-    wire way1_wr_tag_en;CPU 输入/读
+    wire way1_wr_tag_en;
     wire way0_wr_valid_en;
     wire way1_wr_valid_en;
     wire way0_wr_dirty_en;
@@ -422,6 +422,19 @@ module dcache (
     wire way1_data_index;
     wire wya0_lru_index;
     wire wya1_lru_index;
+
+    wire [`CACHE_TAG_WIDTH] lookup_tag;
+    wire [`CACHE_TAG_WIDTH] replace_tag;
+    wire [`CACHE_TAG_WIDTH] refill_tag;
+
+    assign lookup_tag  = {`CACHE_TAG_WIDTH{main_state_lookup}}  & cpu_tag_i;
+    assign replace_tag = {`CACHE_TAG_WIDTH{main_state_replace}} & req_buf_tag;
+    assign refill_tag  = {`CACHE_TAG_WIDTH{main_state_refill}}  & req_buf_tag;
+
+    assign way0_tag_index = (lookup_tag | replace_tag | refill_tag) & 
+        {`CACHE_TAG_WIDTH{way0_hit}};
+    assign way1_tag_index = (lookup_tag | replace_tag | refill_tag) & 
+        {`CACHE_TAG_WIDTH{way1_hit}};
 
 
 
