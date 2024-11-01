@@ -3,7 +3,7 @@
 // Author        : Qidc
 // Email         : qidc@stu.pku.edu.cn
 // Created On    : 2024/10/23 10:18
-// Last Modified : 2024/10/28 23:19
+// Last Modified : 2024/11/01 17:31
 // File Name     : dcache.v
 // Description   : DCache 模块
 //
@@ -53,10 +53,13 @@ module dcache (
     reg ram_rd_req;
     reg ram_wr_req;
 
+    // 输出
+    assign cpu_rd_data_o = load_word;
+
     assign ram_rd_req_o = ram_rd_req;
     assign ram_wr_req_o = ram_wr_req;
 
-    assign ram_wr_data = replace_data;
+    assign ram_wr_data_o = replace_data;
 
     // 获取当前Index索引到的两路Tag、V、D、Data
     wire [`CACHE_TAG_WIDTH-1:0] way0_tag;
@@ -151,15 +154,15 @@ module dcache (
 
     assign way0_load_word = way0_data[`DATA_WIDTH*req_buf_offset[3:2] +: `DATA_WIDTH];
     assign way1_load_word = way1_data[`DATA_WIDTH*req_buf_offset[3:2] +: `DATA_WIDTH];
-    assign load_word = {`DATA_WIDTH{way0_hit}} & way0_load_word
-                     | {`DATA_WIDTH{way1_hit}} & way1_load_word; // 读操作时，从读出的Data中选择Word
+    assign load_word = {`DATA_WIDTH{way0_hit}} & way0_load_word |
+                       {`DATA_WIDTH{way1_hit}} & way1_load_word; // 读操作时，从读出的Data中选择Word
 
     assign replace_data = miss_buf_replace_way ? way1_data : way0_data; // 替换时，选择要替换的Data
 
     // Write Conflict 处理写冲突
     wire same_bank;
     wire wr_conflict;
-    
+
     // 主状态机定义
     localparam MAIN_IDLE    = 5'b00001;
     localparam MAIN_LOOKUP  = 5'b00010;
@@ -273,7 +276,7 @@ module dcache (
                 end else begin
                     next_main_state = MAIN_MISS;
                 end
-            end
+            end= way1_tag_index;
             MAIN_REPLACE: begin
                 if (ram_rd_rdy_i == 1'b1) begin
                     next_main_state = MAIN_REFILL;
@@ -380,9 +383,9 @@ module dcache (
     wire wrbuf_state_write;
 
     assign main_state_lookup  = main_state  == MAIN_LOOKUP  ? 1'b1 : 1'b0;
+    assign wrbuf_state_write  = wrbuf_state == WRBUF_WRITE  ? 1'b1 : 1'b0;
     assign main_state_replace = main_state  == MAIN_REPLACE ? 1'b1 : 1'b0;
     assign main_state_refill  = main_state  == MAIN_REFILL  ? 1'b1 : 1'b0;
-    assign wrbuf_state_write  = wrbuf_state == WRBUF_WRITE  ? 1'b1 : 1'b0;
 
     // 生成所有表的使能信号
     wire way0_wr_tag_en;
@@ -395,46 +398,72 @@ module dcache (
     wire way1_wr_full_bank;
     wire [`RAM_NUM-1:0] way0_wr_data_en;
     wire [`RAM_NUM-1:0] way1_wr_data_en;
-    wire wya0_wr_lru_en;
-    wire wya1_wr_lru_en;
-    
+    wire way0_wr_lru_en;
+    wire way1_wr_lru_en;
+
     assign way0_wr_tag_en    = main_state_refill && way0_hit;
     assign way1_wr_tag_en    = main_state_refill && wya1_hit;
+
     assign way0_wr_valid_en  = main_state_refill && way0_hit;
     assign way1_wr_valid_en  = main_state_refill && way1_hit;
+
     assign way0_wr_dirty_en  = (main_state_refill || wrbuf_state_write) && way0_hit;
     assign way1_wr_dirty_en  = (main_state_refill || wrbuf_state_write) && way1_hit;
+
     assign way0_wr_full_bank = main_state_refill && way0_hit;
     assign way1_wr_full_bank = main_state_refill && way1_hit;
+
     assign way0_wr_data_en = {`RAM_NUM{wrbuf_state_write && way0_hit}} & req_buf_wr_en;
     assign way1_wr_data_en = {`RAM_NUM{wrbuf_state_write && way1_hit}} & req_buf_wr_en;
+
     assign way0_wr_lru_en  = (main_state_lookup || main_state_refill) && way0_hit;
     assign way1_wr_lru_en  = (main_state_lookup || main_state_refill) && way1_hit;
 
     // 生成所有表的地址，包括读和写
-    wire way0_tag_index;
-    wire way1_tag_index;
-    wire way0_valid_index;
-    wire way1_valid_index;
-    wire way0_dirty_index;
-    wire way1_dirty_index;
-    wire way0_data_index;
-    wire way1_data_index;
-    wire wya0_lru_index;
-    wire wya1_lru_index;
+    wire [`CACHE_INDEX_AW-1:0] way0_tag_index;
+    wire [`CACHE_INDEX_AW-1:0] way1_tag_index;
+    wire [`CACHE_INDEX_AW-1:0] way0_valid_index;
+    wire [`CACHE_INDEX_AW-1:0] way1_valid_index;
+    wire [`CACHE_INDEX_AW-1:0] way0_dirty_index;
+    wire [`CACHE_INDEX_AW-1:0] way1_dirty_index;
+    wire [`CACHE_INDEX_AW-1:0] way0_data_index;
+    wire [`CACHE_INDEX_AW-1:0] way1_data_index;
+    wire [`CACHE_INDEX_AW-1:0] wya0_lru_index;
+    wire [`CACHE_INDEX_AW-1:0] wya1_lru_index;
 
-    wire [`CACHE_TAG_WIDTH] lookup_tag;
-    wire [`CACHE_TAG_WIDTH] replace_tag;
-    wire [`CACHE_TAG_WIDTH] refill_tag;
+    // 定义Index变量简化表达
+    wire [`CACHE_INDEX_AW-1:0] lookup_index;
+    wire [`CACHE_INDEX_AW-1:0] write_index;
+    wire [`CACHE_INDEX_AW-1:0] replace_index;
+    wire [`CACHE_INDEX_AW-1:0] refill_index;
 
-    assign lookup_tag  = {`CACHE_TAG_WIDTH{main_state_lookup}}  & cpu_tag_i;
-    assign replace_tag = {`CACHE_TAG_WIDTH{main_state_replace}} & req_buf_tag;
-    assign refill_tag  = {`CACHE_TAG_WIDTH{main_state_refill}}  & req_buf_tag;
+    assign lookup_index  = {`CACHE_INDEX_AW{main_state_lookup}}  & cpu_index_i;
+    assign write_index   = {`CACHE_INDEX_AW{main_state_write}}   & wr_buf_index;
+    assign replace_index = {`CACHE_INDEX_AW{main_state_replace}} & req_buf_index;
+    assign refill_index  = {`CACHE_INDEX_AW{main_state_refill}}  & req_buf_index;
 
-    assign way0_tag_index = (lookup_tag | replace_tag | refill_tag) & 
-        {`CACHE_TAG_WIDTH{way0_hit}};
-    assign way1_tag_index = (lookup_tag | replace_tag | refill_tag) & 
-        {`CACHE_TAG_WIDTH{way1_hit}};
+    assign way0_tag_index = (lookup_index | replace_index | refill_index) & 
+                            {`CACHE_INDEX_AW{way0_hit}};
+    assign way1_tag_index = (lookup_index | replace_index | refill_index) & 
+                            {`CACHE_INDEX_AW{way1_hit}};
+
+    assign way0_valid_index = way0_tag_index; // Valid的Index地址和Tag相等
+    assign way1_valid_index = way1_tag_index;
+
+    assign way0_dirty_index = (write_index | replece_index | refill_index) & 
+                              {`CACHE_INDEX_AW{way0_hit}};
+    assign way1_dirty_index = (write_index | replece_index | refill_index) & 
+                              {`CACHE_INDEX_AW{way1_hit}};
+
+    assign way0_data_index = (lookup_index | write_index | replece_index | refill) &
+                             {`CACHE_INDEX_AW{way0_hit}};
+    assign way1_data_index = (lookup_index | write_index | replece_index | refill) &
+                             {`CACHE_INDEX_AW{way1_hit}};
+
+    assign way0_lru_index = (lookup_index | write_index | refill_index) &
+
+
+
 
 
 
