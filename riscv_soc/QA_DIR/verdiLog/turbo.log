@@ -1,3 +1,121 @@
 Command Line: /home/qidc/Synopsys/verdi/Verdi_O-2018.09-SP2/platform/LINUXAMD64/bin/Novas -ssf rtl.fsdb -sswr signal.rc
-uname(Linux qidc 6.8.0-45-generic #45~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Wed Sep 11 15:25:05 UTC 2 x86_64)
-au time 13.344193 3.262684 0.530968 delta 232726528 232726528 total 604119040 604119040
+uname(Linux qidc 6.8.0-47-generic #47~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Wed Oct  2 16:16:55 UTC 2 x86_64)
+type= DS_SIGNAL element= 1 field= 2
+VERILOG riscv_soc_tb
+VERILOG u_riscv_soc
+VERILOG u_riscv_core
+VERILOG u_inst_decode
+VERILOG ram_rd_addr_o[31:0]
+-----
+second field= signal
+type= DS_STRING
+ram_rd_addr_o[31:0]
+type= DS_SIGNAL element= 6 field= 2
+VERILOG riscv_soc_tb
+VERILOG u_riscv_soc
+VERILOG u_riscv_core
+VERILOG u_inst_decode
+VERILOG inst_i[31:0]
+-----
+second field= signal
+VERILOG riscv_soc_tb
+VERILOG u_riscv_soc
+VERILOG u_riscv_core
+VERILOG u_inst_decode
+VERILOG inst_addr_i[31:0]
+-----
+second field= signal
+VERILOG riscv_soc_tb
+VERILOG u_riscv_soc
+VERILOG u_riscv_core
+VERILOG u_inst_decode
+VERILOG rs1_data_i[31:0]
+-----
+second field= signal
+VERILOG riscv_soc_tb
+VERILOG u_riscv_soc
+VERILOG u_riscv_core
+VERILOG u_inst_decode
+VERILOG rs2_data_i[31:0]
+-----
+second field= signal
+VERILOG riscv_soc_tb
+VERILOG u_riscv_soc
+VERILOG u_riscv_core
+VERILOG u_inst_decode
+VERILOG rs1_addr_o[4:0]
+-----
+second field= signal
+VERILOG riscv_soc_tb
+VERILOG u_riscv_soc
+VERILOG u_riscv_core
+VERILOG u_inst_decode
+VERILOG rs2_addr_o[4:0]
+-----
+second field= signal
+type= DS_STRING
+inst_i[31:0] inst_addr_i[31:0] rs1_data_i[31:0] rs2_data_i[31:0] rs1_addr_o[4:0] rs2_addr_o[4:0]
+type= DS_SIGNAL element= 6 field= 2
+VERILOG riscv_soc_tb
+VERILOG u_riscv_soc
+VERILOG u_riscv_core
+VERILOG u_inst_decode
+VERILOG inst_i[31:0]
+-----
+second field= signal
+VERILOG riscv_soc_tb
+VERILOG u_riscv_soc
+VERILOG u_riscv_core
+VERILOG u_inst_decode
+VERILOG inst_addr_i[31:0]
+-----
+second field= signal
+VERILOG riscv_soc_tb
+VERILOG u_riscv_soc
+VERILOG u_riscv_core
+VERILOG u_inst_decode
+VERILOG rs1_data_i[31:0]
+-----
+second field= signal
+VERILOG riscv_soc_tb
+VERILOG u_riscv_soc
+VERILOG u_riscv_core
+VERILOG u_inst_decode
+VERILOG rs2_data_i[31:0]
+-----
+second field= signal
+VERILOG riscv_soc_tb
+VERILOG u_riscv_soc
+VERILOG u_riscv_core
+VERILOG u_inst_decode
+VERILOG rs1_addr_o[4:0]
+-----
+second field= signal
+VERILOG riscv_soc_tb
+VERILOG u_riscv_soc
+VERILOG u_riscv_core
+VERILOG u_inst_decode
+VERILOG rs2_addr_o[4:0]
+-----
+second field= signal
+type= DS_STRING
+inst_i[31:0] inst_addr_i[31:0] rs1_data_i[31:0] rs2_data_i[31:0] rs1_addr_o[4:0] rs2_addr_o[4:0]
+type= DS_SIGNAL element= 2 field= 2
+VERILOG riscv_soc_tb
+VERILOG u_riscv_soc
+VERILOG u_riscv_core
+VERILOG u_inst_decode
+VERILOG op_data1_o[31:0]
+-----
+second field= signal
+VERILOG riscv_soc_tb
+VERILOG u_riscv_soc
+VERILOG u_riscv_core
+VERILOG u_inst_decode
+VERILOG op_data2_o[31:0]
+-----
+second field= signal
+type= DS_STRING
+op_data1_o[31:0] op_data2_o[31:0]
+Disabled AskUser2 Message (Response 0): Close all windows and exit verdi?
+au time 8207.650841 351.441989 115.972333 delta 261496832 261496832 total 632889344 632889344

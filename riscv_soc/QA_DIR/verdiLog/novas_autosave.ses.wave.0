@@ -2,7 +2,7 @@ Magic 271485
 Revision Verdi_O-2018.09-SP2
 
 ; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
-viewPort 0 28 2490 580 394 275
+viewPort 0 27 2484 469 314 128
 
 ; File list:
 ; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
@@ -16,16 +16,16 @@ signalSpacing 5
 
 ; windowTimeUnit is used for zoom, cursor & marker
 ; waveform viewport range
-zoom 0.000000 12480065.000000
-cursor 0.000000
-marker 0.000000
+zoom 32005.014337 141767.358866
+cursor 115000.000000
+marker 40000.000000
 
 ; user define markers
 ; userMarker time_pos marker_name color linestyle
 ; visible top row signal index
 top 0
 ; marker line index
-markerPos 0
+markerPos 12
 
 ; event list
 ; addEvent event_name event_expression
@@ -42,10 +42,24 @@ COMPLEX_EVENT_END
 
 ; toolbar current search type
 ; curSTATUS search_type
-curSTATUS ByChange
+curSTATUS ByValue
 
 
 addGroup "G1"
+activeDirFile "" "/home/qidc/Nutstore/Project/riscv/riscv_soc/QA_DIR/rtl.fsdb"
+addSignal -h 21 /riscv_soc_tb/u_riscv_soc/u_riscv_core/u_inst_decode/inst_addr_i[31:0]
+addSignal -h 21 -UNSIGNED -HEX -holdScope inst_i[31:0]
+addSignal -h 21 -holdScope rs1_data_i[31:0]
+addSignal -h 21 -holdScope rs2_data_i[31:0]
+addSignal -h 21 -holdScope rs1_addr_o[4:0]
+addSignal -h 21 -holdScope rs2_addr_o[4:0]
+addSignal -h 21 -holdScope op_data1_o[31:0]
+addSignal -h 21 -holdScope op_data2_o[31:0]
+addSignal -h 21 -holdScope imm_i[31:0]
+addSignal -h 21 /riscv_soc_tb/u_riscv_soc/u_riscv_core/u_register_file/reg1_rd_data_o[31:0]
+addGroup "G2"
+addSignal -h 21 /riscv_soc_tb/u_riscv_soc/u_riscv_core/u_register_file/regs[0:31]
+addGroup "G3"
 
 ; getSignalForm Scope Hierarchy Status
 ; active file of getSignalForm

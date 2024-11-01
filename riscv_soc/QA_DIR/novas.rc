@@ -233,13 +233,13 @@ version = Verdi_O-2018.09-SP2
 autoSaveSession = FALSE
 TclAutoSource = 
 SyncBrowserDir = TRUE
-verdiAppFont = "Bitstream Vera Sans,-1,18,5,50,0,0,0,0,0", ""
+version = Verdi_O-2018.09-SP2
+verdiAppFont = "Bitstream Vera Sans,-1,16,5,50,0,0,0,0,0", ""
+verdiMonoFont = "Fixed 20"
 DblClick = 250
 Find_Delimiter = .
 ViewMouse13Swap = FALSE
 cmd_enter_form = FALSE
-verdiMonoFont = "Courier 18"
-version = Verdi_O-2018.09-SP2
 SignalCaseInSensitive = FALSE
 ShowWndCtntDuringResizing = FALSE
 [GlobalProp]
@@ -392,10 +392,10 @@ saveWaveformStat = TRUE
 savePropStat = FALSE
 savePropDtl = TRUE
 [QtDialog]
-monoFontDlg = 1107,516,366,432
 SetWindowTimeUnitDialog = 1085,708,433,98
-QwWarnMsgDlg = 593,459,999,623
 QwUserAskDlg = 1153,669,324,166
+QwWarnMsgDlg = 593,496,999,623
+monoFontDlg = 1107,553,366,432
 [Relationship]
 hideRecursiceNode = FALSE
 [Session Cache]
@@ -437,11 +437,11 @@ scs_mixOption = -vhpi debussy:FSDBDumpCmd
 iscCmdSep = FALSE
 thirdpartyIdx = -1
 simType = vcssv
+interactiveDebugging = TRUE
 NoAppendOption = FALSE
 ScsDebugAll = FALSE
-bSVTBMode = TRUE
+bSVTBMode = FALSE
 SimMode = TRUE
-interactiveDebugging = TRUE
 KeepBreakPoints = FALSE
 [SimulationPlus]
 xlPath = verilog
@@ -470,17 +470,17 @@ iscCmdSep = FALSE
 interactive_fsdb_file = inter.fsdb
 simXLMode = FALSE
 invokeSimPath = work
-vcs_svOption = 
+vcs_svPath = /home/qidc/Nutstore/Project/riscv/riscv_soc/QA_DIR/simv
+vcs_svOption =  
 thirdpartyIdx = -1
+simType = vcssv
+interactiveDebugging = TRUE
 NoAppendOption = FALSE
 ScsDebugAll = FALSE
-smartlog = FALSE
-simType = vcssv
-bSVTBMode = TRUE
+bSVTBMode = FALSE
 SimMode = TRUE
-interactiveDebugging = TRUE
 KeepBreakPoints = FALSE
-vcs_svPath = /home/qidc/Nutstore/Project/riscv/riscv_soc/QA_DIR/simv
+smartlog = FALSE
 [SimulationPlus2]
 eventDumpUnfinish = FALSE
 [Source]
@@ -591,10 +591,10 @@ hdlSynopsysComment = ID_GREEN2
 pdmlIdentifier = ID_BLACK
 pdmlCommand = ID_BLACK
 pdmlMacro = ID_BLACK
-font = COURIER18
+font = FIXED20
 annotFont = Helvetica_M_R_14
 [Text.1]
-viewport = 70 27 2490 1376 45
+viewport = 70 27 2484 1170 45
 [TextPrinter]
 Orientation = Landscape
 Indicator = FALSE
@@ -676,8 +676,8 @@ Button3 = "Next ? Time" "#${Arg:Next Time} $stop;.\n"
 Button2 = "Next 1000 Time" "#1000 $stop;.\n"
 Button1 = "Dump All Signals" "$fsdbDumpvars;\n"
 [VIA]
-viaLogViewerDefaultRuleInterForm = "share/VIA/Apps/PredefinedRules/UVM_OVM_i_rule.rc"
 viaLogViewerDefaultRuleOneSearchForm = "share/VIA/Apps/PredefinedRules/Misc/Onesearch_rule.rc"
+viaLogViewerDefaultRuleInterForm = "share/VIA/Apps/PredefinedRules/UVM_OVM_i_rule.rc"
 [VIA.interactiveDebug.preference]
 DefaultDisplayTimeUnit = "1.000000ns"
 DefaultLogTimeUnit = "1.000000ns"
@@ -689,33 +689,33 @@ DefaultLogTimeUnit = "1.000000ns"
 [VIA.oneSearch.preference.vgifColumnSettingRC.setting0]
 parRuleSets = ""
 [VIA.oneSearch.preference.vgifColumnSettingRC.setting0.column0]
-name = Type
-width = 60
-visualIndex = 3
-isHidden = TRUE
-isUserChangeColumnVisible = FALSE
-[VIA.oneSearch.preference.vgifColumnSettingRC.setting0.column1]
-name = Message
-width = 2000
-visualIndex = 4
-isHidden = FALSE
-isUserChangeColumnVisible = FALSE
-[VIA.oneSearch.preference.vgifColumnSettingRC.setting0.column2]
 name = Severity
 width = 60
 visualIndex = 1
 isHidden = TRUE
 isUserChangeColumnVisible = FALSE
-[VIA.oneSearch.preference.vgifColumnSettingRC.setting0.column3]
-name = Time
-width = 60
-visualIndex = 0
-isHidden = TRUE
-isUserChangeColumnVisible = FALSE
-[VIA.oneSearch.preference.vgifColumnSettingRC.setting0.column4]
+[VIA.oneSearch.preference.vgifColumnSettingRC.setting0.column1]
 name = Code
 width = 60
 visualIndex = 2
+isHidden = TRUE
+isUserChangeColumnVisible = FALSE
+[VIA.oneSearch.preference.vgifColumnSettingRC.setting0.column2]
+name = Type
+width = 60
+visualIndex = 3
+isHidden = TRUE
+isUserChangeColumnVisible = FALSE
+[VIA.oneSearch.preference.vgifColumnSettingRC.setting0.column3]
+name = Message
+width = 2000
+visualIndex = 4
+isHidden = FALSE
+isUserChangeColumnVisible = FALSE
+[VIA.oneSearch.preference.vgifColumnSettingRC.setting0.column4]
+name = Time
+width = 60
+visualIndex = 0
 isHidden = TRUE
 isUserChangeColumnVisible = FALSE
 [Vi]
@@ -737,7 +737,7 @@ scope_to_save_with_macro
 open_file_dir
 open_rc_file_dir
 getSignalForm = 0 0 800 479 100 30 100 30
-viewPort = 0 28 2490 580 394 275
+viewPort = 0 27 2484 469 314 128
 signalSpacing = 5
 digitalSignalHeight = 15
 analogSignalHeight = 98
@@ -1014,14 +1014,14 @@ open_file_time_range = FALSE
 value_window_aligment = Right
 signal_window_alignment = Auto
 ShowDeltaTime = TRUE
-legend_window_font = -f COURIER18 -c ID_CYAN5
-value_window_font = -f COURIER18 -c ID_CYAN5
-curve_window_font = -f COURIER18 -c ID_CYAN5
-group_name_font = -f COURIER18 -c ID_GREEN5
-ruler_value_font = -f COURIER18 -c ID_CYAN5
-analog_ruler_value_font = -f COURIER18 -c ID_CYAN5
-comment_string_font = -f COURIER18 -c ID_RED5
-getsignal_form_font = -f COURIER18 
+legend_window_font = -f FIXED20 -c ID_CYAN5
+value_window_font = -f FIXED20 -c ID_CYAN5
+curve_window_font = -f FIXED20 -c ID_CYAN5
+group_name_font = -f FIXED20 -c ID_GREEN5
+ruler_value_font = -f FIXED20 -c ID_CYAN5
+analog_ruler_value_font = -f FIXED20 -c ID_CYAN5
+comment_string_font = -f FIXED20 -c ID_RED5
+getsignal_form_font = -f FIXED20 
 SigsCheckNum = on 1000
 filter_synthesized_net = off n
 filterOutNet = on
@@ -1196,7 +1196,7 @@ showCellBitRangeWithAddr = TRUE
 wordsShownInOneRow = 8
 syncCursorTime = FALSE
 fixCellColumnWidth = FALSE
-font = Courier 18
+font = Fixed 20
 [planColors]
 plan_fillColor_inactive = lightGray
 plan_fillColor_warning = orange
@@ -1212,13 +1212,13 @@ tsClkSkewSave = True
 tsClkSkewSetting = 0
 tsMaxForLoopToUnroll = 0
 tsBBoxSave = True
-tsBBoxSetting = 
+tsBBoxSetting =  
 tsBBoxEmptyModule = False
 tsBBoxIgnoreProtected = False
 tsIPSave = True
-tsIPSetting = 
-tsSymLibSetting = 
-tsSimModelSetting = 
+tsIPSetting =  
+tsSymLibSetting =  
+tsSimModelSetting =  
 tsCellModelSetting = 0
 tsContBAError = FALSE
 tsMaxLeafNum = 32768
@@ -1615,7 +1615,7 @@ AddImportArgument = FALSE
 LineBreakWithScope = TRUE
 StopAfterCompileOption = -s
 [wave.0]
-viewPort = 0 28 2490 580 394 275
+viewPort = 0 27 2484 469 314 128
 [wave.1]
 viewPort = 127 219 960 332 100 65
 [wave.2]

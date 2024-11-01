@@ -23,7 +23,7 @@ module register_file (
     output wire [    `DATA_WIDTH-1:0] reg2_rd_data_o   // 读寄存器2的数据
 );
 
-    reg [`DATA_WIDTH-1:0] regs         [0:`REG_NUM-1];  // 定义32个寄存器，每个寄存器宽度32位
+    reg [`DATA_WIDTH-1:0] regs [0:`REG_NUM-1];  // 定义32个寄存器，每个寄存器宽度32位
 
     reg [`DATA_WIDTH-1:0] reg1_rd_data;
     reg [`DATA_WIDTH-1:0] reg2_rd_data;
