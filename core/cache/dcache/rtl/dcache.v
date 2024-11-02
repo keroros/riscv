@@ -3,7 +3,7 @@
 // Author        : Qidc
 // Email         : qidc@stu.pku.edu.cn
 // Created On    : 2024/10/23 10:18
-// Last Modified : 2024/11/01 17:31
+// Last Modified : 2024/11/02 22:19
 // File Name     : dcache.v
 // Description   : DCache 模块
 //
@@ -41,24 +41,25 @@ module dcache (
     output wire [`RV32_ADDR_WIDTH-1:0]  ram_rd_addr_o  , // 读起始地址
     input  wire                         ram_rd_rdy_i   , // 读请求能否被接收的握手信号
     input  wire [`DATA_WIDTH-1:0]       ram_rd_data_i  , // 读返回数据
-    input  wire                         ram_rd_valid_i , // 返回数据有效信号
     input  wire [2:0]                   ram_rd_num_i   , // 返回数据是一次读的最后一个数据
     input  wire                         ram_wr_rdy_i   , // 写请求能否被接受的握手信号
     output wire                         ram_wr_req_o   , // 写请求信号，必须要在握手信号之后
     output wire [`RV32_ADDR_WIDTH-1:0]  ram_wr_addr_o  , // 写起始地址
-    output wire [`DATA_WIDTH*4-1:0]     ram_wr_data_o  // 写数据
+    output wire [`DATA_WIDTH*4-1:0]     ram_wr_data_o  , // 写数据
+    output wire                         ram_dirty_o      // 数据是否Dirty
 );
 
     // 定义reg型输出
     reg ram_rd_req;
     reg ram_wr_req;
 
-    // 输出
-    assign cpu_rd_data_o = load_word;
+    // 读命中时，数据从Cache读出；未命中时，数据从RAM返回的Data中选取
+    assign cpu_rd_data_o = req_buf_offset == (ram_rd_num_i-1'b1) ? ram_rd_data_i : load_word;
 
     assign ram_rd_req_o = ram_rd_req;
     assign ram_wr_req_o = ram_wr_req;
 
+    assign ram_wr_addr_o = req_buf_tag;
     assign ram_wr_data_o = replace_data;
 
     // 获取当前Index索引到的两路Tag、V、D、Data
@@ -244,7 +245,7 @@ module dcache (
                 req_buf_wr_data      = `RST_DATA;
                 miss_buf_replace_way = 1'b0;
                 ram_wr_req           = 1'b0;
-                ram_rd_req           = 1'b1;
+                ram_rd_req           = 1'b0;
             end
         endcase
     end
@@ -254,7 +255,7 @@ module dcache (
         case (main_state)
             MAIN_IDLE: begin
                 if (cpu_req_i == 1'b1) begin
-                    next_main_state = MAIN_LLOKUP;
+                    next_main_state = MAIN_LOOKUP;
                 end else begin
                     next_main_state = MAIN_IDLE;
                 end
@@ -276,7 +277,7 @@ module dcache (
                 end else begin
                     next_main_state = MAIN_MISS;
                 end
-            end= way1_tag_index;
+            end
             MAIN_REPLACE: begin
                 if (ram_rd_rdy_i == 1'b1) begin
                     next_main_state = MAIN_REFILL;
@@ -345,8 +346,7 @@ module dcache (
         case (wrbuf_state)
             WRBUF_IDLE: begin
                 if (main_state == MAIN_LOOKUP &&
-                    cpu_req_i  == 1'b1 &&
-                    cpu_op_i   == 1'b1 &&
+                    req_buf_op == 1'b1 &&
                     cache_hit  == 1'b1) begin // 在LOOKUP状态发现写请求命中
                     next_wrbuf_state = WRBUF_WRITE;
                 end else begin
@@ -354,12 +354,13 @@ module dcache (
                 end
             end
             WRBUF_WRITE: begin
-                if (cpu_req_i  == 1'b1 &&
-                    cpu_op_i   == 1'b1 &&
-                    cache_hit  == 1'b1) begin // 在LOOKUP状态发现写请求命中
+                if (main_state == MAIN_LOOKUP &&
+                    req_buf_op == 1'b1 &&
+                    cache_hit  == 1'b1) begin // 在LOOKUP状态发现新的写请求
                     next_wrbuf_state = WRBUF_WRITE;
                 end else begin
-                    next_wrbuf_state = WRBUFIDLE;
+                    next_wrbuf_state = WRBUF_IDLE;
+                end
             end
             default: begin
                 next_wrbuf_state = IDLE;
