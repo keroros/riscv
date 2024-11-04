@@ -3,7 +3,7 @@
 // Author        : Qidc
 // Email         : qidc@stu.pku.edu.cn
 // Created On    : 2024/10/23 10:18
-// Last Modified : 2024/11/04 19:27
+// Last Modified : 2024/11/05 00:07
 // File Name     : dcache.v
 // Description   : DCache 模块
 //
@@ -54,8 +54,8 @@ module dcache (
     reg ram_wr_req;
 
     // 读命中时，数据从Cache读出；未命中时，数据从RAM返回的Data中选取
-    assign cpu_rd_data_o = req_buf_offset == (ram_rd_num_i-1'b1) ? ram_rd_data_i : cache_load_word;
-// by Qidc 2024-11-04 | 有问题！！！！！！！！！！
+    assign cpu_rd_data_o = {`DATA_WIDTH{lookup_state}} & cache_load_word |
+                           {`DATA_WIDTH{refill_state}} & ram_rd_word;
 
     assign ram_rd_req_o = ram_rd_req;
     assign ram_wr_req_o = ram_wr_req;
@@ -173,6 +173,8 @@ module dcache (
     // Data select from RAM
     wire [`DATA_WIDTH-1:0] ram_load_word;
 
+    assign ram_load_word = (req_buf_op & (ram_rd_num_i-1'd1 == req_buf_offset)) ? req_buf_wr_data : ram_rd_data_i;
+
     // Write Conflict 处理写冲突
     wire same_bank;
     wire wr_conflict;
@@ -246,7 +248,7 @@ module dcache (
             main_state <= next_main_state;
         end
     end
-    
+
     // Main状态输出
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
@@ -420,39 +422,20 @@ module dcache (
     wire refill_state;
     wire write_state;
 
-    assign lookup_state  = next_main_state  == MAIN_LOOKUP  ? 1'b1 : 1'b0;
-    assign replace_state = next_main_state  == MAIN_REPLACE ? 1'b1 : 1'b0;
-    assign refill_state  = next_main_state  == MAIN_REFILL  ? 1'b1 : 1'b0;
-    assign write_state   = next_wrbuf_state == WRBUF_WRITE  ? 1'b1 : 1'b0;
+    wire next_lookup_state;
+    wire next_replace_state;
+    wire next_refill_state;
+    wire next_write_state;
 
-/* ------------------------ Write enable select ------------------------ */
+    assign lookup_state  = main_state  == MAIN_LOOKUP  ? 1'b1 : 1'b0;
+    assign replace_state = main_state  == MAIN_REPLACE ? 1'b1 : 1'b0;
+    assign refill_state  = main_state  == MAIN_REFILL  ? 1'b1 : 1'b0;
+    assign write_state   = wrbuf_state == WRBUF_WRITE  ? 1'b1 : 1'b0;
 
-    // 生成所有表的使能信号
-    wire                way0_wr_tag_en;
-    wire                way1_wr_tag_en;
-    wire                way0_wr_valid_en;
-    wire                way1_wr_valid_en;
-    wire                way0_wr_dirty_en;
-    wire                way1_wr_dirty_en;
-    wire [`RAM_NUM-1:0] way0_wr_data_en;
-    wire [`RAM_NUM-1:0] way1_wr_data_en;
-    wire                way0_wr_lru_en;
-    wire                way1_wr_lru_en;
-
-    assign way0_wr_tag_en    = refill_state && way0_hit;
-    assign way1_wr_tag_en    = refill_state && wya1_hit;
-
-    assign way0_wr_valid_en  = refill_state && way0_hit;
-    assign way1_wr_valid_en  = refill_state && way1_hit;
-
-    assign way0_wr_dirty_en  = (refill_state || write_state) && way0_hit;
-    assign way1_wr_dirty_en  = (refill_state || write_state) && way1_hit;
-
-    assign way0_wr_data_en = ({`RAM_NUM{write_state}} & req_buf_wr_en | {`RAM_NUM{refill_state}}) & {`RAM_NUM{way0_hit}};
-    assign way1_wr_data_en = ({`RAM_NUM{write_state}} & req_buf_wr_en | {`RAM_NUM{refill_state}}) & {`RAM_NUM{way1_hit}};
-
-    assign way0_wr_lru_en  = (lookup_state || refill_state) && way0_hit;
-    assign way1_wr_lru_en  = (lookup_state || refill_state) && way1_hit;
+    assign next_lookup_state  = next_main_state  == MAIN_LOOKUP  ? 1'b1 : 1'b0;
+    assign next_replace_state = next_main_state  == MAIN_REPLACE ? 1'b1 : 1'b0;
+    assign next_refill_state  = next_main_state  == MAIN_REFILL  ? 1'b1 : 1'b0;
+    assign next_write_state   = next_wrbuf_state == WRBUF_WRITE  ? 1'b1 : 1'b0;
 
 /* ------------------------ Read/Write index select ------------------------ */
 
@@ -474,40 +457,79 @@ module dcache (
     wire [`CACHE_INDEX_AW-1:0] replace_index;
     wire [`CACHE_INDEX_AW-1:0] refill_index;
 
-    assign lookup_index  = {`CACHE_INDEX_AW{lookup_state}}     & cpu_index_i;
-    assign write_index   = {`CACHE_INDEX_AW{write_state}}      & wr_buf_index;
-    assign replace_index = {`CACHE_INDEX_AW{replace_state}}    & req_buf_index;
-    assign refill_index  = {`CACHE_INDEX_AW{refill_state}}     & req_buf_index;
+    assign lookup_index  = {`CACHE_INDEX_AW{lookup_state}}  & cpu_index_i;
+    assign write_index   = {`CACHE_INDEX_AW{write_state}}   & req_buf_index;
+    assign replace_index = {`CACHE_INDEX_AW{replace_state}} & req_buf_index;
+    assign refill_index  = {`CACHE_INDEX_AW{refill_state}}  & req_buf_index;
 
-    assign way0_tag_index   = lookup_index | replace_index | refill_index;
-    assign way1_tag_index   = lookup_index | replace_index | refill_index;
+    assign way0_tag_index = {`CACHE_INDEX_AW{next_lookup_state}} & cpu_index_i | {`CACHE_INDEX_AW{next_replace_state | refill_state}} & req_buf_index;
+    assign way1_tag_index = {`CACHE_INDEX_AW{next_lookup_state}} & cpu_index_i | {`CACHE_INDEX_AW{next_replace_state | refill_state}} & req_buf_index;
 
+    assign way0_valid_index = {`CACHE_INDEX_AW{next_lookup_state}} & cpu_index_i | {`CACHE_INDEX_AW{next_replace_state | refill_state}} & req_buf_index;
+    assign way1_valid_index = {`CACHE_INDEX_AW{next_lookup_state}} & cpu_index_i | {`CACHE_INDEX_AW{next_replace_state | refill_state}} & req_buf_index;
+
+    assign way0_data_index = {`CACHE_INDEX_AW{write_state | next_replace_state | refill_state}} & req_buf_index;
+    assign way1_data_index = {`CACHE_INDEX_AW{write_state | next_replace_state | refill_state}} & req_buf_index;
+
+    assign way0_lru_index = {`CACHE_INDEX_AW{lookup_state}} & cpu_index_i | {`CACHE_INDEX_AW{next_replace_state | refill_state}} & req_buf_index;
+    assign way1_lru_index = {`CACHE_INDEX_AW{lookup_state}} & cpu_index_i | {`CACHE_INDEX_AW{next_replace_state | refill_state}} & req_buf_index;
+
+/*----------------  by Qidc 2024-11-04  ---------------------
     assign way0_valid_index = lookup_index | replace_index | refill_index;
     assign way1_valid_index = lookup_index | replace_index | refill_index;
 
     assign way0_dirty_index = write_index  | replece_index | refill_index;
     assign way1_dirty_index = write_index  | replece_index | refill_index;
 
-    assign way0_data_index  = lookup_index | write_index   | replece_index | refill;
-    assign way1_data_index  = lookup_index | write_index   | replece_index | refill;
+    assign way0_data_index  = lookup_index | write_index   | replece_index | refill_index;
+    assign way1_data_index  = lookup_index | write_index   | replece_index | refill_index;
 
     assign way0_lru_index   = lookup_index | replace_index | refill_index;
     assign way1_lru_index   = lookup_index | replace_index | refill_index;
+------------------  by Qidc 2024-11-04  -------------------*/
+
+/* ------------------------ Write enable select ------------------------ */
+
+    // 生成所有表的使能信号
+    wire                way0_wr_tag_en;
+    wire                way1_wr_tag_en;
+    wire                way0_wr_valid_en;
+    wire                way1_wr_valid_en;
+    wire                way0_wr_dirty_en;
+    wire                way1_wr_dirty_en;
+    wire [`RAM_NUM-1:0] way0_wr_data_en;
+    wire [`RAM_NUM-1:0] way1_wr_data_en;
+    wire                way0_wr_lru_en;
+    wire                way1_wr_lru_en;
+
+    assign way0_wr_tag_en    = refill_state & way0_hit;
+    assign way1_wr_tag_en    = refill_state & wya1_hit;
+
+    assign way0_wr_valid_en  = refill_state & way0_hit;
+    assign way1_wr_valid_en  = refill_state & way1_hit;
+
+    assign way0_wr_dirty_en  = (refill_state | write_state) & way0_hit;
+    assign way1_wr_dirty_en  = (refill_state | write_state) & way1_hit;
+
+    assign way0_wr_data_en = ({`RAM_NUM{write_state}} & req_buf_wr_en | {`RAM_NUM{refill_state}}) & {`RAM_NUM{way0_hit}};
+    assign way1_wr_data_en = ({`RAM_NUM{write_state}} & req_buf_wr_en | {`RAM_NUM{refill_state}}) & {`RAM_NUM{way1_hit}};
+
+    assign way0_wr_lru_en  = lookup_state & cache_hit | refill_state;
+    assign way1_wr_lru_en  = lookup_state & cache_hit | refill_state;
 
 /* ------------------------ Write data select ------------------------ */
 
     // 生成所有表的写数据输入
     wire [`CACHE_TAG_WIDTH-1:0] way0_tag_in;
     wire [`CACHE_TAG_WIDTH-1:0] way1_tag_in;
-    wire                     way0_valid_in;
-    wire                     way1_valid_in;
-    wire                     way0_dirty_in;
-    wire                     way1_dirty_in;
-    wire [`DATA_WIDTH-1:0]   way0_data_in;
-    wire [`DATA_WIDTH-1:0]   way1_data_in;
-    wire                     wya0_lru_in;
-    wire                     wya1_lru_in;
-    wire [`DATA_WIDTH-1:0] refill_data;
+    wire                        way0_valid_in;
+    wire                        way1_valid_in;
+    wire                        way0_dirty_in;
+    wire                        way1_dirty_in;
+    wire [`DATA_WIDTH-1:0]      way0_data_in;
+    wire [`DATA_WIDTH-1:0]      way1_data_in;
+    wire                        way0_lru_in;
+    wire                        way1_lru_in;
 
     assign way0_tag_in = {`CACHE_TAG_WIDTH{refill_state}} & req_buf_tag;
     assign way1_tag_in = {`CACHE_TAG_WIDTH{refill_state}} & req_buf_tag;
@@ -518,9 +540,13 @@ module dcache (
     assign way0_dirty_in = write_state | refill_state;
     assign way1_dirty_in = write_state | refill_state;
 
-    assign ram_load_word = (req_buf_op && (ram_rd_num_i-1'd1 == req_buf_offset)) ? req_buf_wr_data : ram_rd_data_i;
+    assign way0_data_in = {`DATA_WIDTH{write_state}} & wr_buf_wr_data | {`DATA_WIDTH{refill_state}} & ram_load_word;
+    assign way1_data_in = {`DATA_WIDTH{write_state}} & wr_buf_wr_data | {`DATA_WIDTH{refill_state}} & ram_load_word;
 
-    assign way0_data_in = {`DATA_WIDTH{write_state}} & wr_buf_wr_data | refill_data;
+    assign way0_lru_in = lookup_state & (way0_hit | ~way1_hit) | 
+                         refill_state & ~miss_buf_replace_way;
+    assign way1_lru_in = lookup_state & (~way0_hit | way1_hit) |
+                         refill_state & miss_buf_replace_way;
 
 endmodule
 
