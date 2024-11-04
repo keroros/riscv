@@ -3,7 +3,7 @@
 // Author        : Qidc
 // Email         : qidc@stu.pku.edu.cn
 // Created On    : 2024/10/24 16:56
-// Last Modified : 2024/10/28 19:23
+// Last Modified : 2024/11/04 15:33
 // File Name     : data.v
 // Description   : 一个Cache行的Data包括四个Bank
 //
@@ -26,7 +26,6 @@ module data (
     input  wire [`CACHE_DEPTH-1:0]     index_i   , // Index作为读写地址，8bit
     input  wire [`CACHE_OFFSET_AW-1:0] offset_i  , // Offset指示要写入的bank
     input  wire [`RAM_NUM-1:0]         wr_en_i   , //指示要写入的字节
-    input wire                         wr_full_bank_i, // Refiil时写入所有Bank
     input  wire [`DATA_WIDTH*4-1:0]    wr_data_i , // 一个Data四个Bank，128bit
     output wire [`DATA_WIDTH*4-1:0]    rd_data_o   // 一个Data四个Bank，128bit
 );
@@ -36,11 +35,11 @@ module data (
     // 将二进制码转换为独热码，每一位都控制一个Bank的写入
     always @(*) begin
         case (offset[3:2])
-            2'b00:   wr_bank = 4'b0001 & {4{wr_full_bank_i}};
-            2'b01:   wr_bank = 4'b0010 & {4{wr_full_bank_i}};
-            2'b10:   wr_bank = 4'b0100 & {4{wr_full_bank_i}};
-            2'b11:   wr_bank = 4'b1000 & {4{wr_full_bank_i}};
-            default: wr_bank = 4'b0000 & {4{wr_full_bank_i}};
+            2'b00:   wr_bank = 4'b0001;
+            2'b01:   wr_bank = 4'b0010;
+            2'b10:   wr_bank = 4'b0100;
+            2'b11:   wr_bank = 4'b1000;
+            default: wr_bank = 4'b0000;
         endcase
     end
 
