@@ -3,7 +3,7 @@
 // Author        : Qidc
 // Email         : qidc@stu.pku.edu.cn
 // Created On    : 2024/10/23 10:18
-// Last Modified : 2024/11/05 16:43
+// Last Modified : 2024/11/05 17:39
 // File Name     : dcache.v
 // Description   : DCache 模块
 //
@@ -16,6 +16,7 @@
 // ---------------------------------------------------------------------------------
 // 2024/10/23   Qidc            1.0                     Original
 // -FHDR----------------------------------------------------------------------------
+
 
 `timescale 1ns/1ps
 
@@ -116,6 +117,7 @@ module dcache (
         .rd_data_o     (way1_data        ),
         .rd_lru_o      (way1_lru         )
     );
+
 
 /* ------------------------ Data buffer ------------------------ */
 
@@ -326,6 +328,7 @@ module dcache (
         end
     end
 
+
 /* ------------------------ Write buffer state ------------------------ */
 
     // Write Buffer 状态机定义
@@ -405,6 +408,7 @@ module dcache (
             endcase
         end
     end
+
 
 /* ------------------------ Cache RAM input select ------------------------ */
 
@@ -550,6 +554,7 @@ module dcache (
 
     assign cpu_addr_ack_o = idle_state || (lookup_state && cache_hit);
     assign cpu_data_ack_o = (lookup_state && cache_hit) || (refill_state && (ram_rd_num_i-1'd1 == req_buf_offset));
+
 
 endmodule
 
