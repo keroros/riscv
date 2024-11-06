@@ -9,6 +9,7 @@ SUBDIRS := \
 	core/pc_reg/QA_DIR \
 	core/register_file/QA_DIR \
 	core/riscv_core/QA_DIR \
+	core/cache/dcache/QA_DIR \
 	perips/ram/QA_DIR \
 	perips/rom/QA_DIR
 
