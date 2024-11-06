@@ -3,7 +3,7 @@
 // Author        : Qidc
 // Email         : qidc@stu.pku.edu.cn
 // Created On    : 2024/10/24 12:28
-// Last Modified : 2024/10/26 14:25
+// Last Modified : 2024/11/06 14:27
 // File Name     : bank.v
 // Description   : 一行四个Bank，一个Bank包含四个256行，32位宽的RAM
 //
@@ -23,7 +23,7 @@
 
 module bank (
     input  wire                       clk       , // 读写为同一时钟
-    input  wire [`CACHE_INDEX_AW-1:0] index_i , // Index作为读写地址，8bit
+    input  wire [`CACHE_INDEX_AW-1:0] index_i   , // Index作为读写地址，8bit
     input  wire [`RAM_NUM-1:0]        wr_en_i   , // 写使能，4bit，控制四个RAM
     input  wire [`DATA_WIDTH-1:0]     wr_data_i , // 写数据，32bit
     output wire [`DATA_WIDTH-1:0]     rd_data_o   // 读数据，32bit

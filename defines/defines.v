@@ -26,7 +26,7 @@
 // Cache相关常量
 `define CACHE_TAG_WIDTH  20                     // Cache的Tag表位宽为20
 `define CACHE_DEPTH      256                    // Cache的深度为256
-`define CACHE_INDEX_AW   $clog2(CACHE_DEPTH)    // Cache的Index位宽为8
+`define CACHE_INDEX_AW   $clog2(`CACHE_DEPTH)   // Cache的Index位宽为8
 `define CACHE_OFFSET_AW  4                      // Cache的Offset位宽为4，指示16个字节
 `define CACHE_WAY_NUM    2                      // Cache有几路
 `define CACHE_BANK_NUM   4                      // 一个Cache行有四个Bank

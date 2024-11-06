@@ -3,7 +3,7 @@
 // Author        : Qidc
 // Email         : qidc@stu.pku.edu.cn
 // Created On    : 2024/10/24 16:56
-// Last Modified : 2024/11/04 15:33
+// Last Modified : 2024/11/06 14:40
 // File Name     : data.v
 // Description   : 一个Cache行的Data包括四个Bank
 //
@@ -22,19 +22,19 @@
 `include "/home/qidc/Nutstore/Project/riscv/defines/defines.v"
 
 module data (
-    input  wire                        clk       ,
-    input  wire [`CACHE_DEPTH-1:0]     index_i   , // Index作为读写地址，8bit
+    input  wire clk                              ,
+    input  wire [`CACHE_INDEX_AW-1:0]  index_i   , // Index作为读写地址，8bit
     input  wire [`CACHE_OFFSET_AW-1:0] offset_i  , // Offset指示要写入的bank
-    input  wire [`RAM_NUM-1:0]         wr_en_i   , //指示要写入的字节
-    input  wire [`DATA_WIDTH*4-1:0]    wr_data_i , // 一个Data四个Bank，128bit
-    output wire [`DATA_WIDTH*4-1:0]    rd_data_o   // 一个Data四个Bank，128bit
+    input  wire [`RAM_NUM-1:0]         wr_en_i   , // 指示要写入的字节
+    input  wire [`DATA_WIDTH-1:0]      wr_data_i , // 写数据一次只能写入32bit
+    output wire [`DATA_WIDTH*4-1:0]    rd_data_o // 读数据一次最多能读128bit
 );
 
-   wire [`CACHE_BANK_NUM-1:0] wr_bank;
+   reg [`CACHE_BANK_NUM-1:0] wr_bank;
 
     // 将二进制码转换为独热码，每一位都控制一个Bank的写入
     always @(*) begin
-        case (offset[3:2])
+        case (offset_i[3:2])
             2'b00:   wr_bank = 4'b0001;
             2'b01:   wr_bank = 4'b0010;
             2'b10:   wr_bank = 4'b0100;
@@ -51,10 +51,9 @@ module data (
                 .clk       (clk                        ),
                 .index_i   (index_i                    ),
                 .wr_en_i   ({4{wr_bank[i]}} & wr_en_i  ), // wr_bank控制bank，wr_en控制字节
-                .wr_data_i (wr_data_i[(i+1)*32-1:i*32] ),
+                .wr_data_i (wr_data_i                  ),
                 .rd_data_o (rd_data_o[(i+1)*32-1:i*32] )
             );
-
         end
     endgenerate
 

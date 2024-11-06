@@ -3,7 +3,7 @@
 // Author        : Qidc
 // Email         : qidc@stu.pku.edu.cn
 // Created On    : 2024/10/25 12:22
-// Last Modified : 2024/11/04 19:27
+// Last Modified : 2024/11/06 14:35
 // File Name     : dirty.v
 // Description   : 256*1的Dirty表
 //         
@@ -22,10 +22,10 @@
 `include "/home/qidc/Nutstore/Project/riscv/defines/defines.v"
 
 module dirty (
-    input  wire clk                          ,
-    input  wire [`CACHE_DEPTH-1:0] index_i   , // Index作为地址
-    input  wire wr_en_i                      ,
-    input  wire wr_dirty_i                   ,
+    input  wire clk                           ,
+    input  wire [`CACHE_INDEX_AW-1:0] index_i , // Index作为地址
+    input  wire wr_en_i                       ,
+    input  wire wr_dirty_i                    ,
     output wire rd_dirty_o
 );
 

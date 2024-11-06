@@ -3,7 +3,7 @@
 // Author        : Qidc
 // Email         : qidc@stu.pku.edu.cn
 // Created On    : 2024/10/26 14:53
-// Last Modified : 2024/11/04 16:43
+// Last Modified : 2024/11/06 14:40
 // File Name     : cache_way.v
 // Description   : 一个Cache路包含一个Tag、一个Valid、一个Dirty和一个Data
 //
@@ -22,33 +22,33 @@
 `include "/home/qidc/Nutstore/Project/riscv/defines/defines.v"
 
 module cache_way (
-    input wire clk,
+    input  wire clk,
     // Index地址
-    input wire [`CACHE_DEPTH-1:0] tag_index_i,
-    input wire [`CACHE_DEPTH-1:0] valid_index_i,
-    input wire [`CACHE_DEPTH-1:0] dirty_index_i,
-    input wire [`CACHE_DEPTH-1:0] data_index_i,
-    input wire [`CACHE_DEPTH-1:0] lru_index_i,
+    input  wire [`CACHE_INDEX_AW-1:0]  tag_index_i,
+    input  wire [`CACHE_INDEX_AW-1:0]  valid_index_i,
+    input  wire [`CACHE_INDEX_AW-1:0]  dirty_index_i,
+    input  wire [`CACHE_INDEX_AW-1:0]  data_index_i,
+    input  wire [`CACHE_INDEX_AW-1:0]  lru_index_i,
     // Offset偏移
-    input wire [`CACHE_OFFSET_AW-1:0] offset_i,
+    input  wire [`CACHE_OFFSET_AW-1:0] offset_i,
     // 写使能
-    input wire wr_tag_en_i,
-    input wire wr_valid_en_i,
-    input wire wr_dirty_en_i,
-    input wire [`RAM_NUM-1:0] wr_data_en_i,
-    input wire wr_lru_en_i,
+    input  wire                        wr_tag_en_i,
+    input  wire                        wr_valid_en_i,
+    input  wire                        wr_dirty_en_i,
+    input  wire [`RAM_NUM-1:0]         wr_data_en_i,
+    input  wire                        wr_lru_en_i,
     // 写数据
-    input wire [`CACHE_TAG_WIDTH-1:0] wr_tag_i,
-    input wire wr_valid_i,
-    input wire wr_dirty_i,
-    input wire [`DATA_WIDTH*4-1:0] wr_data_i,
-    input wire wr_lru_i,
+    input  wire [`CACHE_TAG_WIDTH-1:0] wr_tag_i,
+    input  wire                        wr_valid_i,
+    input  wire                        wr_dirty_i,
+    input  wire [`DATA_WIDTH-1:0]      wr_data_i,
+    input  wire                        wr_lru_i,
     // 读数据
     output wire [`CACHE_TAG_WIDTH-1:0] rd_tag_o,
-    output wire rd_valid_o,
-    output wire rd_dirty_o,
-    output wire [`DATA_WIDTH*4-1:0] rd_data_o,
-    output wire rd_lru_o
+    output wire                        rd_valid_o,
+    output wire                        rd_dirty_o,
+    output wire [`DATA_WIDTH*4-1:0]    rd_data_o,
+    output wire                        rd_lru_o
 );
 
     // 例化256*20的Tag表

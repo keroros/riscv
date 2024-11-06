@@ -3,7 +3,7 @@
 // Author        : Qidc
 // Email         : qidc@stu.pku.edu.cn
 // Created On    : 2024/10/26 22:27
-// Last Modified : 2024/10/26 22:39
+// Last Modified : 2024/11/06 14:37
 // File Name     : lru.v
 // Description   : 256*1的lru记录表
 //         
@@ -22,10 +22,10 @@
 `include "/home/qidc/Nutstore/Project/riscv/defines/defines.v"
 
 module lru (
-    input  wire clk                          ,
-    input  wire [`CACHE_DEPTH-1:0] index_i   , // Index作为地址
-    input  wire wr_en_i                      ,
-    input  wire wr_lru_i                     ,
+    input  wire clk                           ,
+    input  wire [`CACHE_INDEX_AW-1:0] index_i , // Index作为地址
+    input  wire wr_en_i                       ,
+    input  wire wr_lru_i                      ,
     output wire rd_lru_o
 );
 

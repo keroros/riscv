@@ -3,7 +3,7 @@
 // Author        : Qidc
 // Email         : qidc@stu.pku.edu.cn
 // Created On    : 2024/10/23 10:18
-// Last Modified : 2024/11/05 17:39
+// Last Modified : 2024/11/06 19:26
 // File Name     : dcache.v
 // Description   : DCache 模块
 //
@@ -66,58 +66,6 @@ module dcache (
     wire                        way0_lru;
     wire                        way1_lru;
 
-    // 实例化way0
-    cache_way u_cache_way0 (
-        .clk           (clk              ),
-        .tag_index_i   (way0_tag_index   ),
-        .valid_index_i (way0_valid_index ),
-        .dirty_index_i (way0_dirty_index ),
-        .data_index_i  (way0_data_index  ),
-        .lru_index_i   (wya0_lru_index   ),
-        .offset_i      (way0_offset      ),
-        .wr_tag_en_i   (way0_wr_tag_en   ),
-        .wr_valid_en_i (way0_wr_valid_en ),
-        .wr_dirty_en_i (way0_wr_dirty_en ),
-        .wr_data_en_i  (way0_wr_data_en  ),
-        .wr_lru_en_i   (way0_wr_lru_en   ),
-        .wr_tag_i      (way0_tag_in      ),
-        .wr_valid_i    (way0_valid_in    ),
-        .wr_dirty_i    (way0_dirty_in    ),
-        .wr_data_i     (way0_data_in     ),
-        .wr_lru_i      (way0_lru_in      ),
-        .rd_tag_o      (way0_tag         ),
-        .rd_valid_o    (way0_valid       ),
-        .rd_dirty_o    (way0_dirty       ),
-        .rd_data_o     (way0_data        ),
-        .rd_lru_o      (way0_lru         )
-    );
-
-    // 实例化way1
-    cache_way u_cache_way1 (
-        .clk           (clk              ),
-        .tag_index_i   (way1_tag_index   ),
-        .valid_index_i (way1_valid_index ),
-        .dirty_index_i (way1_dirty_index ),
-        .data_index_i  (way1_data_index  ),
-        .lru_index_i   (wya1_lru_index   ),
-        .offset_i      (way1_offset      ),
-        .wr_tag_en_i   (way1_wr_tag_en   ),
-        .wr_valid_en_i (way1_wr_valid_en ),
-        .wr_dirty_en_i (way1_wr_dirty_en ),
-        .wr_data_en_i  (way1_wr_data_en  ),
-        .wr_lru_en_i   (way1_wr_lru_en   ),
-        .wr_tag_i      (way1_tag_in      ),
-        .wr_valid_i    (way1_valid_in    ),
-        .wr_dirty_i    (way1_dirty_in    ),
-        .wr_data_i     (way1_data_in     ),
-        .wr_lru_i      (way1_lru_in      ),
-        .rd_tag_o      (way1_tag         ),
-        .rd_valid_o    (way1_valid       ),
-        .rd_dirty_o    (way1_dirty       ),
-        .rd_data_o     (way1_data        ),
-        .rd_lru_o      (way1_lru         )
-    );
-
 
 /* ------------------------ Data buffer ------------------------ */
 
@@ -166,13 +114,6 @@ module dcache (
 
     assign ram_load_word = (req_buf_op & (ram_rd_num_i-1'd1 == req_buf_offset)) ? req_buf_wr_data : ram_rd_data_i;
 
-    // Write Conflict 处理读写冲突
-    wire same_bank;
-    wire wr_rd_conflict;
-
-    // 先写后读，且Index和Offset均相等
-    assign wr_rd_conflict = write_state && lookup_state && (wr_buf_index == req_buf_index) && (wr_buf_offset == req_buf_offset)
-
 
 /* ------------------------ Main state ------------------------ */
 
@@ -201,7 +142,7 @@ module dcache (
                     if (cpu_req_i == 1'b1) begin
                         next_main_state = MAIN_LOOKUP;
                     end else begin
-                        next_state_state = MAIN_IDLE;
+                        next_main_state = MAIN_IDLE;
                     end
                 end else begin
                     next_main_state = MAIN_MISS;
@@ -237,7 +178,7 @@ module dcache (
     // Main状态切换
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
-            main_state <= IDLE;
+            main_state <= MAIN_IDLE;
         end else begin
             main_state <= next_main_state;
         end
@@ -360,7 +301,7 @@ module dcache (
                 end
             end
             default: begin
-                next_wrbuf_state = IDLE;
+                next_wrbuf_state = MAIN_IDLE;
             end
         endcase
     end
@@ -487,7 +428,7 @@ module dcache (
     wire                way1_wr_lru_en;
 
     assign way0_wr_tag_en    = refill_state & way0_hit;
-    assign way1_wr_tag_en    = refill_state & wya1_hit;
+    assign way1_wr_tag_en    = refill_state & way1_hit;
 
     assign way0_wr_valid_en  = refill_state & way0_hit;
     assign way1_wr_valid_en  = refill_state & way1_hit;
@@ -537,10 +478,68 @@ module dcache (
     wire [`CACHE_OFFSET_AW-1:0] way0_offset;
     wire [`CACHE_OFFSET_AW-1:0] way1_offset;
 
-    assign way0_offset = {`CACHE_OFFSET_AW{next_lookup_state}} & cpu_offset_i | {`CACHE_OFFSET_AW{write_state}} & wr_buf_offset | {`CACHE_OFFSET_AW{next_state_replace | state_refill}} & req_buf_offset;
-    assign way1_offset = {`CACHE_OFFSET_AW{next_lookup_state}} & cpu_offset_i | {`CACHE_OFFSET_AW{write_state}} & wr_buf_offset | {`CACHE_OFFSET_AW{next_state_replace | state_refill}} & req_buf_offset;
+    assign way0_offset = {`CACHE_OFFSET_AW{next_lookup_state}} & cpu_offset_i | {`CACHE_OFFSET_AW{write_state}} & wr_buf_offset | {`CACHE_OFFSET_AW{next_replace_state | refill_state}} & req_buf_offset;
+    assign way1_offset = {`CACHE_OFFSET_AW{next_lookup_state}} & cpu_offset_i | {`CACHE_OFFSET_AW{write_state}} & wr_buf_offset | {`CACHE_OFFSET_AW{next_replace_state | refill_state}} & req_buf_offset;
+
+    // 实例化way0
+    cache_way u_cache_way0 (
+        .clk           (clk              ),
+        .tag_index_i   (way0_tag_index   ),
+        .valid_index_i (way0_valid_index ),
+        .dirty_index_i (way0_dirty_index ),
+        .data_index_i  (way0_data_index  ),
+        .lru_index_i   (way0_lru_index   ),
+        .offset_i      (way0_offset      ),
+        .wr_tag_en_i   (way0_wr_tag_en   ),
+        .wr_valid_en_i (way0_wr_valid_en ),
+        .wr_dirty_en_i (way0_wr_dirty_en ),
+        .wr_data_en_i  (way0_wr_data_en  ),
+        .wr_lru_en_i   (way0_wr_lru_en   ),
+        .wr_tag_i      (way0_tag_in      ),
+        .wr_valid_i    (way0_valid_in    ),
+        .wr_dirty_i    (way0_dirty_in    ),
+        .wr_data_i     (way0_data_in     ),
+        .wr_lru_i      (way0_lru_in      ),
+        .rd_tag_o      (way0_tag         ),
+        .rd_valid_o    (way0_valid       ),
+        .rd_dirty_o    (way0_dirty       ),
+        .rd_data_o     (way0_data        ),
+        .rd_lru_o      (way0_lru         )
+    );
+
+    // 实例化way1
+    cache_way u_cache_way1 (
+        .clk           (clk              ),
+        .tag_index_i   (way1_tag_index   ),
+        .valid_index_i (way1_valid_index ),
+        .dirty_index_i (way1_dirty_index ),
+        .data_index_i  (way1_data_index  ),
+        .lru_index_i   (way1_lru_index   ),
+        .offset_i      (way1_offset      ),
+        .wr_tag_en_i   (way1_wr_tag_en   ),
+        .wr_valid_en_i (way1_wr_valid_en ),
+        .wr_dirty_en_i (way1_wr_dirty_en ),
+        .wr_data_en_i  (way1_wr_data_en  ),
+        .wr_lru_en_i   (way1_wr_lru_en   ),
+        .wr_tag_i      (way1_tag_in      ),
+        .wr_valid_i    (way1_valid_in    ),
+        .wr_dirty_i    (way1_dirty_in    ),
+        .wr_data_i     (way1_data_in     ),
+        .wr_lru_i      (way1_lru_in      ),
+        .rd_tag_o      (way1_tag         ),
+        .rd_valid_o    (way1_valid       ),
+        .rd_dirty_o    (way1_dirty       ),
+        .rd_data_o     (way1_data        ),
+        .rd_lru_o      (way1_lru         )
+    );
 
 /* ------------------------ Output ------------------------ */
+
+    // Write Conflict 处理读写冲突
+    wire wr_rd_conflict;
+
+    // 先写后读，且Index和Offset均相等
+    assign wr_rd_conflict = write_state && lookup_state && (wr_buf_index == req_buf_index) && (wr_buf_offset == req_buf_offset);
 
     // 读写冲突时，直接把上一步写入的数据读出；读命中时，数据从Cache读出；未命中时，数据从RAM返回的Data中读出
     assign cpu_rd_data_o = wr_rd_conflict ? wr_buf_wr_data : ({`DATA_WIDTH{lookup_state}} & cache_load_word | {`DATA_WIDTH{refill_state}} & ram_load_word);

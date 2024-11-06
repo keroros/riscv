@@ -54,7 +54,8 @@ module riscv_soc_tb;
                     (funct3 == `INST_ECALL_EBREAK) &&
                     (ex_inst_i[31:20] == `INST_EBREAK);
 
-    // 打印测试结果
+    reg [7:0] mem_array [0:3][0:4];
+
     integer i;
     initial begin
 /*----------------  by Qidc 2024-10-10  ---------------------
@@ -580,6 +581,16 @@ module riscv_soc_tb;
         $readmemh("../../test/ram_sw/test1.txt", riscv_soc_tb.u_riscv_soc.u_ram.ram[1].u_simple_dp_ram.mem);
         $readmemh("../../test/ram_sw/test2.txt", riscv_soc_tb.u_riscv_soc.u_ram.ram[2].u_simple_dp_ram.mem);
         $readmemh("../../test/ram_sw/test3.txt", riscv_soc_tb.u_riscv_soc.u_ram.ram[3].u_simple_dp_ram.mem);
+
+/*----------------  by Qidc 2024-11-06  ---------------------
+        $readmemh("../../test/ram_sw/test.txt", mem_array);
+            for (int i = 0; i < 5; i++) begin
+                for (int j = 0; j < 4; j++) begin
+                    riscv_soc_tb.u_riscv_soc.u_ram.ram[i].u_simple_dp_ram.mem[j] = mem_array[i][j];
+                end
+            end
+------------------  by Qidc 2024-11-06  -------------------*/
+
         $readmemh("../../test/inst_txt/rv32ui-p-sw.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_simple_dp_ram.mem);
         wait (x26 == 1);
         #(ClockPeriod*2)

@@ -3,7 +3,7 @@
 // Author        : Qidc
 // Email         : qidc@stu.pku.edu.cn
 // Created On    : 2024/10/26 14:47
-// Last Modified : 2024/10/26 15:03
+// Last Modified : 2024/11/06 14:35
 // File Name     : valid.v
 // Description   : 256*1的Valid表
 //         
@@ -22,11 +22,11 @@
 `include "/home/qidc/Nutstore/Project/riscv/defines/defines.v"
 
 module valid (
-    input  wire clk                          ,
-    input  wire [`CACHE_DEPTH-1:0] index_i   , // Index作为地址
-    input  wire wr_en_i                      ,
-    input  wire wr_valid_i ,
-    output wire rd_valid_o
+    input  wire                       clk,
+    input  wire [`CACHE_INDEX_AW-1:0] index_i, // Index作为地址
+    input  wire                       wr_en_i,
+    input  wire                       wr_valid_i,
+    output wire                       rd_valid_o
 );
 
    reg valid [0:`CACHE_DEPTH-1];
