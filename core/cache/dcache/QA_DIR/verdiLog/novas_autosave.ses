@@ -20,14 +20,14 @@ powerDumped = 0
 [hb]
 postSimFile = /home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/rtl.fsdb
 syncTime = 0
-viewport = 70 27 2490 1376 0 0 57 2488
+viewport = 70 27 2490 1376 0 0 453 2486
 activeNode = "true_dp_ram"
 activeScope = "true_dp_ram"
 activeFile = "/home/qidc/Nutstore/Project/config/cbb/true_dp_ram.v"
 interactiveMode = False
 viewType = Source
 simulatorMode = False
-sourceBeginLine = 34
+sourceBeginLine = 20
 baMode = False
 srcLineNum = True
 AutoWrap = True
@@ -53,13 +53,13 @@ invokeDir = /home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR
 [hb.sourceTab.1]
 scope = true_dp_ram
 File = /home/qidc/Nutstore/Project/config/cbb/true_dp_ram.v
-Line = 35
+Line = 21
 [nMemoryManager]
 WaveformFile = /home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/rtl.fsdb
 UserActionNum = 0
 nMemWindowNum = 0
 [wave.0]
-viewPort = 0 27 2490 400 394 275
+viewPort = 0 27 2490 587 394 275
 primaryWindow = TRUE
 SessionFile = /home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/verdiLog/novas_autosave.ses.wave.0
 displayGrid = FALSE

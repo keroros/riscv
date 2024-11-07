@@ -1,4 +1,4 @@
 Command Line: /home/qidc/Synopsys/verdi/Verdi_O-2018.09-SP2/platform/LINUXAMD64/bin/Novas -ssf rtl.fsdb -sswr signal.rc
-uname(Linux qidc 6.8.0-45-generic #45~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Wed Sep 11 15:25:05 UTC 2 x86_64)
+uname(Linux qidc 6.8.0-48-generic #48~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Mon Oct  7 11:24:13 UTC 2 x86_64)
 Disabled AskUser2 Message (Response 0): Close all windows and exit verdi?
-au time 148.571010 2.518879 2.754124 delta 543719424 543719424 total 915111936 915111936
+au time 65.408263 12.124671 3.984049 delta 389382144 389382144 total 760774656 760774656

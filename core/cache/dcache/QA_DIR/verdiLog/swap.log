@@ -9,8 +9,8 @@ overhead: (9522) bytes for (3) blocks [Average: (3174) bytes/block]
 
 write  => 0(times) 0K(bytes) [0K bytes to file]
 read   => 1(times) 8K(bytes) [1K bytes compressed data from file]
-access => 363518(times) 2843M(bytes)
-          [hit ratio: 99.9997%]
+access => 233887(times) 1831M(bytes)
+          [hit ratio: 99.9996%]
 
 time: write(0) read(0)  unit: second
 
@@ -25,8 +25,8 @@ idxCnt: (3)
 closeHead: (1)
 closeTail: (2)
 openCnt: (2)
-fid(2): fd(29) fileName(/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/verdiLog/_swap_0001#1757367822#324490)
-	size(0) lastModTime(0) curModTime(1730979052)
+fid(2): fd(29) fileName(/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/verdiLog/_swap_0001#1757367822#13972)
+	size(0) lastModTime(0) curModTime(1730980685)
 	mode(w+b)	hot(0) cool(1) pos(0)
 fid(1): fd(1073741824) fileName(/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/simv.daidir/kdb.elab++/work.lib++/true_dp_ram.v.tdc)
 	size(2843) lastModTime(1730976823) curModTime(1730976823)
@@ -34,6 +34,6 @@ fid(1): fd(1073741824) fileName(/home/qidc/Nutstore/Project/riscv/core/cache/dca
 fid(0): fd(0) fileName(NULL)
 	mode(NULL)	hot(0) cool(0) pos(0)
 ==================================================
-mySelf(14564420) pre(12e3a880) next(0)
+mySelf(145fbc30) pre(12e15490) next(0)
 version(200506)
 date(Feb 11 2019 22:10:27)
