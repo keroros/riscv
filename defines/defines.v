@@ -164,3 +164,54 @@
 `define REG_T5            5'd30                 // x30/t5   临时寄存器
 `define REG_T6            5'd31                 // x31/t6   临时寄存器
 
+// Cache路径
+`define CACHE_TAG_PATH "../../../../test/cache_tag/"
+`define CACHE_VALID_PATH "../../../../test/cache_valid/"
+`define CACHE_DIRTY_PATH "../../../../test/cache_dirty/"
+`define CACHE_DATA_PATH "../../../../test/cache_data/"
+`define CACHE_LRU_PATH "../../../../test/cache_lru/"
+
+// Testbench变量名
+`define TB_WAY0_TAG       dcache_tb.u_dcache.u_cache_way0.u_tag.u_sp_ram.mem
+`define TB_WAY0_VALID     dcache_tb.u_dcache.u_cache_way0.u_valid.valid
+`define TB_WAY0_DIRTY     dcache_tb.u_dcache.u_cache_way0.u_dirty.dirty
+`define TB_WAY0_BAN0_RAM0 dcache_tb.u_dcache.u_cache_way0.u_data.bank[0].u_bank.ram[0].u_simple_dp_ram.mem
+`define TB_WAY0_BAN0_RAM1 dcache_tb.u_dcache.u_cache_way0.u_data.bank[0].u_bank.ram[1].u_simple_dp_ram.mem
+`define TB_WAY0_BAN0_RAM2 dcache_tb.u_dcache.u_cache_way0.u_data.bank[0].u_bank.ram[2].u_simple_dp_ram.mem
+`define TB_WAY0_BAN0_RAM3 dcache_tb.u_dcache.u_cache_way0.u_data.bank[0].u_bank.ram[3].u_simple_dp_ram.mem
+`define TB_WAY0_BAN1_RAM0 dcache_tb.u_dcache.u_cache_way0.u_data.bank[1].u_bank.ram[0].u_simple_dp_ram.mem
+`define TB_WAY0_BAN1_RAM1 dcache_tb.u_dcache.u_cache_way0.u_data.bank[1].u_bank.ram[1].u_simple_dp_ram.mem
+`define TB_WAY0_BAN1_RAM2 dcache_tb.u_dcache.u_cache_way0.u_data.bank[1].u_bank.ram[2].u_simple_dp_ram.mem
+`define TB_WAY0_BAN1_RAM3 dcache_tb.u_dcache.u_cache_way0.u_data.bank[1].u_bank.ram[3].u_simple_dp_ram.mem
+`define TB_WAY0_BAN2_RAM0 dcache_tb.u_dcache.u_cache_way0.u_data.bank[2].u_bank.ram[0].u_simple_dp_ram.mem
+`define TB_WAY0_BAN2_RAM1 dcache_tb.u_dcache.u_cache_way0.u_data.bank[2].u_bank.ram[1].u_simple_dp_ram.mem
+`define TB_WAY0_BAN2_RAM2 dcache_tb.u_dcache.u_cache_way0.u_data.bank[2].u_bank.ram[2].u_simple_dp_ram.mem
+`define TB_WAY0_BAN2_RAM3 dcache_tb.u_dcache.u_cache_way0.u_data.bank[2].u_bank.ram[3].u_simple_dp_ram.mem
+`define TB_WAY0_BAN3_RAM0 dcache_tb.u_dcache.u_cache_way0.u_data.bank[3].u_bank.ram[0].u_simple_dp_ram.mem
+`define TB_WAY0_BAN3_RAM1 dcache_tb.u_dcache.u_cache_way0.u_data.bank[3].u_bank.ram[1].u_simple_dp_ram.mem
+`define TB_WAY0_BAN3_RAM2 dcache_tb.u_dcache.u_cache_way0.u_data.bank[3].u_bank.ram[2].u_simple_dp_ram.mem
+`define TB_WAY0_BAN3_RAM3 dcache_tb.u_dcache.u_cache_way0.u_data.bank[3].u_bank.ram[3].u_simple_dp_ram.mem
+`define TB_WAY0_BAN0_RAM0 dcache_tb.u_dcache.u_cache_way0.u_lru.lru
+
+// Testbench变量名
+`define TB_WAY1_TAG       dcache_tb.u_dcache.u_cache_way1.u_tag.u_sp_ram.mem
+`define TB_WAY1_VALID     dcache_tb.u_dcache.u_cache_way1.u_valid.valid
+`define TB_WAY1_DIRTY     dcache_tb.u_dcache.u_cache_way1.u_dirty.dirty
+`define TB_WAY1_BAN0_RAM0 dcache_tb.u_dcache.u_cache_way1.u_data.bank[0].u_bank.ram[0].u_simple_dp_ram.mem
+`define TB_WAY1_BAN0_RAM1 dcache_tb.u_dcache.u_cache_way1.u_data.bank[0].u_bank.ram[1].u_simple_dp_ram.mem
+`define TB_WAY1_BAN0_RAM2 dcache_tb.u_dcache.u_cache_way1.u_data.bank[0].u_bank.ram[2].u_simple_dp_ram.mem
+`define TB_WAY1_BAN0_RAM3 dcache_tb.u_dcache.u_cache_way1.u_data.bank[0].u_bank.ram[3].u_simple_dp_ram.mem
+`define TB_WAY1_BAN1_RAM0 dcache_tb.u_dcache.u_cache_way1.u_data.bank[1].u_bank.ram[0].u_simple_dp_ram.mem
+`define TB_WAY1_BAN1_RAM1 dcache_tb.u_dcache.u_cache_way1.u_data.bank[1].u_bank.ram[1].u_simple_dp_ram.mem
+`define TB_WAY1_BAN1_RAM2 dcache_tb.u_dcache.u_cache_way1.u_data.bank[1].u_bank.ram[2].u_simple_dp_ram.mem
+`define TB_WAY1_BAN1_RAM3 dcache_tb.u_dcache.u_cache_way1.u_data.bank[1].u_bank.ram[3].u_simple_dp_ram.mem
+`define TB_WAY1_BAN2_RAM0 dcache_tb.u_dcache.u_cache_way1.u_data.bank[2].u_bank.ram[0].u_simple_dp_ram.mem
+`define TB_WAY1_BAN2_RAM1 dcache_tb.u_dcache.u_cache_way1.u_data.bank[2].u_bank.ram[1].u_simple_dp_ram.mem
+`define TB_WAY1_BAN2_RAM2 dcache_tb.u_dcache.u_cache_way1.u_data.bank[2].u_bank.ram[2].u_simple_dp_ram.mem
+`define TB_WAY1_BAN2_RAM3 dcache_tb.u_dcache.u_cache_way1.u_data.bank[2].u_bank.ram[3].u_simple_dp_ram.mem
+`define TB_WAY1_BAN3_RAM0 dcache_tb.u_dcache.u_cache_way1.u_data.bank[3].u_bank.ram[0].u_simple_dp_ram.mem
+`define TB_WAY1_BAN3_RAM1 dcache_tb.u_dcache.u_cache_way1.u_data.bank[3].u_bank.ram[1].u_simple_dp_ram.mem
+`define TB_WAY1_BAN3_RAM2 dcache_tb.u_dcache.u_cache_way1.u_data.bank[3].u_bank.ram[2].u_simple_dp_ram.mem
+`define TB_WAY1_BAN3_RAM3 dcache_tb.u_dcache.u_cache_way1.u_data.bank[3].u_bank.ram[3].u_simple_dp_ram.mem
+`define TB_WAY1_BAN0_RAM0 dcache_tb.u_dcache.u_cache_way1.u_lru.lru
+

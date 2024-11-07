@@ -1,0 +1,72 @@
+Magic 271485
+Revision Verdi_O-2018.09-SP2
+
+; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
+viewPort 0 27 2490 597 394 275
+
+; File list:
+; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
+openDirFile -d / "" "/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/rtl.fsdb"
+
+; file time scale:
+; fileTimeScale ### s|ms|us|ns|ps
+
+; signal spacing:
+signalSpacing 5
+
+; windowTimeUnit is used for zoom, cursor & marker
+; waveform viewport range
+zoom 0.000000 131300.000000
+cursor 0.000000
+marker 0.000000
+
+; user define markers
+; userMarker time_pos marker_name color linestyle
+; visible top row signal index
+top 0
+; marker line index
+markerPos 8
+
+; event list
+; addEvent event_name event_expression
+; curEvent event_name
+
+
+
+COMPLEX_EVENT_BEGIN
+
+
+COMPLEX_EVENT_END
+
+
+
+; toolbar current search type
+; curSTATUS search_type
+curSTATUS ByChange
+
+
+addGroup "G1"
+activeDirFile "" "/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/rtl.fsdb"
+addSignal -h 15 /dcache_tb/u_dcache/clk
+addSignal -h 15 -holdScope rst_n
+addGroup "G4"
+addSignal -h 15 /dcache_tb/u_dcache/cpu_req_i
+addSignal -h 15 -holdScope cache_hit
+addSignal -h 15 -holdScope main_state[4:0]
+addSignal -h 15 -holdScope next_main_state[4:0]
+addSignal -h 15 -holdScope cpu_rd_data_o[31:0]
+addGroup "G2"
+addSignal -h 15 /dcache_tb/u_dcache/cpu_op_i
+addSignal -h 15 -holdScope cpu_index_i[7:0]
+addSignal -h 15 -holdScope cpu_tag_i[19:0]
+addSignal -h 15 -holdScope cpu_offset_i[3:0]
+addGroup "G3"
+addSignal -h 15 /dcache_tb/u_dcache/req_buf_op
+addSignal -h 15 -holdScope req_buf_index[7:0]
+addSignal -h 15 -holdScope req_buf_tag[19:0]
+addSignal -h 15 -holdScope req_buf_offset[3:0]
+addGroup "G5"
+
+; getSignalForm Scope Hierarchy Status
+; active file of getSignalForm
+

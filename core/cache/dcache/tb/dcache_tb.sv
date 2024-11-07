@@ -3,7 +3,7 @@
 // Author        : Qidc
 // Email         : qidc@stu.pku.edu.cn
 // Created On    : 2024/11/05 17:46
-// Last Modified : 2024/11/06 19:26
+// Last Modified : 2024/11/07 17:38
 // File Name     : dcache_tb.sv
 // Description   :
 //
@@ -86,6 +86,7 @@ module dcache_tb;
         .ram_dirty_o    (ram_dirty_o    )
     );
 
+    // 时钟
     initial begin
         clk = 0;
         forever #(ClockPeriod/2) clk = ~clk;
@@ -93,43 +94,114 @@ module dcache_tb;
 
     initial begin
 
-        $readmemh("../../test/inst_txt/rv32ui-p-add.txt", riscv_soc_tb.u_riscv_soc.u_rom.u_simple_dp_ram.mem);
-        wait (x26 == 1);
-        #(ClockPeriod*2)
-        if (x27 == 1) begin
-            $display("------------------------add:  PASS------------------------");
-        end else begin
-            $display("------------------- !!! add:  FAIL !!! -------------------");
-        end
+        // way0
+        $readmemh({`CACHE_TAG_PATH,   "way0_tag.txt"        }, `TB_WAY0_TAG       );
+        $readmemh({`CACHE_VALID_PATH, "way0_valid.txt"      }, `TB_WAY0_VALID     );
+        $readmemh({`CACHE_DIRTY_PATH, "way0_dirty.txt"      }, `TB_WAY0_DIRTY     );
+        $readmemh({`CACHE_DATA_PATH,  "way0_bank0_ram0.txt" }, `TB_WAY0_BAN0_RAM0 );
+        $readmemh({`CACHE_DATA_PATH,  "way0_bank0_ram1.txt" }, `TB_WAY0_BAN0_RAM1 );
+        $readmemh({`CACHE_DATA_PATH,  "way0_bank0_ram2.txt" }, `TB_WAY0_BAN0_RAM2 );
+        $readmemh({`CACHE_DATA_PATH,  "way0_bank0_ram3.txt" }, `TB_WAY0_BAN0_RAM3 );
+        $readmemh({`CACHE_DATA_PATH,  "way0_bank1_ram0.txt" }, `TB_WAY0_BAN1_RAM0 );
+        $readmemh({`CACHE_DATA_PATH,  "way0_bank1_ram1.txt" }, `TB_WAY0_BAN1_RAM1 );
+        $readmemh({`CACHE_DATA_PATH,  "way0_bank1_ram2.txt" }, `TB_WAY0_BAN1_RAM2 );
+        $readmemh({`CACHE_DATA_PATH,  "way0_bank1_ram3.txt" }, `TB_WAY0_BAN1_RAM3 );
+        $readmemh({`CACHE_DATA_PATH,  "way0_bank2_ram0.txt" }, `TB_WAY0_BAN2_RAM0 );
+        $readmemh({`CACHE_DATA_PATH,  "way0_bank2_ram1.txt" }, `TB_WAY0_BAN2_RAM1 );
+        $readmemh({`CACHE_DATA_PATH,  "way0_bank2_ram2.txt" }, `TB_WAY0_BAN2_RAM2 );
+        $readmemh({`CACHE_DATA_PATH,  "way0_bank2_ram3.txt" }, `TB_WAY0_BAN2_RAM3 );
+        $readmemh({`CACHE_DATA_PATH,  "way0_bank3_ram0.txt" }, `TB_WAY0_BAN3_RAM0 );
+        $readmemh({`CACHE_DATA_PATH,  "way0_bank3_ram1.txt" }, `TB_WAY0_BAN3_RAM1 );
+        $readmemh({`CACHE_DATA_PATH,  "way0_bank3_ram2.txt" }, `TB_WAY0_BAN3_RAM2 );
+        $readmemh({`CACHE_DATA_PATH,  "way0_bank3_ram3.txt" }, `TB_WAY0_BAN3_RAM3 );
+        $readmemh({`CACHE_LRU_PATH,   "way0_lru.txt"        }, `TB_WAY0_BAN0_RAM0 );
 
-        rst_n = 1;
-        #ClockPeriod rst_n = 0;
+        // way1
+        $readmemh({`CACHE_TAG_PATH,   "way1_tag.txt"        }, `TB_WAY1_TAG       );
+        $readmemh({`CACHE_VALID_PATH, "way1_valid.txt"      }, `TB_WAY1_VALID     );
+        $readmemh({`CACHE_DIRTY_PATH, "way1_dirty.txt"      }, `TB_WAY1_DIRTY     );
+        $readmemh({`CACHE_DATA_PATH,  "way1_bank0_ram0.txt" }, `TB_WAY1_BAN1_RAM0 );
+        $readmemh({`CACHE_DATA_PATH,  "way1_bank0_ram1.txt" }, `TB_WAY1_BAN1_RAM1 );
+        $readmemh({`CACHE_DATA_PATH,  "way1_bank0_ram2.txt" }, `TB_WAY1_BAN1_RAM2 );
+        $readmemh({`CACHE_DATA_PATH,  "way1_bank0_ram3.txt" }, `TB_WAY1_BAN1_RAM3 );
+        $readmemh({`CACHE_DATA_PATH,  "way1_bank1_ram0.txt" }, `TB_WAY1_BAN1_RAM0 );
+        $readmemh({`CACHE_DATA_PATH,  "way1_bank1_ram1.txt" }, `TB_WAY1_BAN1_RAM1 );
+        $readmemh({`CACHE_DATA_PATH,  "way1_bank1_ram2.txt" }, `TB_WAY1_BAN1_RAM2 );
+        $readmemh({`CACHE_DATA_PATH,  "way1_bank1_ram3.txt" }, `TB_WAY1_BAN1_RAM3 );
+        $readmemh({`CACHE_DATA_PATH,  "way1_bank2_ram0.txt" }, `TB_WAY1_BAN2_RAM0 );
+        $readmemh({`CACHE_DATA_PATH,  "way1_bank2_ram1.txt" }, `TB_WAY1_BAN2_RAM1 );
+        $readmemh({`CACHE_DATA_PATH,  "way1_bank2_ram2.txt" }, `TB_WAY1_BAN2_RAM2 );
+        $readmemh({`CACHE_DATA_PATH,  "way1_bank2_ram3.txt" }, `TB_WAY1_BAN2_RAM3 );
+        $readmemh({`CACHE_DATA_PATH,  "way1_bank3_ram0.txt" }, `TB_WAY1_BAN3_RAM0 );
+        $readmemh({`CACHE_DATA_PATH,  "way1_bank3_ram1.txt" }, `TB_WAY1_BAN3_RAM1 );
+        $readmemh({`CACHE_DATA_PATH,  "way1_bank3_ram2.txt" }, `TB_WAY1_BAN3_RAM2 );
+        $readmemh({`CACHE_DATA_PATH,  "way1_bank3_ram3.txt" }, `TB_WAY1_BAN3_RAM3 );
+        $readmemh({`CACHE_LRU_PATH,   "way1_lru.txt"        }, `TB_WAY1_BAN1_RAM1 );
+
+        rst_n <= 0;
+        #ClockPeriod rst_n <= 1;
 
         // 复位输入
-        cpu_req_i     = 0;
-        cpu_op_i      = 0;
-        cpu_index_i   = 8'b0000_0000;
-        cpu_tag_i     = 20'h00000;
-        cpu_offset_i  = 4'b0000;
-        cpu_wr_en_i   = 4'b0000;
-        cpu_wr_data_i = 32'h0000_0000;
-        ram_rd_rdy_i  = 1'b0;
-        ram_rd_data_i = 32'h0000_0000;
-        ram_rd_num_i  = 3'd0;
-        ram_wr_rdy_i  = 1'b1;
+        cpu_req_i     <= 0;
+        cpu_op_i      <= 0;
+        cpu_index_i   <= 8'h00;
+        cpu_tag_i     <= 20'h00000;
+        cpu_offset_i  <= 4'b0000;
+        cpu_wr_en_i   <= 4'b0000;
+        cpu_wr_data_i <= 32'h0000_0000;
+        ram_rd_rdy_i  <= 1'b0;
+        ram_rd_data_i <= 32'h0000_0000;
+        ram_rd_num_i  <= 3'd0;
+        ram_wr_rdy_i  <= 1'b1;
 
-        // 一次读操作
-        cpu_req_i     = 1;
-        cpu_op_i      = 0;
-        cpu_index_i   = 8'b0000_0000;
-        cpu_tag_i     = 20'h00000;
-        cpu_offset_i  = 4'b0000;
-        cpu_wr_en_i   = 4'b0000;
-        cpu_wr_data_i = 32'h0000_0000;
-        ram_rd_rdy_i  = 1'b0;
-        ram_rd_data_i = 32'h0000_0000;
-        ram_rd_num_i  = 3'd0;
-        ram_wr_rdy_i  = 1'b1;
+        #(ClockPeriod/2);
+
+        wait (cpu_addr_ack_o); // 地址信号空闲，CPU可以请求
+
+        // 一次读操作，index00, way0, tag00000, bank1: 32'h10101010
+        cpu_req_i     <= 1;
+        cpu_op_i      <= 0;
+        cpu_index_i   <= 8'h00;
+        cpu_tag_i     <= 20'h00000;
+        cpu_offset_i  <= 4'b0100;
+        cpu_wr_en_i   <= 4'b0000;
+        cpu_wr_data_i <= 32'h0000_0000;
+        ram_rd_rdy_i  <= 1'b0;
+        ram_rd_data_i <= 32'h0000_0000;
+        ram_rd_num_i  <= 3'd0;
+        ram_wr_rdy_i  <= 1'b1;
+
+        #ClockPeriod;
+
+        // 连续读操作，index01, way1, tag01010, bank2: 32'hffeeddcc
+        cpu_req_i     <= 1;
+        cpu_op_i      <= 0;
+        cpu_index_i   <= 8'h01;
+        cpu_tag_i     <= 20'h01010;
+        cpu_offset_i  <= 4'b1000;
+        cpu_wr_en_i   <= 4'b0000;
+        cpu_wr_data_i <= 32'h0000_0000;
+        ram_rd_rdy_i  <= 1'b0;
+        ram_rd_data_i <= 32'h0000_0000;
+        ram_rd_num_i  <= 3'd0;
+        ram_wr_rdy_i  <= 1'b1;
+
+        #ClockPeriod;
+
+        // 结束请求
+        cpu_req_i     <= 0;
+        cpu_op_i      <= 0;
+        cpu_index_i   <= 8'h00;
+        cpu_tag_i     <= 20'h00000;
+        cpu_offset_i  <= 4'b0000;
+        cpu_wr_en_i   <= 4'b0000;
+        cpu_wr_data_i <= 32'h0000_0000;
+        ram_rd_rdy_i  <= 1'b0;
+        ram_rd_data_i <= 32'h0000_0000;
+        ram_rd_num_i  <= 3'd0;
+        ram_wr_rdy_i  <= 1'b1;
+
+        #(ClockPeriod*10);
 
         $display("At time %0t ns", $time);
 

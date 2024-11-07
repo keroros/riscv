@@ -1,2 +1,48 @@
-debImport "-sv" "-f" "filelist.f"
+simSetSimulator "-vcssv" -exec \
+           "/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/simv" \
+           -args
+debImport "-dbdir" \
+          "/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/simv.daidir"
+debLoadSimResult \
+           /home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/rtl.fsdb
+wvCreateWindow
+wvRestoreSignal -win $_nWave2 "signal.rc" -overWriteAutoAlias on -appendSignals \
+           on
+srcDeselectAll -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -signal "ADDR_WIDTH" -line 39 -pos 1 -win $_nTrace1
+verdiSetFont -monoFont "Courier" -monoFontSize "12"
+simSetSvtbMode off
+verdiSetFont -monoFont "Courier" -monoFontSize "24"
+verdiSetFont -monoFont "Courier" -monoFontSize "12"
+verdiSetFont -monoFont "Fixed" -monoFontSize "14"
+verdiSetFont -monoFont "Courier" -monoFontSize "12"
+verdiSetFont -monoFont "Fixed" -monoFontSize "14"
+verdiSetFont -monoFont "Clean" -monoFontSize "14"
+verdiSetFont -monoFont "Courier" -monoFontSize "14"
+verdiSetFont -monoFont "Courier" -monoFontSize "12"
+verdiSetFont -monoFont "Courier" -monoFontSize "24"
+verdiSetFont -monoFont "Fixed" -monoFontSize "20"
+verdiSetFont -monoFont "Courier" -monoFontSize "18"
+verdiSetFont -monoFont "Clean" -monoFontSize "16"
+verdiSetFont -monoFont "Fixed" -monoFontSize "14"
+srcDeselectAll -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+verdiSetFont -monoFont "Fixed" -monoFontSize "20"
+srcDeselectAll -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSelect -win $_nTrace1 -range {39 39 9 11 1 1} -backward
+srcDeselectAll -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcDeselectAll -win $_nTrace1
+srcSignalView -on
+srcDeselectAll -win $_nTrace1
+wvSelectSignal -win $_nWave2 {( "G1" 1 )} 
+wvScrollDown -win $_nWave2 7
+wvScrollUp -win $_nWave2 7
+srcDeselectAll -win $_nTrace1
 debExit

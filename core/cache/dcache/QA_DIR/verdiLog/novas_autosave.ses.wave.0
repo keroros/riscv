@@ -2,11 +2,11 @@ Magic 271485
 Revision Verdi_O-2018.09-SP2
 
 ; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
-viewPort 0 28 2432 578 394 275
+viewPort 0 27 2490 400 394 275
 
 ; File list:
 ; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
-openDirFile -d / "" "/home/zzzh/workspace/RISC-V/QA_DIR/rtl.fsdb"
+openDirFile -d / "" "/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/rtl.fsdb"
 
 ; file time scale:
 ; fileTimeScale ### s|ms|us|ns|ps
@@ -16,16 +16,16 @@ signalSpacing 5
 
 ; windowTimeUnit is used for zoom, cursor & marker
 ; waveform viewport range
-zoom 0.000000 1213010.000000
+zoom 0.000000 131300.000000
 cursor 0.000000
 marker 0.000000
 
 ; user define markers
 ; userMarker time_pos marker_name color linestyle
 ; visible top row signal index
-top 10
+top 0
 ; marker line index
-markerPos 43
+markerPos 8
 
 ; event list
 ; addEvent event_name event_expression
@@ -45,52 +45,27 @@ COMPLEX_EVENT_END
 curSTATUS ByChange
 
 
-addGroup "u_regs"
-activeDirFile "" "/home/zzzh/workspace/RISC-V/QA_DIR/rtl.fsdb"
-addSignal -h 20 /top_tb/u_tiny_riscv_soc/u_tiny_riscv/u_regs/clk[0:0]
-addSignal -h 20 -holdScope rst[0:0]
-addSignal -h 20 -holdScope rs1_addr_i[4:0]
-addSignal -h 20 -holdScope rs2_addr_i[4:0]
-addSignal -h 20 -holdScope rs1_data_o[31:0]
-addSignal -h 20 -holdScope rs2_data_o[31:0]
-addSignal -h 20 -holdScope rd_addr_i[4:0]
-addSignal -h 20 -holdScope rd_data_i[31:0]
-addSignal -h 20 -holdScope rd_wen_i[0:0]
+addGroup "G1"
+activeDirFile "" "/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/rtl.fsdb"
+addSignal -h 21 /dcache_tb/u_dcache/clk
+addSignal -h 21 -holdScope rst_n
+addGroup "G4"
+addSignal -h 21 /dcache_tb/u_dcache/cpu_req_i
+addSignal -h 21 -holdScope cache_hit
+addSignal -h 21 -holdScope main_state[4:0]
+addSignal -h 21 -holdScope next_main_state[4:0]
+addSignal -h 21 -holdScope cpu_rd_data_o[31:0]
 addGroup "G2"
-addSignal -expanded -h 20 /top_tb/u_tiny_riscv_soc/u_tiny_riscv/u_regs/regs[0:31]
-addSignal -h 20 -holdScope regs[0][31:0]
-addSignal -h 20 -holdScope regs[1][31:0]
-addSignal -h 20 -holdScope regs[2][31:0]
-addSignal -h 20 -holdScope regs[3][31:0]
-addSignal -h 20 -holdScope regs[4][31:0]
-addSignal -h 20 -holdScope regs[5][31:0]
-addSignal -h 20 -holdScope regs[6][31:0]
-addSignal -h 20 -holdScope regs[7][31:0]
-addSignal -h 20 -holdScope regs[8][31:0]
-addSignal -h 20 -holdScope regs[9][31:0]
-addSignal -h 20 -holdScope regs[10][31:0]
-addSignal -h 20 -holdScope regs[11][31:0]
-addSignal -h 20 -holdScope regs[12][31:0]
-addSignal -h 20 -holdScope regs[13][31:0]
-addSignal -h 20 -holdScope regs[14][31:0]
-addSignal -h 20 -holdScope regs[15][31:0]
-addSignal -h 20 -holdScope regs[16][31:0]
-addSignal -h 20 -holdScope regs[17][31:0]
-addSignal -h 20 -holdScope regs[18][31:0]
-addSignal -h 20 -holdScope regs[19][31:0]
-addSignal -h 20 -holdScope regs[20][31:0]
-addSignal -h 20 -holdScope regs[21][31:0]
-addSignal -h 20 -holdScope regs[22][31:0]
-addSignal -h 20 -holdScope regs[23][31:0]
-addSignal -h 20 -holdScope regs[24][31:0]
-addSignal -h 20 -holdScope regs[25][31:0]
-addSignal -h 20 -holdScope regs[26][31:0]
-addSignal -h 20 -holdScope regs[27][31:0]
-addSignal -h 20 -holdScope regs[28][31:0]
-addSignal -h 20 -holdScope regs[29][31:0]
-addSignal -h 20 -holdScope regs[30][31:0]
-addSignal -h 20 -holdScope regs[31][31:0]
+addSignal -h 21 /dcache_tb/u_dcache/cpu_op_i
+addSignal -h 21 -holdScope cpu_index_i[7:0]
+addSignal -h 21 -holdScope cpu_tag_i[19:0]
+addSignal -h 21 -holdScope cpu_offset_i[3:0]
 addGroup "G3"
+addSignal -h 21 /dcache_tb/u_dcache/req_buf_op
+addSignal -h 21 -holdScope req_buf_index[7:0]
+addSignal -h 21 -holdScope req_buf_tag[19:0]
+addSignal -h 21 -holdScope req_buf_offset[3:0]
+addGroup "G5"
 
 ; getSignalForm Scope Hierarchy Status
 ; active file of getSignalForm

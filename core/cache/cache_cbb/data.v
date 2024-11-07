@@ -3,7 +3,7 @@
 // Author        : Qidc
 // Email         : qidc@stu.pku.edu.cn
 // Created On    : 2024/10/24 16:56
-// Last Modified : 2024/11/06 14:40
+// Last Modified : 2024/11/07 10:46
 // File Name     : data.v
 // Description   : 一个Cache行的Data包括四个Bank
 //
@@ -46,7 +46,7 @@ module data (
     // 生成4个Bank
     genvar i;
     generate
-        for (i = 0; i < `CACHE_BANK_NUM; i = i + 1) begin : data
+        for (i = 0; i < `CACHE_BANK_NUM; i = i + 1) begin : bank
             bank u_bank(
                 .clk       (clk                        ),
                 .index_i   (index_i                    ),

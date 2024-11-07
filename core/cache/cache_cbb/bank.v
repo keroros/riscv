@@ -3,7 +3,7 @@
 // Author        : Qidc
 // Email         : qidc@stu.pku.edu.cn
 // Created On    : 2024/10/24 12:28
-// Last Modified : 2024/11/06 14:27
+// Last Modified : 2024/11/07 10:46
 // File Name     : bank.v
 // Description   : 一行四个Bank，一个Bank包含四个256行，32位宽的RAM
 //
@@ -31,7 +31,7 @@ module bank (
 
     genvar i;
     generate
-        for (i = 0; i < `RAM_NUM; i = i + 1) begin : bank
+        for (i = 0; i < `RAM_NUM; i = i + 1) begin : ram
             simple_dp_ram #(
                 .DATA_WIDTH (`DATA_WIDTH>>2  ), // Bank的每个RAM数据位宽为8it
                 .ADDR_WIDTH (`CACHE_INDEX_AW )  // RAM有256行，地址位宽8bit
