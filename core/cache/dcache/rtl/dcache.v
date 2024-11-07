@@ -3,7 +3,7 @@
 // Author        : Qidc
 // Email         : qidc@stu.pku.edu.cn
 // Created On    : 2024/10/23 10:18
-// Last Modified : 2024/11/06 19:26
+// Last Modified : 2024/11/07 22:00
 // File Name     : dcache.v
 // Description   : DCache 模块
 //
@@ -24,30 +24,30 @@
 
 module dcache (
     // 时钟和复位
-    input  wire                         clk            ,
-    input  wire                         rst_n          ,
+    input  wire                        clk            ,
+    input  wire                        rst_n          ,
     // CPU与Cache的之间的信号
-    input  wire                         cpu_req_i      , // CPU对Cache的访问请求
-    input  wire                         cpu_op_i       , // 读写操作：1写 0读
-    input  wire [`CACHE_INDEX_AW-1:0]   cpu_index_i    , // CPU地址的Index域
-    input  wire [`CACHE_TAG_WIDTH-1:0]  cpu_tag_i      , // CPU地址的Tag域
-    input  wire [`CACHE_OFFSET_AW-1:0]  cpu_offset_i   , // CPU地址的Offset域
-    input  wire [`RAM_NUM-1:0]          cpu_wr_en_i    , // 写使能，只对置1的位写入
-    input  wire [`DATA_WIDTH-1:0]       cpu_wr_data_i  , // 要写入Cahce的数据
-    output wire [`DATA_WIDTH-1:0]       cpu_rd_data_o  , // 要从Cache读出的数据
-    output wire                         cpu_addr_ack_o , // 该次请求的地址传输已经完成
-    output wire                         cpu_data_ack_o , // 该次请求的数据传输已经完成
+    input  wire                        cpu_req_i      , // CPU对Cache的访问请求
+    input  wire                        cpu_op_i       , // 读写操作：1写 0读
+    input  wire [`CACHE_INDEX_AW-1:0]  cpu_index_i    , // CPU地址的Index域
+    input  wire [`CACHE_TAG_WIDTH-1:0] cpu_tag_i      , // CPU地址的Tag域
+    input  wire [`CACHE_OFFSET_AW-1:0] cpu_offset_i   , // CPU地址的Offset域
+    input  wire [`RAM_NUM-1:0]         cpu_wr_en_i    , // 写使能，只对置1的位写入
+    input  wire [`DATA_WIDTH-1:0]      cpu_wr_data_i  , // 要写入Cahce的数据
+    output wire [`DATA_WIDTH-1:0]      cpu_rd_data_o  , // 要从Cache读出的数据
+    output wire                        cpu_addr_ack_o , // 该次请求的地址传输已经完成
+    output wire                        cpu_data_ack_o , // 该次请求的数据传输已经完成
     // Cache与RAM接口模块的之间的信号
-    output wire                         ram_rd_req_o   , // Cache对RAM的读请求信号
-    output wire [`RV32_ADDR_WIDTH-1:0]  ram_rd_addr_o  , // 读起始物理地址
-    input  wire                         ram_rd_rdy_i   , // 读请求能否被接收的握手信号
-    input  wire [`DATA_WIDTH-1:0]       ram_rd_data_i  , // 读返回数据
-    input  wire [2:0]                   ram_rd_num_i   , // 返回数据是一次读的最后一个数据
-    input  wire                         ram_wr_rdy_i   , // 写请求能否被接受的握手信号
-    output wire                         ram_wr_req_o   , // 写请求信号，必须要在握手信号之后
-    output wire [`RV32_ADDR_WIDTH-1:0]  ram_wr_addr_o  , // 写起始物理地址
-    output wire [`DATA_WIDTH*4-1:0]     ram_wr_data_o  , // 写数据
-    output wire                         ram_dirty_o      // 数据是否Dirty
+    output wire                        ram_rd_req_o   , // Cache对RAM的读请求信号
+    output wire [`RV32_ADDR_WIDTH-1:0] ram_rd_addr_o  , // 读起始物理地址
+    input  wire                        ram_rd_rdy_i   , // 读请求能否被接收的握手信号
+    input  wire [`DATA_WIDTH-1:0]      ram_rd_data_i  , // 读返回数据
+    input  wire [2:0]                  ram_rd_num_i   , // 返回数据是一次读的最后一个数据
+    input  wire                        ram_wr_rdy_i   , // 写请求能否被接受的握手信号
+    output wire                        ram_wr_req_o   , // 写请求信号，必须要在握手信号之后
+    output wire [`RV32_ADDR_WIDTH-1:0] ram_wr_addr_o  , // 写起始物理地址
+    output wire [`DATA_WIDTH*4-1:0]    ram_wr_data_o  , // 写数据
+    output wire                        ram_dirty_o      // 数据是否Dirty
 );
 
     // 定义reg型输出

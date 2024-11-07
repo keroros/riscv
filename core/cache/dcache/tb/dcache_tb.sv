@@ -3,7 +3,7 @@
 // Author        : Qidc
 // Email         : qidc@stu.pku.edu.cn
 // Created On    : 2024/11/05 17:46
-// Last Modified : 2024/11/07 17:38
+// Last Modified : 2024/11/07 22:00
 // File Name     : dcache_tb.sv
 // Description   :
 //
@@ -176,6 +176,21 @@ module dcache_tb;
         // 连续读操作，index01, way1, tag01010, bank2: 32'hffeeddcc
         cpu_req_i     <= 1;
         cpu_op_i      <= 0;
+        cpu_index_i   <= 8'h01;
+        cpu_tag_i     <= 20'h01010;
+        cpu_offset_i  <= 4'b1000;
+        cpu_wr_en_i   <= 4'b0000;
+        cpu_wr_data_i <= 32'h0000_0000;
+        ram_rd_rdy_i  <= 1'b0;
+        ram_rd_data_i <= 32'h0000_0000;
+        ram_rd_num_i  <= 3'd0;
+        ram_wr_rdy_i  <= 1'b1;
+
+        #ClockPeriod;
+
+        // 一次写
+        cpu_req_i     <= 1;
+        cpu_op_i      <= 1;
         cpu_index_i   <= 8'h01;
         cpu_tag_i     <= 20'h01010;
         cpu_offset_i  <= 4'b1000;
