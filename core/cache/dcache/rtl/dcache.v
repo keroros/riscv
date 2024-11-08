@@ -3,7 +3,7 @@
 // Author        : Qidc
 // Email         : qidc@stu.pku.edu.cn
 // Created On    : 2024/10/23 10:18
-// Last Modified : 2024/11/08 20:36
+// Last Modified : 2024/11/08 22:19
 // File Name     : dcache.v
 // Description   : DCache 模块
 //
@@ -477,9 +477,18 @@ module dcache (
 
     wire [`CACHE_OFFSET_AW-1:0] way0_offset;
     wire [`CACHE_OFFSET_AW-1:0] way1_offset;
+    wire [2:0] ram_rd_offset;
 
-    assign way0_offset = {`CACHE_OFFSET_AW{next_lookup_state}} & cpu_offset_i | {`CACHE_OFFSET_AW{write_state}} & wr_buf_offset | {`CACHE_OFFSET_AW{next_replace_state | refill_state}} & req_buf_offset;
-    assign way1_offset = {`CACHE_OFFSET_AW{next_lookup_state}} & cpu_offset_i | {`CACHE_OFFSET_AW{write_state}} & wr_buf_offset | {`CACHE_OFFSET_AW{next_replace_state | refill_state}} & req_buf_offset;
+    assign ram_rd_offset = ram_rd_num_i - 1'b1;     // 中间变量
+
+    assign way0_offset = {`CACHE_OFFSET_AW{next_lookup_state}}  & cpu_offset_i   | 
+                         {`CACHE_OFFSET_AW{write_state}}        & wr_buf_offset  | 
+                         {`CACHE_OFFSET_AW{next_replace_state}} & req_buf_offset | 
+                         {`CACHE_OFFSET_AW{refill_state}}       & {ram_rd_offset[1:0], 2'b0};
+    assign way1_offset = {`CACHE_OFFSET_AW{next_lookup_state}}  & cpu_offset_i   | 
+                         {`CACHE_OFFSET_AW{write_state}}        & wr_buf_offset  | 
+                         {`CACHE_OFFSET_AW{next_replace_state}} & req_buf_offset | 
+                         {`CACHE_OFFSET_AW{refill_state}}       & {ram_rd_offset[1:0], 2'b0};
 
     // 实例化way0
     cache_way u_cache_way0 (

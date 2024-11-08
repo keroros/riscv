@@ -1,110 +1,66 @@
 version: (200506)
 
 available memory: 64M bytes
-used memory: 516096 bytes [need 504K bytes if disable swap]
+used memory: 671744 bytes [need 656K bytes if disable swap]
 
-used block: 28 [memory(28) file(0)]
-                 [ 8K(23) 64K(5) { total 504K bytes } ]
-overhead: (9531) bytes for (28) blocks [Average: (340) bytes/block]
+used block: 33 [memory(33) file(0)]
+                 [ 8K(26) 64K(7) { total 656K bytes } ]
+overhead: (9531) bytes for (33) blocks [Average: (288) bytes/block]
 
 write  => 0(times) 0K(bytes) [0K bytes to file]
-read   => 5(times) 141K(bytes) [20K bytes compressed data from file]
-access => 2942545(times) 23031M(bytes)
-          [hit ratio: 99.9998%]
+read   => 7(times) 200K(bytes) [27K bytes compressed data from file]
+access => 1856517(times) 14553M(bytes)
+          [hit ratio: 99.9996%]
 
 time: write(0) read(0)  unit: second
 
 swap file directory: (/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/verdiLog)
-used swap file number: (6)
-
-
-
-swap file manager:
-arrSize: (256)
-idxCnt: (7)
-closeHead: (1)
-closeTail: (6)
-openCnt: (1)
-fid(6): fd(0) fileName(NULL)
-	mode(rb)	hot(5) cool(0) pos(0)
-fid(5): fd(0) fileName(NULL)
-	mode(rb)	hot(4) cool(6) pos(0)
-fid(4): fd(0) fileName(NULL)
-	mode(rb)	hot(3) cool(5) pos(0)
-fid(3): fd(0) fileName(NULL)
-	mode(rb)	hot(1) cool(4) pos(0)
-fid(2): fd(29) fileName(/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/verdiLog/_swap_0001#1757367822#363282)
-	size(0) lastModTime(0) curModTime(1731051284)
-	mode(w+b)	hot(3) cool(1) pos(0)
-fid(1): fd(0) fileName(NULL)
-	mode(rb)	hot(2) cool(3) pos(0)
-fid(0): fd(0) fileName(NULL)
-	mode(NULL)	hot(0) cool(0) pos(0)
-Swap system is reset at (Fri Nov  8 16:49:14 2024
-)
-version: (200506)
-
-available memory: 64M bytes
-used memory: 704512 bytes [need 504K bytes if disable swap]
-
-used block: 37 [memory(37) file(0)]
-                 [ 8K(30) 64K(7) { total 688K bytes } ]
-overhead: (9531) bytes for (37) blocks [Average: (257) bytes/block]
-
-write  => 0(times) 0K(bytes) [0K bytes to file]
-read   => 7(times) 252K(bytes) [33K bytes compressed data from file]
-access => 3161242(times) 24749M(bytes)
-          [hit ratio: 99.9998%]
-
-time: write(0) read(0)  unit: second
-
-swap file directory: (/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/verdiLog)
-used swap file number: (7)
+used swap file number: (9)
 
 
 
 swap file manager:
 arrSize: (256)
 idxCnt: (10)
-closeHead: (7)
-closeTail: (8)
+closeHead: (1)
+closeTail: (9)
 openCnt: (1)
 fid(9): fd(0) fileName(NULL)
-	mode(rb)	hot(7) cool(0) pos(0)
-fid(8): fd(33) fileName(/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/verdiLog/_swap_0001#1757367822#363282)
-	size(0) lastModTime(0) curModTime(1731055754)
-	mode(w+b)	hot(0) cool(7) pos(0)
+	mode(rb)	hot(8) cool(0) pos(0)
+fid(8): fd(0) fileName(NULL)
+	mode(rb)	hot(7) cool(9) pos(0)
 fid(7): fd(0) fileName(NULL)
-	mode(rb)	hot(8) cool(9) pos(0)
+	mode(rb)	hot(6) cool(8) pos(0)
 fid(6): fd(0) fileName(NULL)
-	mode(NULL)	hot(0) cool(0) pos(0)
+	mode(rb)	hot(5) cool(7) pos(0)
 fid(5): fd(0) fileName(NULL)
-	mode(NULL)	hot(0) cool(0) pos(0)
+	mode(rb)	hot(4) cool(6) pos(0)
 fid(4): fd(0) fileName(NULL)
-	mode(NULL)	hot(0) cool(0) pos(0)
+	mode(rb)	hot(3) cool(5) pos(0)
 fid(3): fd(0) fileName(NULL)
-	mode(NULL)	hot(0) cool(0) pos(0)
-fid(2): fd(0) fileName(NULL)
-	mode(NULL)	hot(0) cool(0) pos(0)
+	mode(rb)	hot(1) cool(4) pos(0)
+fid(2): fd(29) fileName(/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/verdiLog/_swap_0001#1757367822#9084)
+	size(0) lastModTime(0) curModTime(1731071802)
+	mode(w+b)	hot(5) cool(1) pos(0)
 fid(1): fd(0) fileName(NULL)
-	mode(NULL)	hot(0) cool(0) pos(0)
+	mode(rb)	hot(2) cool(3) pos(0)
 fid(0): fd(0) fileName(NULL)
 	mode(NULL)	hot(0) cool(0) pos(0)
-Swap system is reset at (Fri Nov  8 16:55:06 2024
+Swap system is reset at (Fri Nov  8 21:56:59 2024
 )
 version: (200506)
 
 available memory: 64M bytes
-used memory: 901120 bytes [need 504K bytes if disable swap]
+used memory: 868352 bytes [need 656K bytes if disable swap]
 
-used block: 47 [memory(47) file(0)]
-                 [ 8K(38) 64K(9) { total 880K bytes } ]
-overhead: (9531) bytes for (47) blocks [Average: (202) bytes/block]
+used block: 43 [memory(43) file(0)]
+                 [ 8K(34) 64K(9) { total 848K bytes } ]
+overhead: (9531) bytes for (43) blocks [Average: (221) bytes/block]
 
 write  => 0(times) 0K(bytes) [0K bytes to file]
-read   => 9(times) 363K(bytes) [46K bytes compressed data from file]
-access => 3893118(times) 30477M(bytes)
-          [hit ratio: 99.9998%]
+read   => 9(times) 312K(bytes) [40K bytes compressed data from file]
+access => 1913476(times) 15008M(bytes)
+          [hit ratio: 99.9995%]
 
 time: write(0) read(0)  unit: second
 
@@ -119,8 +75,8 @@ idxCnt: (12)
 closeHead: (10)
 closeTail: (11)
 openCnt: (1)
-fid(11): fd(33) fileName(/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/verdiLog/_swap_0001#1757367822#363282)
-	size(0) lastModTime(0) curModTime(1731056106)
+fid(11): fd(31) fileName(/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/verdiLog/_swap_0001#1757367822#9084)
+	size(0) lastModTime(0) curModTime(1731074220)
 	mode(w+b)	hot(0) cool(10) pos(0)
 fid(10): fd(0) fileName(NULL)
 	mode(rb)	hot(11) cool(0) pos(0)
@@ -144,48 +100,40 @@ fid(1): fd(0) fileName(NULL)
 	mode(NULL)	hot(0) cool(0) pos(0)
 fid(0): fd(0) fileName(NULL)
 	mode(NULL)	hot(0) cool(0) pos(0)
-Swap system is reset at (Fri Nov  8 17:25:33 2024
+Swap system is reset at (Fri Nov  8 22:07:43 2024
 )
 version: (200506)
 
 available memory: 64M bytes
-used memory: 2M bytes [need 504K bytes if disable swap]
+used memory: 2M bytes [need 656K bytes if disable swap]
 
-used block: 67 [memory(67) file(0)]
-                 [ 8K(53) 64K(14) { total 2M bytes } ]
-overhead: (9531) bytes for (67) blocks [Average: (142) bytes/block]
+used block: 53 [memory(53) file(0)]
+                 [ 8K(42) 64K(11) { total 2M bytes } ]
+overhead: (9531) bytes for (53) blocks [Average: (179) bytes/block]
 
 write  => 0(times) 0K(bytes) [0K bytes to file]
-read   => 14(times) 544K(bytes) [70K bytes compressed data from file]
-access => 4495479(times) 35206M(bytes)
-          [hit ratio: 99.9997%]
+read   => 11(times) 424K(bytes) [54K bytes compressed data from file]
+access => 1962471(times) 15402M(bytes)
+          [hit ratio: 99.9994%]
 
-time: write(0) read(0)  unit: second
+time: write(0) read(0.001)  unit: second
 
 swap file directory: (/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/verdiLog)
-used swap file number: (16)
+used swap file number: (12)
 
 
 
 swap file manager:
 arrSize: (256)
-idxCnt: (18)
+idxCnt: (14)
 closeHead: (12)
-closeTail: (16)
+closeTail: (13)
 openCnt: (1)
-fid(17): fd(0) fileName(NULL)
-	mode(rb)	hot(16) cool(0) pos(0)
-fid(16): fd(0) fileName(NULL)
-	mode(rb)	hot(15) cool(17) pos(0)
-fid(15): fd(0) fileName(NULL)
-	mode(rb)	hot(14) cool(16) pos(0)
-fid(14): fd(0) fileName(NULL)
-	mode(rb)	hot(12) cool(15) pos(0)
-fid(13): fd(33) fileName(/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/verdiLog/_swap_0001#1757367822#363282)
-	size(0) lastModTime(0) curModTime(1731057933)
-	mode(w+b)	hot(15) cool(12) pos(0)
+fid(13): fd(31) fileName(/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/verdiLog/_swap_0001#1757367822#9084)
+	size(0) lastModTime(0) curModTime(1731074863)
+	mode(w+b)	hot(0) cool(12) pos(0)
 fid(12): fd(0) fileName(NULL)
-	mode(rb)	hot(13) cool(14) pos(0)
+	mode(rb)	hot(13) cool(0) pos(0)
 fid(11): fd(0) fileName(NULL)
 	mode(NULL)	hot(0) cool(0) pos(0)
 fid(10): fd(0) fileName(NULL)
@@ -210,46 +158,118 @@ fid(1): fd(0) fileName(NULL)
 	mode(NULL)	hot(0) cool(0) pos(0)
 fid(0): fd(0) fileName(NULL)
 	mode(NULL)	hot(0) cool(0) pos(0)
-Swap system is reset at (Fri Nov  8 17:30:01 2024
+Swap system is reset at (Fri Nov  8 22:07:54 2024
 )
 version: (200506)
 
 available memory: 64M bytes
-used memory: 2M bytes [need 504K bytes if disable swap]
+used memory: 2M bytes [need 656K bytes if disable swap]
 
-used block: 92 [memory(92) file(0)]
-                 [ 8K(74) 64K(18) { total 2M bytes } ]
-overhead: (9531) bytes for (92) blocks [Average: (103) bytes/block]
+used block: 83 [memory(83) file(0)]
+                 [ 8K(66) 64K(17) { total 2M bytes } ]
+overhead: (9531) bytes for (83) blocks [Average: (114) bytes/block]
 
 write  => 0(times) 0K(bytes) [0K bytes to file]
-read   => 18(times) 719K(bytes) [91K bytes compressed data from file]
-access => 5065840(times) 39698M(bytes)
-          [hit ratio: 99.9996%]
+read   => 17(times) 623K(bytes) [80K bytes compressed data from file]
+access => 5285967(times) 41414M(bytes)
+          [hit ratio: 99.9997%]
 
-time: write(0) read(0)  unit: second
+time: write(0) read(0.001)  unit: second
 
 swap file directory: (/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/verdiLog)
-used swap file number: (22)
+used swap file number: (20)
+
+
+
+swap file manager:
+arrSize: (256)
+idxCnt: (21)
+closeHead: (14)
+closeTail: (18)
+openCnt: (1)
+fid(20): fd(0) fileName(NULL)
+	mode(rb)	hot(19) cool(0) pos(0)
+fid(19): fd(0) fileName(NULL)
+	mode(rb)	hot(18) cool(20) pos(0)
+fid(18): fd(0) fileName(NULL)
+	mode(rb)	hot(17) cool(19) pos(0)
+fid(17): fd(0) fileName(NULL)
+	mode(rb)	hot(16) cool(18) pos(0)
+fid(16): fd(0) fileName(NULL)
+	mode(rb)	hot(14) cool(17) pos(0)
+fid(15): fd(31) fileName(/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/verdiLog/_swap_0001#1757367822#9084)
+	size(0) lastModTime(0) curModTime(1731074874)
+	mode(w+b)	hot(16) cool(14) pos(0)
+fid(14): fd(0) fileName(NULL)
+	mode(rb)	hot(15) cool(16) pos(0)
+fid(13): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(12): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(11): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(10): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(9): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(8): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(7): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(6): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(5): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(4): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(3): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(2): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(1): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(0): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+Swap system is reset at (Fri Nov  8 22:46:20 2024
+)
+version: (200506)
+
+available memory: 64M bytes
+used memory: 2M bytes [need 656K bytes if disable swap]
+
+used block: 85 [memory(85) file(0)]
+                 [ 8K(67) 64K(18) { total 2M bytes } ]
+overhead: (9531) bytes for (85) blocks [Average: (112) bytes/block]
+
+write  => 0(times) 0K(bytes) [0K bytes to file]
+read   => 18(times) 627K(bytes) [81K bytes compressed data from file]
+access => 5306929(times) 41580M(bytes)
+          [hit ratio: 99.9997%]
+
+time: write(0) read(0.001)  unit: second
+
+swap file directory: (/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/verdiLog)
+used swap file number: (21)
 
 
 
 swap file manager:
 arrSize: (256)
 idxCnt: (23)
-closeHead: (18)
+closeHead: (21)
 closeTail: (22)
 openCnt: (1)
-fid(22): fd(0) fileName(NULL)
-	mode(rb)	hot(21) cool(0) pos(0)
+fid(22): fd(31) fileName(/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/verdiLog/_swap_0001#1757367822#9084)
+	size(0) lastModTime(0) curModTime(1731077181)
+	mode(w+b)	hot(0) cool(21) pos(0)
 fid(21): fd(0) fileName(NULL)
-	mode(rb)	hot(20) cool(22) pos(0)
+	mode(rb)	hot(22) cool(0) pos(0)
 fid(20): fd(0) fileName(NULL)
-	mode(rb)	hot(18) cool(21) pos(0)
-fid(19): fd(33) fileName(/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/verdiLog/_swap_0001#1757367822#363282)
-	size(0) lastModTime(0) curModTime(1731058201)
-	mode(w+b)	hot(21) cool(18) pos(0)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(19): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
 fid(18): fd(0) fileName(NULL)
-	mode(rb)	hot(19) cool(20) pos(0)
+	mode(NULL)	hot(0) cool(0) pos(0)
 fid(17): fd(0) fileName(NULL)
 	mode(NULL)	hot(0) cool(0) pos(0)
 fid(16): fd(0) fileName(NULL)
@@ -286,40 +306,50 @@ fid(1): fd(0) fileName(NULL)
 	mode(NULL)	hot(0) cool(0) pos(0)
 fid(0): fd(0) fileName(NULL)
 	mode(NULL)	hot(0) cool(0) pos(0)
-Swap system is reset at (Fri Nov  8 20:10:56 2024
+Swap system is reset at (Fri Nov  8 22:47:26 2024
 )
 version: (200506)
 
 available memory: 64M bytes
-used memory: 2M bytes [need 504K bytes if disable swap]
+used memory: 2M bytes [need 656K bytes if disable swap]
 
-used block: 104 [memory(104) file(0)]
-                 [ 8K(84) 64K(20) { total 2M bytes } ]
-overhead: (9531) bytes for (104) blocks [Average: (91) bytes/block]
+used block: 89 [memory(89) file(0)]
+                 [ 8K(69) 64K(20) { total 2M bytes } ]
+overhead: (9531) bytes for (89) blocks [Average: (107) bytes/block]
 
 write  => 0(times) 0K(bytes) [0K bytes to file]
-read   => 20(times) 830K(bytes) [104K bytes compressed data from file]
-access => 5106537(times) 40029M(bytes)
+read   => 20(times) 637K(bytes) [84K bytes compressed data from file]
+access => 5449728(times) 42701M(bytes)
           [hit ratio: 99.9996%]
 
-time: write(0) read(0)  unit: second
+time: write(0) read(0.001)  unit: second
 
 swap file directory: (/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/verdiLog)
-used swap file number: (23)
+used swap file number: (29)
 
 
 
 swap file manager:
 arrSize: (256)
-idxCnt: (25)
+idxCnt: (30)
 closeHead: (23)
-closeTail: (24)
+closeTail: (29)
 openCnt: (1)
-fid(24): fd(33) fileName(/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/verdiLog/_swap_0001#1757367822#363282)
-	size(0) lastModTime(0) curModTime(1731067856)
-	mode(w+b)	hot(0) cool(23) pos(0)
+fid(29): fd(0) fileName(NULL)
+	mode(rb)	hot(28) cool(0) pos(0)
+fid(28): fd(0) fileName(NULL)
+	mode(rb)	hot(27) cool(29) pos(0)
+fid(27): fd(0) fileName(NULL)
+	mode(rb)	hot(26) cool(28) pos(0)
+fid(26): fd(0) fileName(NULL)
+	mode(rb)	hot(25) cool(27) pos(0)
+fid(25): fd(0) fileName(NULL)
+	mode(rb)	hot(23) cool(26) pos(0)
+fid(24): fd(31) fileName(/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/verdiLog/_swap_0001#1757367822#9084)
+	size(0) lastModTime(0) curModTime(1731077247)
+	mode(w+b)	hot(29) cool(23) pos(0)
 fid(23): fd(0) fileName(NULL)
-	mode(rb)	hot(24) cool(0) pos(0)
+	mode(rb)	hot(24) cool(25) pos(0)
 fid(22): fd(0) fileName(NULL)
 	mode(NULL)	hot(0) cool(0) pos(0)
 fid(21): fd(0) fileName(NULL)
@@ -366,42 +396,52 @@ fid(1): fd(0) fileName(NULL)
 	mode(NULL)	hot(0) cool(0) pos(0)
 fid(0): fd(0) fileName(NULL)
 	mode(NULL)	hot(0) cool(0) pos(0)
-Swap system is reset at (Fri Nov  8 20:19:39 2024
+Swap system is reset at (Fri Nov  8 22:52:14 2024
 )
 version: (200506)
 
 available memory: 64M bytes
-used memory: 3M bytes [need 504K bytes if disable swap]
+used memory: 2M bytes [need 656K bytes if disable swap]
 
-used block: 123 [memory(123) file(0)]
-                 [ 8K(100) 64K(23) { total 3M bytes } ]
-overhead: (9531) bytes for (123) blocks [Average: (77) bytes/block]
+used block: 91 [memory(91) file(0)]
+                 [ 8K(70) 64K(21) { total 2M bytes } ]
+overhead: (9531) bytes for (91) blocks [Average: (104) bytes/block]
 
 write  => 0(times) 0K(bytes) [0K bytes to file]
-read   => 23(times) 1004K(bytes) [125K bytes compressed data from file]
-access => 6800978(times) 53292M(bytes)
-          [hit ratio: 99.9997%]
+read   => 21(times) 643K(bytes) [86K bytes compressed data from file]
+access => 5478936(times) 42932M(bytes)
+          [hit ratio: 99.9996%]
 
-time: write(0) read(0)  unit: second
+time: write(0) read(0.001)  unit: second
 
 swap file directory: (/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/verdiLog)
-used swap file number: (27)
+used swap file number: (30)
 
 
 
 swap file manager:
 arrSize: (256)
-idxCnt: (28)
-closeHead: (25)
-closeTail: (27)
+idxCnt: (33)
+closeHead: (30)
+closeTail: (31)
 openCnt: (1)
+fid(32): fd(0) fileName(NULL)
+	mode(rb)	hot(30) cool(0) pos(0)
+fid(31): fd(31) fileName(/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/verdiLog/_swap_0001#1757367822#9084)
+	size(0) lastModTime(0) curModTime(1731077535)
+	mode(w+b)	hot(0) cool(30) pos(0)
+fid(30): fd(0) fileName(NULL)
+	mode(rb)	hot(31) cool(32) pos(0)
+fid(29): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(28): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
 fid(27): fd(0) fileName(NULL)
-	mode(rb)	hot(25) cool(0) pos(0)
-fid(26): fd(33) fileName(/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/verdiLog/_swap_0001#1757367822#363282)
-	size(0) lastModTime(0) curModTime(1731068380)
-	mode(w+b)	hot(27) cool(25) pos(0)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(26): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
 fid(25): fd(0) fileName(NULL)
-	mode(rb)	hot(26) cool(27) pos(0)
+	mode(NULL)	hot(0) cool(0) pos(0)
 fid(24): fd(0) fileName(NULL)
 	mode(NULL)	hot(0) cool(0) pos(0)
 fid(23): fd(0) fileName(NULL)
@@ -452,23 +492,23 @@ fid(1): fd(0) fileName(NULL)
 	mode(NULL)	hot(0) cool(0) pos(0)
 fid(0): fd(0) fileName(NULL)
 	mode(NULL)	hot(0) cool(0) pos(0)
-Swap system is reset at (Fri Nov  8 20:37:02 2024
+Swap system is reset at (Fri Nov  8 22:52:50 2024
 )
 version: (200506)
 
 available memory: 64M bytes
-used memory: 3M bytes [need 560K bytes if disable swap]
+used memory: 2M bytes [need 656K bytes if disable swap]
 
-used block: 151 [memory(151) file(0)]
-                 [ 8K(122) 64K(29) { total 3M bytes } ]
-overhead: (9531) bytes for (151) blocks [Average: (63) bytes/block]
+used block: 93 [memory(93) file(0)]
+                 [ 8K(71) 64K(22) { total 2M bytes } ]
+overhead: (9531) bytes for (93) blocks [Average: (102) bytes/block]
 
 write  => 0(times) 0K(bytes) [0K bytes to file]
-read   => 29(times) 1M(bytes) [152K bytes compressed data from file]
-access => 7565883(times) 59310M(bytes)
+read   => 22(times) 649K(bytes) [87K bytes compressed data from file]
+access => 5506380(times) 43149M(bytes)
           [hit ratio: 99.9996%]
 
-time: write(0) read(0)  unit: second
+time: write(0) read(0.001)  unit: second
 
 swap file directory: (/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/verdiLog)
 used swap file number: (33)
@@ -477,28 +517,501 @@ used swap file number: (33)
 
 swap file manager:
 arrSize: (256)
-idxCnt: (34)
-closeHead: (28)
-closeTail: (33)
-openCnt: (6)
-fid(33): fd(1073741828) fileName(/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/simv.daidir/kdb.elab++/work.lib++/data.v.tdc)
-	size(3490) lastModTime(1731069418) curModTime(1731069418)
-	mode(rb)	hot(0) cool(30) pos(0)
-fid(32): fd(1073741826) fileName(/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/simv.daidir/kdb.elab++/work.lib++/lru.v.tdc)
-	size(2417) lastModTime(1731069418) curModTime(1731069418)
-	mode(rb)	hot(31) cool(29) pos(0)
-fid(31): fd(1073741825) fileName(/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/simv.daidir/kdb.elab++/work.lib++/cache_way.v.tdc)
-	size(4396) lastModTime(1731069418) curModTime(1731069418)
-	mode(rb)	hot(30) cool(32) pos(0)
-fid(30): fd(1073741827) fileName(/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/simv.daidir/kdb.elab++/work.lib++/dcache_tb.sv.tdc)
-	size(11713) lastModTime(1731069418) curModTime(1731069418)
-	mode(rb)	hot(33) cool(31) pos(0)
-fid(29): fd(33) fileName(/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/verdiLog/_swap_0001#1757367822#363282)
-	size(0) lastModTime(0) curModTime(1731069423)
-	mode(w+b)	hot(32) cool(28) pos(0)
-fid(28): fd(1073741824) fileName(/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/simv.daidir/kdb.elab++/work.lib++/dcache.v.tdc)
-	size(21184) lastModTime(1731069418) curModTime(1731069418)
-	mode(rb)	hot(29) cool(0) pos(0)
+idxCnt: (36)
+closeHead: (33)
+closeTail: (34)
+openCnt: (1)
+fid(35): fd(0) fileName(NULL)
+	mode(rb)	hot(33) cool(0) pos(0)
+fid(34): fd(31) fileName(/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/verdiLog/_swap_0001#1757367822#9084)
+	size(0) lastModTime(0) curModTime(1731077571)
+	mode(w+b)	hot(0) cool(33) pos(0)
+fid(33): fd(0) fileName(NULL)
+	mode(rb)	hot(34) cool(35) pos(0)
+fid(32): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(31): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(30): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(29): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(28): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(27): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(26): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(25): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(24): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(23): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(22): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(21): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(20): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(19): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(18): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(17): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(16): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(15): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(14): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(13): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(12): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(11): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(10): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(9): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(8): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(7): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(6): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(5): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(4): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(3): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(2): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(1): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(0): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+Swap system is reset at (Fri Nov  8 22:52:53 2024
+)
+version: (200506)
+
+available memory: 64M bytes
+used memory: 2M bytes [need 656K bytes if disable swap]
+
+used block: 95 [memory(95) file(0)]
+                 [ 8K(72) 64K(23) { total 2M bytes } ]
+overhead: (9531) bytes for (95) blocks [Average: (100) bytes/block]
+
+write  => 0(times) 0K(bytes) [0K bytes to file]
+read   => 23(times) 655K(bytes) [89K bytes compressed data from file]
+access => 5535561(times) 43379M(bytes)
+          [hit ratio: 99.9996%]
+
+time: write(0) read(0.001)  unit: second
+
+swap file directory: (/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/verdiLog)
+used swap file number: (36)
+
+
+
+swap file manager:
+arrSize: (256)
+idxCnt: (39)
+closeHead: (36)
+closeTail: (37)
+openCnt: (1)
+fid(38): fd(0) fileName(NULL)
+	mode(rb)	hot(36) cool(0) pos(0)
+fid(37): fd(31) fileName(/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/verdiLog/_swap_0001#1757367822#9084)
+	size(0) lastModTime(0) curModTime(1731077573)
+	mode(w+b)	hot(0) cool(36) pos(0)
+fid(36): fd(0) fileName(NULL)
+	mode(rb)	hot(37) cool(38) pos(0)
+fid(35): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(34): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(33): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(32): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(31): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(30): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(29): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(28): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(27): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(26): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(25): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(24): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(23): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(22): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(21): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(20): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(19): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(18): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(17): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(16): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(15): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(14): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(13): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(12): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(11): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(10): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(9): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(8): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(7): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(6): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(5): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(4): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(3): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(2): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(1): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(0): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+Swap system is reset at (Fri Nov  8 22:53:19 2024
+)
+version: (200506)
+
+available memory: 64M bytes
+used memory: 3M bytes [need 656K bytes if disable swap]
+
+used block: 97 [memory(97) file(0)]
+                 [ 8K(73) 64K(24) { total 3M bytes } ]
+overhead: (9531) bytes for (97) blocks [Average: (98) bytes/block]
+
+write  => 0(times) 0K(bytes) [0K bytes to file]
+read   => 24(times) 661K(bytes) [90K bytes compressed data from file]
+access => 5563041(times) 43596M(bytes)
+          [hit ratio: 99.9996%]
+
+time: write(0) read(0.001)  unit: second
+
+swap file directory: (/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/verdiLog)
+used swap file number: (39)
+
+
+
+swap file manager:
+arrSize: (256)
+idxCnt: (42)
+closeHead: (39)
+closeTail: (40)
+openCnt: (1)
+fid(41): fd(0) fileName(NULL)
+	mode(rb)	hot(39) cool(0) pos(0)
+fid(40): fd(31) fileName(/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/verdiLog/_swap_0001#1757367822#9084)
+	size(0) lastModTime(0) curModTime(1731077599)
+	mode(w+b)	hot(0) cool(39) pos(0)
+fid(39): fd(0) fileName(NULL)
+	mode(rb)	hot(40) cool(41) pos(0)
+fid(38): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(37): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(36): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(35): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(34): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(33): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(32): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(31): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(30): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(29): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(28): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(27): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(26): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(25): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(24): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(23): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(22): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(21): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(20): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(19): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(18): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(17): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(16): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(15): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(14): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(13): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(12): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(11): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(10): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(9): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(8): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(7): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(6): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(5): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(4): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(3): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(2): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(1): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(0): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+Swap system is reset at (Fri Nov  8 22:53:22 2024
+)
+version: (200506)
+
+available memory: 64M bytes
+used memory: 3M bytes [need 656K bytes if disable swap]
+
+used block: 102 [memory(102) file(0)]
+                 [ 8K(76) 64K(26) { total 3M bytes } ]
+overhead: (9531) bytes for (102) blocks [Average: (93) bytes/block]
+
+write  => 0(times) 0K(bytes) [0K bytes to file]
+read   => 26(times) 675K(bytes) [94K bytes compressed data from file]
+access => 5694211(times) 44627M(bytes)
+          [hit ratio: 99.9995%]
+
+time: write(0) read(0.001)  unit: second
+
+swap file directory: (/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/verdiLog)
+used swap file number: (44)
+
+
+
+swap file manager:
+arrSize: (256)
+idxCnt: (46)
+closeHead: (42)
+closeTail: (44)
+openCnt: (1)
+fid(45): fd(0) fileName(NULL)
+	mode(rb)	hot(44) cool(0) pos(0)
+fid(44): fd(0) fileName(NULL)
+	mode(rb)	hot(42) cool(45) pos(0)
+fid(43): fd(31) fileName(/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/verdiLog/_swap_0001#1757367822#9084)
+	size(0) lastModTime(0) curModTime(1731077602)
+	mode(w+b)	hot(44) cool(42) pos(0)
+fid(42): fd(0) fileName(NULL)
+	mode(rb)	hot(43) cool(44) pos(0)
+fid(41): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(40): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(39): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(38): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(37): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(36): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(35): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(34): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(33): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(32): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(31): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(30): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(29): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(28): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(27): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(26): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(25): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(24): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(23): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(22): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(21): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(20): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(19): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(18): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(17): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(16): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(15): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(14): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(13): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(12): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(11): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(10): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(9): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(8): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(7): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(6): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(5): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(4): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(3): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(2): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(1): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(0): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+Swap system is reset at (Fri Nov  8 22:55:04 2024
+)
+version: (200506)
+
+available memory: 64M bytes
+used memory: 3M bytes [need 656K bytes if disable swap]
+
+used block: 104 [memory(104) file(0)]
+                 [ 8K(77) 64K(27) { total 3M bytes } ]
+overhead: (9531) bytes for (104) blocks [Average: (91) bytes/block]
+
+write  => 0(times) 0K(bytes) [0K bytes to file]
+read   => 27(times) 681K(bytes) [95K bytes compressed data from file]
+access => 5725627(times) 44875M(bytes)
+          [hit ratio: 99.9995%]
+
+time: write(0) read(0.002)  unit: second
+
+swap file directory: (/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/verdiLog)
+used swap file number: (46)
+
+
+
+swap file manager:
+arrSize: (256)
+idxCnt: (49)
+closeHead: (46)
+closeTail: (47)
+openCnt: (2)
+fid(48): fd(0) fileName(/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/simv.daidir/kdb.elab++/work.lib++/bank.v.tdc)
+	size(3289) lastModTime(1731077682) curModTime(1731077682)
+	mode(rb)	hot(0) cool(0) pos(0)
+fid(47): fd(31) fileName(/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/verdiLog/_swap_0001#1757367822#9084)
+	size(0) lastModTime(0) curModTime(1731077705)
+	mode(w+b)	hot(0) cool(46) pos(0)
+fid(46): fd(1073741824) fileName(/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/simv.daidir/kdb.elab++/work.lib++/simple_dp_ram.v.tdc)
+	size(2504) lastModTime(1731077682) curModTime(1731077682)
+	mode(rb)	hot(47) cool(0) pos(0)
+fid(45): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(44): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(43): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(42): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(41): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(40): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(39): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(38): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(37): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(36): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(35): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(34): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(33): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(32): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(31): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(30): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(29): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+fid(28): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
 fid(27): fd(0) fileName(NULL)
 	mode(NULL)	hot(0) cool(0) pos(0)
 fid(26): fd(0) fileName(NULL)
@@ -556,6 +1069,6 @@ fid(1): fd(0) fileName(NULL)
 fid(0): fd(0) fileName(NULL)
 	mode(NULL)	hot(0) cool(0) pos(0)
 ==================================================
-mySelf(1a14ab60) pre(139ca430) next(0)
+mySelf(5046e790) pre(1375f7e0) next(0)
 version(200506)
 date(Feb 11 2019 22:10:27)

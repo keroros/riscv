@@ -411,12 +411,12 @@ ExpressionDialog_AppendLogicalExpression = 1657,578,590,340
 ExpressionDialog_SaveLogicalExpression = 1657,578,590,340
 schExtrFSM = 1116,692,398,120
 QwInfoMsgDlg = 927,613,750,250
-QwWarnMsgDlg = 935,599,1192,547
-saveSigDlg = 1039,559,551,386
 ExpressionDialog = 1553,456,778,493
 searchScope_base = 852,441,925,548
 nsWindowManager = 936,505,738,404
-QwUserAskDlg = 1153,668,324,167
+QwWarnMsgDlg = 935,636,1192,547
+saveSigDlg = 1039,559,551,386
+QwUserAskDlg = 1153,694,324,115
 [Relationship]
 hideRecursiceNode = FALSE
 [Session Cache]
@@ -761,7 +761,7 @@ scope_to_save_with_macro
 open_file_dir
 open_rc_file_dir
 getSignalForm = 0 0 800 479 100 30 100 30
-viewPort = 0 27 2490 601 339 129
+viewPort = 0 27 2490 742 304 183
 signalSpacing = 5
 digitalSignalHeight = 15
 analogSignalHeight = 98
@@ -1639,7 +1639,7 @@ AddImportArgument = FALSE
 LineBreakWithScope = TRUE
 StopAfterCompileOption = -s
 [wave.0]
-viewPort = 0 27 2490 601 339 129
+viewPort = 0 27 2490 742 304 183
 [wave.1]
 viewPort = 127 219 960 332 100 65
 [wave.2]

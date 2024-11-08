@@ -5,18 +5,6 @@
         "module",
         1
     ],
-    "...MASTER...": [
-        "SIM",
-        "amcQw",
-        "module",
-        8
-    ],
-    "dcache_tb": [
-        "dcache_tb",
-        "Y9KLm",
-        "module",
-        6
-    ],
     "dff": [
         "dff",
         "IWW0i",
@@ -29,6 +17,24 @@
         "module",
         2
     ],
+    "...MASTER...": [
+        "SIM",
+        "amcQw",
+        "module",
+        8
+    ],
+    "dcache_tb": [
+        "dcache_tb",
+        "Y9KLm",
+        "module",
+        6
+    ],
+    "dff_rs": [
+        "dff_rs",
+        "gKx0G",
+        "module",
+        4
+    ],
     "dff_rs_ld": [
         "dff_rs_ld",
         "a3M3m",
@@ -40,11 +46,5 @@
         "Yx4Fa",
         "module",
         7
-    ],
-    "dff_rs": [
-        "dff_rs",
-        "gKx0G",
-        "module",
-        4
     ]
 }

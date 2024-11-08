@@ -3,7 +3,7 @@
 // Author        : Qidc
 // Email         : qidc@stu.pku.edu.cn
 // Created On    : 2024/11/05 17:46
-// Last Modified : 2024/11/08 20:27
+// Last Modified : 2024/11/08 22:54
 // File Name     : dcache_tb.sv
 // Description   :
 //
@@ -118,16 +118,16 @@ module dcache_tb;
         $readmemh({`CACHE_DATA_PATH,  "way0_bank3_ram1.txt" }, `TB_WAY0_BANK3_RAM1 );
         $readmemh({`CACHE_DATA_PATH,  "way0_bank3_ram2.txt" }, `TB_WAY0_BANK3_RAM2 );
         $readmemh({`CACHE_DATA_PATH,  "way0_bank3_ram3.txt" }, `TB_WAY0_BANK3_RAM3 );
-        $readmemh({`CACHE_LRU_PATH,   "way0_lru.txt"        }, `TB_WAY0_BANK0_RAM0 );
+        $readmemh({`CACHE_LRU_PATH,   "way0_lru.txt"        }, `TB_WAY0_LRU        );
 
         // 初始化way1所有表
         $readmemh({`CACHE_TAG_PATH,   "way1_tag.txt"        }, `TB_WAY1_TAG       );
         $readmemh({`CACHE_VALID_PATH, "way1_valid.txt"      }, `TB_WAY1_VALID     );
         $readmemh({`CACHE_DIRTY_PATH, "way1_dirty.txt"      }, `TB_WAY1_DIRTY     );
-        $readmemh({`CACHE_DATA_PATH,  "way1_bank0_ram0.txt" }, `TB_WAY1_BANK1_RAM0 );
-        $readmemh({`CACHE_DATA_PATH,  "way1_bank0_ram1.txt" }, `TB_WAY1_BANK1_RAM1 );
-        $readmemh({`CACHE_DATA_PATH,  "way1_bank0_ram2.txt" }, `TB_WAY1_BANK1_RAM2 );
-        $readmemh({`CACHE_DATA_PATH,  "way1_bank0_ram3.txt" }, `TB_WAY1_BANK1_RAM3 );
+        $readmemh({`CACHE_DATA_PATH,  "way1_bank0_ram0.txt" }, `TB_WAY1_BANK0_RAM0 );
+        $readmemh({`CACHE_DATA_PATH,  "way1_bank0_ram1.txt" }, `TB_WAY1_BANK0_RAM1 );
+        $readmemh({`CACHE_DATA_PATH,  "way1_bank0_ram2.txt" }, `TB_WAY1_BANK0_RAM2 );
+        $readmemh({`CACHE_DATA_PATH,  "way1_bank0_ram3.txt" }, `TB_WAY1_BANK0_RAM3 );
         $readmemh({`CACHE_DATA_PATH,  "way1_bank1_ram0.txt" }, `TB_WAY1_BANK1_RAM0 );
         $readmemh({`CACHE_DATA_PATH,  "way1_bank1_ram1.txt" }, `TB_WAY1_BANK1_RAM1 );
         $readmemh({`CACHE_DATA_PATH,  "way1_bank1_ram2.txt" }, `TB_WAY1_BANK1_RAM2 );
@@ -140,7 +140,7 @@ module dcache_tb;
         $readmemh({`CACHE_DATA_PATH,  "way1_bank3_ram1.txt" }, `TB_WAY1_BANK3_RAM1 );
         $readmemh({`CACHE_DATA_PATH,  "way1_bank3_ram2.txt" }, `TB_WAY1_BANK3_RAM2 );
         $readmemh({`CACHE_DATA_PATH,  "way1_bank3_ram3.txt" }, `TB_WAY1_BANK3_RAM3 );
-        $readmemh({`CACHE_LRU_PATH,   "way1_lru.txt"        }, `TB_WAY1_BANK1_RAM1 );
+        $readmemh({`CACHE_LRU_PATH,   "way1_lru.txt"        }, `TB_WAY1_LRU        );
 
         rst_n <= 0;
         #ClockPeriod rst_n <= 1;

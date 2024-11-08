@@ -1,7 +1,7 @@
 Command Line: /home/qidc/Synopsys/vcs/O-2018.09-SP2/linux64/bin/elabcom -logdir simv.daidir/elabcomLog -simvdaidir simv.daidir -lib simv.daidir/work -saveLevel -elab simv.daidir/kdb -simflow -simdir simv.daidir/kdb_libs -top true_dp_ram dff_rs_ld dff_rs dff dcache_tb -ssv -ssy -Lf work +disable_message+C00380+C00381 +disable_message+C00388+C00389
-uname(Linux qidc 6.8.0-45-generic #45~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Wed Sep 11 15:25:05 UTC 2 x86_64)
+uname(Linux qidc 6.8.0-48-generic #48~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Mon Oct  7 11:24:13 UTC 2 x86_64)
 [INFO] error/warning message 'C00380' has been suppressed.
 [INFO] error/warning message 'C00381' has been suppressed.
 [INFO] error/warning message 'C00388' has been suppressed.
 [INFO] error/warning message 'C00389' has been suppressed.
-au time 0.026627 0.007197 0.015511 delta 93020160 93020160 total 170721280 170721280
+au time 0.143732 0.085474 0.036262 delta 93024256 93024256 total 170725376 170725376

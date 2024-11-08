@@ -191,7 +191,7 @@
 `define TB_WAY0_BANK3_RAM1 dcache_tb.u_dcache.u_cache_way0.u_data.bank[3].u_bank.ram[1].u_simple_dp_ram.mem
 `define TB_WAY0_BANK3_RAM2 dcache_tb.u_dcache.u_cache_way0.u_data.bank[3].u_bank.ram[2].u_simple_dp_ram.mem
 `define TB_WAY0_BANK3_RAM3 dcache_tb.u_dcache.u_cache_way0.u_data.bank[3].u_bank.ram[3].u_simple_dp_ram.mem
-`define TB_WAY0_BANK0_RAM0 dcache_tb.u_dcache.u_cache_way0.u_lru.lru
+`define TB_WAY0_LRU        dcache_tb.u_dcache.u_cache_way0.u_lru.lru
 
 // Testbench变量名
 `define TB_WAY1_TAG       dcache_tb.u_dcache.u_cache_way1.u_tag.u_sp_ram.mem
@@ -213,5 +213,5 @@
 `define TB_WAY1_BANK3_RAM1 dcache_tb.u_dcache.u_cache_way1.u_data.bank[3].u_bank.ram[1].u_simple_dp_ram.mem
 `define TB_WAY1_BANK3_RAM2 dcache_tb.u_dcache.u_cache_way1.u_data.bank[3].u_bank.ram[2].u_simple_dp_ram.mem
 `define TB_WAY1_BANK3_RAM3 dcache_tb.u_dcache.u_cache_way1.u_data.bank[3].u_bank.ram[3].u_simple_dp_ram.mem
-`define TB_WAY1_BANK0_RAM0 dcache_tb.u_dcache.u_cache_way1.u_lru.lru
+`define TB_WAY1_LRU        dcache_tb.u_dcache.u_cache_way1.u_lru.lru
 
