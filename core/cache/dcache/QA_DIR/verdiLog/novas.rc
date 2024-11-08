@@ -237,8 +237,8 @@ TclAutoSource =
 SyncBrowserDir = TRUE
 ToolbarIconSize = Medium
 verdiAppFont = "Bitstream Vera Sans,-1,16,5,50,0,0,0,0,0", ""
+verdiMonoFont = "Courier 24"
 version = Verdi_O-2018.09-SP2
-verdiMonoFont = "Fixed 20"
 DblClick = 250
 Find_Delimiter = .
 ViewMouse13Swap = FALSE
@@ -334,15 +334,15 @@ showProperty = TRUE
 showSequence = TRUE
 showDollarUnit = TRUE
 [OldFontRC]
-Wave_legend_window_font = -f COURIER12 -c ID_CYAN5
-Wave_value_window_font = -f COURIER12 -c ID_CYAN5
-Wave_curve_window_font = -f COURIER12 -c ID_CYAN5
-Wave_group_name_font = -f COURIER12 -c ID_GREEN5
-Wave_ruler_value_font = -f COURIER12 -c ID_CYAN5
-Wave_analog_ruler_value_font = -f COURIER12 -c ID_CYAN5
-Wave_comment_string_font = -f COURIER12 -c ID_RED5
-HB_designTreeFont = *-adobe-courier-medium-r-*-*-12-*-*-*-*-*-iso8859-*
-Text_font = COURIER12
+Wave_legend_window_font = -f COURIER18 -c ID_CYAN5
+Wave_value_window_font = -f COURIER18 -c ID_CYAN5
+Wave_curve_window_font = -f COURIER18 -c ID_CYAN5
+Wave_group_name_font = -f COURIER18 -c ID_GREEN5
+Wave_ruler_value_font = -f COURIER18 -c ID_CYAN5
+Wave_analog_ruler_value_font = -f COURIER18 -c ID_CYAN5
+Wave_comment_string_font = -f COURIER18 -c ID_RED5
+HB_designTreeFont = *-adobe-courier-medium-r-*-*-18-*-*-*-*-*-iso8859-*
+Text_font = COURIER18
 nMemory_font = Fixed 14
 Wave_getsignal_form_font = -f COURIER18
 Text_annotFont = Helvetica_M_R_14
@@ -409,7 +409,8 @@ QwWarnMsgDlg = 992,831,947,547
 saveSigDlg = 1039,559,551,386
 searchScope_base = 1026,396,925,548
 QwUserAskDlg = 1153,682,324,140
-monoFontDlg = 1107,775,366,432
+QwInfoMsgDlg = 927,502,750,250
+monoFontDlg = 1107,802,366,432
 [Relationship]
 hideRecursiceNode = FALSE
 [Session Cache]
@@ -607,10 +608,10 @@ hdlSynopsysComment = ID_GREEN2
 pdmlIdentifier = ID_BLACK
 pdmlCommand = ID_BLACK
 pdmlMacro = ID_BLACK
-font = FIXED20
+font = COURIER24
 annotFont = Helvetica_M_R_14
 [Text.1]
-viewport = 70 27 2490 1376 45
+viewport = 70 27 2484 1170 45
 [TextPrinter]
 Orientation = Landscape
 Indicator = FALSE
@@ -705,34 +706,34 @@ DefaultLogTimeUnit = "1.000000ns"
 [VIA.oneSearch.preference.vgifColumnSettingRC.setting0]
 parRuleSets = ""
 [VIA.oneSearch.preference.vgifColumnSettingRC.setting0.column0]
-name = Time
-width = 60
-visualIndex = 0
-isHidden = TRUE
-isUserChangeColumnVisible = FALSE
-[VIA.oneSearch.preference.vgifColumnSettingRC.setting0.column1]
 name = Code
 width = 60
 visualIndex = 2
 isHidden = TRUE
 isUserChangeColumnVisible = FALSE
-[VIA.oneSearch.preference.vgifColumnSettingRC.setting0.column2]
-name = Severity
-width = 60
-visualIndex = 1
-isHidden = TRUE
-isUserChangeColumnVisible = FALSE
-[VIA.oneSearch.preference.vgifColumnSettingRC.setting0.column3]
+[VIA.oneSearch.preference.vgifColumnSettingRC.setting0.column1]
 name = Type
 width = 60
 visualIndex = 3
 isHidden = TRUE
 isUserChangeColumnVisible = FALSE
-[VIA.oneSearch.preference.vgifColumnSettingRC.setting0.column4]
+[VIA.oneSearch.preference.vgifColumnSettingRC.setting0.column2]
 name = Message
 width = 2000
 visualIndex = 4
 isHidden = FALSE
+isUserChangeColumnVisible = FALSE
+[VIA.oneSearch.preference.vgifColumnSettingRC.setting0.column3]
+name = Time
+width = 60
+visualIndex = 0
+isHidden = TRUE
+isUserChangeColumnVisible = FALSE
+[VIA.oneSearch.preference.vgifColumnSettingRC.setting0.column4]
+name = Severity
+width = 60
+visualIndex = 1
+isHidden = TRUE
 isUserChangeColumnVisible = FALSE
 [Vi]
 ViFont = "Clean 14"
@@ -753,7 +754,7 @@ scope_to_save_with_macro
 open_file_dir
 open_rc_file_dir
 getSignalForm = 0 0 800 479 100 30 100 30
-viewPort = 0 27 2490 400 394 275
+viewPort = 0 27 2484 192 394 275
 signalSpacing = 5
 digitalSignalHeight = 15
 analogSignalHeight = 98
@@ -1030,14 +1031,14 @@ open_file_time_range = FALSE
 value_window_aligment = Right
 signal_window_alignment = Auto
 ShowDeltaTime = TRUE
-legend_window_font = -f FIXED20 -c ID_CYAN5
-value_window_font = -f FIXED20 -c ID_CYAN5
-curve_window_font = -f FIXED20 -c ID_CYAN5
-group_name_font = -f FIXED20 -c ID_GREEN5
-ruler_value_font = -f FIXED20 -c ID_CYAN5
-analog_ruler_value_font = -f FIXED20 -c ID_CYAN5
-comment_string_font = -f FIXED20 -c ID_RED5
-getsignal_form_font = -f FIXED20
+legend_window_font = -f COURIER24 -c ID_CYAN5
+value_window_font = -f COURIER24 -c ID_CYAN5
+curve_window_font = -f COURIER24 -c ID_CYAN5
+group_name_font = -f COURIER24 -c ID_GREEN5
+ruler_value_font = -f COURIER24 -c ID_CYAN5
+analog_ruler_value_font = -f COURIER24 -c ID_CYAN5
+comment_string_font = -f COURIER24 -c ID_RED5
+getsignal_form_font = -f COURIER24
 SigsCheckNum = on 1000
 filter_synthesized_net = off n
 filterOutNet = on
@@ -1212,7 +1213,7 @@ showCellBitRangeWithAddr = TRUE
 wordsShownInOneRow = 8
 syncCursorTime = FALSE
 fixCellColumnWidth = FALSE
-font = Fixed 20
+font = Courier 24
 [planColors]
 plan_fillColor_inactive = lightGray
 plan_fillColor_warning = orange
@@ -1631,7 +1632,7 @@ AddImportArgument = FALSE
 LineBreakWithScope = TRUE
 StopAfterCompileOption = -s
 [wave.0]
-viewPort = 0 27 2490 400 394 275
+viewPort = 0 27 2484 192 394 275
 [wave.1]
 viewPort = 127 219 960 332 100 65
 [wave.2]
