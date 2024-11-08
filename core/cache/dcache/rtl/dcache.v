@@ -3,7 +3,7 @@
 // Author        : Qidc
 // Email         : qidc@stu.pku.edu.cn
 // Created On    : 2024/10/23 10:18
-// Last Modified : 2024/11/07 22:00
+// Last Modified : 2024/11/08 20:36
 // File Name     : dcache.v
 // Description   : DCache 模块
 //
@@ -319,18 +319,18 @@ module dcache (
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
             wr_buf_way     <= 1'b0;
-            wr_buf_index   <= cpu_index_i;
-            wr_buf_offset  <= cpu_offset_i;
-            wr_buf_wr_en   <= cpu_wr_en_i;
-            wr_buf_wr_data <= cpu_wr_data_i;
+            wr_buf_index   <= req_buf_index;
+            wr_buf_offset  <= req_buf_offset;
+            wr_buf_wr_en   <= req_buf_wr_en;
+            wr_buf_wr_data <= req_buf_wr_data;
         end else begin
             case (next_wrbuf_state)
                 WRBUF_IDLE: begin
                     wr_buf_way     <= 1'b0;
-                    wr_buf_index   <= cpu_index_i;
-                    wr_buf_offset  <= cpu_offset_i;
-                    wr_buf_wr_en   <= cpu_wr_en_i;
-                    wr_buf_wr_data <= cpu_wr_data_i;
+                    wr_buf_index   <= `RST_CACHE_INDEX;
+                    wr_buf_offset  <= `RST_CACHE_OFFSET;
+                    wr_buf_wr_en   <= `RAM_WR_DISABLE;
+                    wr_buf_wr_data <= `RST_DATA;
                 end
                 WRBUF_WRITE: begin
                     wr_buf_way     <= ~way0_hit | way1_hit; // 选择命中的way
@@ -436,8 +436,8 @@ module dcache (
     assign way0_wr_dirty_en  = (refill_state | write_state) & way0_hit;
     assign way1_wr_dirty_en  = (refill_state | write_state) & way1_hit;
 
-    assign way0_wr_data_en = ({`RAM_NUM{write_state}} & req_buf_wr_en | {`RAM_NUM{refill_state}}) & {`RAM_NUM{way0_hit}};
-    assign way1_wr_data_en = ({`RAM_NUM{write_state}} & req_buf_wr_en | {`RAM_NUM{refill_state}}) & {`RAM_NUM{way1_hit}};
+    assign way0_wr_data_en = {`RAM_NUM{write_state}} & wr_buf_wr_en | {`RAM_NUM{refill_state}} & {`RAM_NUM{~miss_buf_replace_way}};
+    assign way1_wr_data_en = {`RAM_NUM{write_state}} & wr_buf_wr_en | {`RAM_NUM{refill_state}} & {`RAM_NUM{miss_buf_replace_way}};
 
     assign way0_wr_lru_en  = lookup_state & cache_hit | refill_state;
     assign way1_wr_lru_en  = lookup_state & cache_hit | refill_state;
@@ -552,7 +552,7 @@ module dcache (
     assign ram_dirty_o = miss_buf_replace_way ? way1_dirty : way0_dirty;
 
     assign cpu_addr_ack_o = idle_state || (lookup_state && cache_hit);
-    assign cpu_data_ack_o = (lookup_state && cache_hit) || (refill_state && (ram_rd_num_i-1'd1 == req_buf_offset));
+    assign cpu_data_ack_o = (lookup_state && cache_hit) || (refill_state && (ram_rd_num_i-1'd1 == req_buf_offset[3:2]));
 
 
 endmodule

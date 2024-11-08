@@ -1,0 +1,1 @@
+logical_expression_3 = "/dcache_tb/u_dcache/cache_hit" && ("/dcache_tb/u_dcache/main_state[4:0]" == 5'b00010)

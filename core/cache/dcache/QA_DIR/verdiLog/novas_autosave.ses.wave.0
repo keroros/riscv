@@ -2,7 +2,7 @@ Magic 271485
 Revision Verdi_O-2018.09-SP2
 
 ; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
-viewPort 0 27 2490 835 394 275
+viewPort 0 27 2490 601 339 129
 
 ; File list:
 ; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
@@ -16,16 +16,28 @@ signalSpacing 5
 
 ; windowTimeUnit is used for zoom, cursor & marker
 ; waveform viewport range
-zoom 0.000000 131736.454294
-cursor 0.000000
-marker 0.000000
+zoom 0.000000 265000.000000
+cursor 75000.000000
+marker -6257.21442885770
 
 ; user define markers
 ; userMarker time_pos marker_name color linestyle
 ; visible top row signal index
 top 0
 ; marker line index
-markerPos 8
+markerPos 11
+
+; logical expression list
+; addExprSig expr_name expression_string
+activeDirFile "" "/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/rtl.fsdb"
+
+addExprSig -b 1 -n UU logical_expression_3 "/dcache_tb/u_dcache/cache_hit" && ("/dcache_tb/u_dcache/main_state[4:\
+0]" == 5'b00010)
+
+; rename signal list
+; addRenameSig new_name org_name
+
+addRenameSig "/cache_hit_mark" "/logical_expression_3" keep
 
 ; event list
 ; addEvent event_name event_expression
@@ -45,28 +57,81 @@ COMPLEX_EVENT_END
 curSTATUS ByChange
 
 
+aliasmapname dcache.main_state
+nalias MAIN_REPLACE		5'b01000		NULL
+nalias MAIN_LOOKUP		5'b00010		NULL
+nalias MAIN_REFILL		5'b10000		NULL
+nalias MAIN_MISS		5'b00100		NULL
+nalias MAIN_IDLE		5'b00001		NULL
+
+aliasmapname dcache.wrbuf_state
+nalias WRBUF_IDLE		1'b0		NULL
+nalias WRBUF_WRITE		1'b1		NULL
+
 addGroup "G1"
 activeDirFile "" "/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/rtl.fsdb"
 addSignal -h 21 /dcache_tb/u_dcache/clk
 addSignal -h 21 -holdScope rst_n
+addSignal -h 21 /dcache_tb/op_num[3:0]
 addGroup "G4"
 addSignal -h 21 /dcache_tb/u_dcache/cpu_req_i
-addSignal -h 21 -holdScope cache_hit
-addSignal -h 21 -holdScope main_state[4:0]
-addSignal -h 21 -holdScope next_main_state[4:0]
+addSignal -h 21 -holdScope cpu_op_i
 addSignal -h 21 -holdScope cpu_rd_data_o[31:0]
+addSignal -h 21 -holdScope way1_wr_data_en[3:0]
+addSignal -h 21 -holdScope miss_buf_replace_way
+addSignal -h 21 -holdScope way0_lru
+addSignal -h 21 -holdScope way1_lru
+addSignal -h 21 -holdScope cpu_addr_ack_o
+addSignal -h 21 -holdScope cpu_data_ack_o
+addSignal -h 21 /cache_hit_mark
+aliasname dcache.main_state
+addSignal -c ID_ORANGE5 -ls solid -lw 1 -h 21 -UNSIGNED -HEX /dcache_tb/u_dcache/main_state[4:0]
+aliasname dcache.wrbuf_state
+addSignal -c ID_ORANGE5 -ls solid -lw 1 -h 21 -UNSIGNED -HEX -holdScope wrbuf_state
 addGroup "G2"
-addSignal -h 21 /dcache_tb/u_dcache/cpu_op_i
-addSignal -h 21 -holdScope cpu_index_i[7:0]
-addSignal -h 21 -holdScope cpu_tag_i[19:0]
-addSignal -h 21 -holdScope cpu_offset_i[3:0]
+addSignal -h 21 /dcache_tb/u_dcache/cpu_index_i[7:0]
+addSignal -h 21 -UNSIGNED -HEX -holdScope cpu_tag_i[19:0]
+addSignal -h 21 -UNSIGNED -BIN -holdScope cpu_offset_i[3:0]
+addSignal -h 21 -UNSIGNED -BIN -holdScope cpu_wr_en_i[3:0]
+addSignal -h 21 -holdScope cpu_wr_data_i[31:0]
 addGroup "G3"
 addSignal -h 21 /dcache_tb/u_dcache/req_buf_op
 addSignal -h 21 -holdScope req_buf_index[7:0]
 addSignal -h 21 -holdScope req_buf_tag[19:0]
-addSignal -h 21 -holdScope req_buf_offset[3:0]
+addSignal -h 21 -UNSIGNED -BIN -holdScope req_buf_offset[3:0]
+addSignal -h 21 -UNSIGNED -BIN -holdScope req_buf_wr_en[3:0]
+addSignal -h 21 -holdScope req_buf_wr_data[31:0]
 addGroup "G5"
+addGroup "G6"
+addSignal -h 21 /dcache_tb/u_dcache/u_cache_way1/u_data/bank[2]/u_bank/ram[0]/u_simple_dp_ram/mem[1][7:0]
+addSignal -h 21 /dcache_tb/u_dcache/u_cache_way1/u_data/bank[2]/u_bank/ram[1]/u_simple_dp_ram/mem[1][7:0]
+addSignal -h 21 -UNSIGNED -HEX /dcache_tb/u_dcache/u_cache_way1/u_data/bank[2]/u_bank/ram[2]/u_simple_dp_ram/mem[1][7:0]
+addSignal -h 21 /dcache_tb/u_dcache/u_cache_way1/u_data/bank[2]/u_bank/ram[3]/u_simple_dp_ram/mem[1][7:0]
+addGroup "G7"
 
 ; getSignalForm Scope Hierarchy Status
 ; active file of getSignalForm
 
+
+FILTER_SIGNAL_BEGIN
+
+"*"
+
+FILTER_STRING_LIST_BEGIN
+FILTER_STRING_LIST_END
+
+FILTER_TYPE_LIST_BEGIN
+"All"
+"Input"
+"Output"
+"Inout"
+"Net"
+"Register"
+"Buffer"
+"Linkage"
+"ClassTransaction"
+"Property"
+"Others"
+FILTER_TYPE_LIST_END
+
+FILTER_SIGNAL_END

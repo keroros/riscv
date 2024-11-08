@@ -8,5 +8,4 @@ debLoadSimResult \
 wvCreateWindow
 wvRestoreSignal -win $_nWave2 "signal.rc" -overWriteAutoAlias on -appendSignals \
            on
-simSetSvtbMode off
-debExit
+srcSignalView -on

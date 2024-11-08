@@ -1,4 +1,238 @@
-Command Line: /home/qidc/Synopsys/verdi/Verdi_O-2018.09-SP2/platform/LINUXAMD64/bin/Novas -ssf rtl.fsdb -sswr signal.rc
+Command Line: /home/qidc/Synopsys/verdi/Verdi_O-2018.09-SP2/platform/LINUXAMD64/bin/Novas -full64
 uname(Linux qidc 6.8.0-45-generic #45~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Wed Sep 11 15:25:05 UTC 2 x86_64)
+Disabled AskUser2 MessDisabled AskUser2 Message (Response 0): Overwrite /home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/signal.rc?
+type= DS_SIGNAL element= 1 field= 2
+VERILOG dcache_tb
+VERILOG u_dcache
+VERILOG wrbuf_state
+-----
+second field= signal
+type= DS_STRING
+wrbuf_state
+type= DS_SIGNAL element= 1 field= 2
+VERILOG dcache_tb
+VERILOG u_dcache
+VERILOG next_wrbuf_state
+-----
+second field= signal
+type= DS_STRING
+next_wrbuf_state
+type= DS_SIGNAL element= 5 field= 2
+VERILOG dcache_tb
+VERILOG u_dcache
+VERILOG wr_buf_way
+-----
+second field= signal
+VERILOG dcache_tb
+VERILOG u_dcache
+VERILOG wr_buf_index[7:0]
+-----
+second field= signal
+VERILOG dcache_tb
+VERILOG u_dcache
+VERILOG wr_buf_offset[3:0]
+-----
+second field= signal
+VERILOG dcache_tb
+VERILOG u_dcache
+VERILOG wr_buf_wr_en[3:0]
+-----
+second field= signal
+VERILOG dcache_tb
+VERILOG u_dcache
+VERILOG wr_buf_wr_data[31:0]
+-----
+second field= signal
+type= DS_STRING
+wr_buf_way wr_buf_index[7:0] wr_buf_offset[3:0] wr_buf_wr_en[3:0] wr_buf_wr_data[31:0]
+type= DS_SIGNAL element= 1 field= 2
+VERILOG dcache_tb
+VERILOG u_dcache
+VERILOG req_buf_wr_data[31:0]
+-----
+second field= signal
+type= DS_STRING
+req_buf_wr_data[31:0]
+type= DS_SIGNAL element= 2 field= 2
+VERILOG dcache_tb
+VERILOG u_dcache
+VERILOG cpu_wr_en_i[3:0]
+-----
+second field= signal
+VERILOG dcache_tb
+VERILOG u_dcache
+VERILOG cpu_wr_data_i[31:0]
+-----
+second field= signal
+type= DS_STRING
+cpu_wr_en_i[3:0] cpu_wr_data_i[31:0]
+type= DS_SIGNAL element= 3 field= 2
+VERILOG dcache_tb
+VERILOG u_dcache
+VERILOG u_cache_way1
+VERILOG u_data
+VERILOG index_i[7:0]
+-----
+second field= signal
+VERILOG dcache_tb
+VERILOG u_dcache
+VERILOG u_cache_way1
+VERILOG u_data
+VERILOG offset_i[3:0]
+-----
+second field= signal
+VERILOG dcache_tb
+VERILOG u_dcache
+VERILOG u_cache_way1
+VERILOG u_data
+VERILOG wr_en_i[3:0]
+-----
+second field= signal
+type= DS_STRING
+index_i[7:0] offset_i[3:0] wr_en_i[3:0]
+type= DS_SIGNAL element= 1 field= 2
+VERILOG dcache_tb
+VERILOG u_dcache
+VERILOG u_cache_way1
+VERILOG u_data
+VERILOG wr_data_i[31:0]
+-----
+second field= signal
+type= DS_STRING
+wr_data_i[31:0]
+type= DS_SIGNAL element= 1 field= 2
+VERILOG dcache_tb
+VERILOG u_dcache
+VERILOG req_buf_wr_en[3:0]
+-----
+second field= signal
+type= DS_STRING
+req_buf_wr_en[3:0]
+Disabled AskUser2 Message (Response 0): Overwrite /home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/signal.rc?
+[MessageBox] The KDB has been updated by other processes. Reload the KDB to update it; otherwise, you may get unexpected results.
+Failed to bind ID for line(29) of file(/home/qidc/Nutstore/Project/riscv/core/cache/dcache/tb/dcache_tb.sv)
+type= DS_SIGNAL element= 1 field= 2
+VERILOG dcache_tb
+VERILOG u_dcache
+VERILOG u_cache_way1
+VERILOG u_data
+VERILOG bank[2]
+VERILOG u_bank
+VERILOG ram[0]
+VERILOG u_simple_dp_ram
+VERILOG mem[1][7:0]
+-----
+second field= signal
+type= DS_STRING
+mem[1][7:0]
+type= DS_SIGNAL element= 1 field= 2
+VERILOG dcache_tb
+VERILOG u_dcache
+VERILOG u_cache_way1
+VERILOG u_data
+VERILOG bank[2]
+VERILOG u_bank
+VERILOG ram[1]
+VERILOG u_simple_dp_ram
+VERILOG mem[1][7:0]
+-----
+second field= signal
+type= DS_STRING
+mem[1][7:0]
+type= DS_SIGNAL element= 1 field= 2
+VERILOG dcache_tb
+VERILOG u_dcache
+VERILOG u_cache_way1
+VERILOG u_data
+VERILOG bank[2]
+VERILOG u_bank
+VERILOG ram[2]
+VERILOG u_simple_dp_ram
+VERILOG mem[1][7:0]
+-----
+second field= signal
+type= DS_STRING
+mem[1][7:0]
+type= DS_SIGNAL element= 1 field= 2
+VERILOG dcache_tb
+VERILOG u_dcache
+VERILOG u_cache_way1
+VERILOG u_data
+VERILOG bank[2]
+VERILOG u_bank
+VERILOG ram[3]
+VERILOG u_simple_dp_ram
+VERILOG mem[1][7:0]
+-----
+second field= signal
+type= DS_STRING
+mem[1][7:0]
+type= DS_SIGNAL element= 1 field= 2
+VERILOG dcache_tb
+VERILOG u_dcache
+VERILOG cpu_op_i
+-----
+second field= signal
+type= DS_STRING
+cpu_op_i
+type= DS_SIGNAL element= 1 field= 2
+VERILOG dcache_tb
+VERILOG u_dcache
+VERILOG cpu_rd_data_o[31:0]
+-----
+second field= signal
+type= DS_STRING
+cpu_rd_data_o[31:0]
+type= DS_SIGNAL element= 2 field= 2
+VERILOG dcache_tb
+VERILOG u_dcache
+VERILOG cpu_addr_ack_o
+-----
+second field= signal
+VERILOG dcache_tb
+VERILOG u_dcache
+VERILOG cpu_data_ack_o
+-----
+second field= signal
+type= DS_STRING
+cpu_addr_ack_o cpu_data_ack_o
+[MessageBox] The KDB has been updated by other processes. Reload the KDB to update it; otherwise, you may get unexpected results.
+BeginLine(0) < 1
+BeginLine(0) < 1
+BeginLine(0) < 1
+type= DS_SIGNAL element= 1 field= 2
+VERILOG dcache_tb
+VERILOG op_num[3:0]
+-----
+second field= signal
+type= DS_STRING
+op_num[3:0]
+[MessageBox] The KDB has been updated by other processes. Reload the KDB to update it; otherwise, you may get unexpected results.
+type= DS_SIGNAL element= 1 field= 2
+VERILOG dcache_tb
+VERILOG u_dcache
+VERILOG u_cache_way1
+VERILOG wr_data_en_i[3:0]
+-----
+second field= signal
+type= DS_STRING
+wr_data_en_i[3:0]
+type= DS_SIGNAL element= 1 field= 2
+VERILOG dcache_tb
+VERILOG u_dcache
+VERILOG way1_hit
+-----
+second field= signal
+type= DS_STRING
+way1_hit
+type= DS_SIGNAL element= 1 field= 2
+VERILOG dcache_tb
+VERILOG u_dcache
+VERILOG way1_wr_data_en[3:0]
+-----
+second field= signal
+type= DS_STRING
+way1_wr_data_en[3:0]
+Disabled AskUser2 Message (Response 0): Overwrite /home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/signal.rc?
 Disabled AskUser2 Message (Response 0): Close all windows and exit verdi?
-au time 212.072889 4.362959 4.915258 delta 546418688 546418688 total 917811200 917811200
+au time 18337.777704 109.064232 286.294433 delta 987557888 987557888 total 1358950400 1358950400

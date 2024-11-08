@@ -121,6 +121,7 @@ IfFilterPowerAwareInstruments = FALSE
 version = Verdi_O-2018.09-SP2
 184615126 = disabled
 152174613 = disabled
+50528765 = disabled
 [Editor]
 editorName = TurboEditor
 [Emacs]
@@ -237,12 +238,12 @@ TclAutoSource =
 SyncBrowserDir = TRUE
 ToolbarIconSize = Medium
 verdiAppFont = "Bitstream Vera Sans,-1,16,5,50,0,0,0,0,0", ""
-verdiMonoFont = "Courier 24"
-version = Verdi_O-2018.09-SP2
 DblClick = 250
 Find_Delimiter = .
 ViewMouse13Swap = FALSE
 cmd_enter_form = FALSE
+verdiMonoFont = "Fixed 20"
+version = Verdi_O-2018.09-SP2
 SignalCaseInSensitive = FALSE
 ShowWndCtntDuringResizing = FALSE
 [GlobalProp]
@@ -281,6 +282,7 @@ import_filter_verilog = *.v; *.vc; *.f
 simulation_file_type = *.fsdb;*.fsdb.gz;*.fsdb.bz2;*.ff;*.dump
 PrefetchViewableAnnot = TRUE
 ProfileTime = FALSE
+TraceActiveDetect = TRUE
 [Hier]
 filterTimeout = 1500
 [ImportLiberty]
@@ -403,14 +405,14 @@ savePropDtl = TRUE
 SetWindowTimeUnitDialog = 1085,708,433,98
 GoToLineForm_base = 1138,686,353,131
 FileWithNoteForm_base = 988,530,653,443
-schExtrFSM = 1116,692,398,120
 fileWithNote = 988,530,653,443
-QwWarnMsgDlg = 992,831,947,547
-saveSigDlg = 1039,559,551,386
-searchScope_base = 1026,396,925,548
-QwUserAskDlg = 1153,682,324,140
-QwInfoMsgDlg = 927,502,750,250
 monoFontDlg = 1107,802,366,432
+searchScope_base = 852,441,925,548
+QwWarnMsgDlg = 992,893,947,547
+schExtrFSM = 1116,692,398,120
+saveSigDlg = 1039,559,551,386
+QwInfoMsgDlg = 927,539,750,250
+QwUserAskDlg = 1153,668,324,167
 [Relationship]
 hideRecursiceNode = FALSE
 [Session Cache]
@@ -452,11 +454,11 @@ scs_mixOption = -vhpi debussy:FSDBDumpCmd
 iscCmdSep = FALSE
 thirdpartyIdx = -1
 simType = vcssv
-interactiveDebugging = TRUE
 NoAppendOption = FALSE
 ScsDebugAll = FALSE
-bSVTBMode = FALSE
+bSVTBMode = TRUE
 SimMode = TRUE
+interactiveDebugging = TRUE
 KeepBreakPoints = FALSE
 [SimulationPlus]
 xlPath = verilog
@@ -487,17 +489,17 @@ restoreSimState = FALSE
 enableReverseDebug = FALSE
 simXLMode = FALSE
 invokeSimPath = work
-vcs_svPath = /home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/simv
 vcs_svOption = 
 thirdpartyIdx = -1
-simType = vcssv
-interactiveDebugging = TRUE
 NoAppendOption = FALSE
 ScsDebugAll = FALSE
-bSVTBMode = FALSE
-SimMode = TRUE
-KeepBreakPoints = FALSE
 smartlog = FALSE
+simType = vcssv
+bSVTBMode = TRUE
+SimMode = TRUE
+interactiveDebugging = TRUE
+KeepBreakPoints = FALSE
+vcs_svPath = /home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/simv
 [SimulationPlus2]
 eventDumpUnfinish = FALSE
 [Source]
@@ -608,10 +610,10 @@ hdlSynopsysComment = ID_GREEN2
 pdmlIdentifier = ID_BLACK
 pdmlCommand = ID_BLACK
 pdmlMacro = ID_BLACK
-font = COURIER24
+font = FIXED20
 annotFont = Helvetica_M_R_14
 [Text.1]
-viewport = 70 27 2484 1170 45
+viewport = 70 27 2490 1376 45
 [TextPrinter]
 Orientation = Landscape
 Indicator = FALSE
@@ -693,8 +695,8 @@ Button3 = "Next ? Time" "#${Arg:Next Time} $stop;.\n"
 Button2 = "Next 1000 Time" "#1000 $stop;.\n"
 Button1 = "Dump All Signals" "$fsdbDumpvars;\n"
 [VIA]
-viaLogViewerDefaultRuleOneSearchForm = "share/VIA/Apps/PredefinedRules/Misc/Onesearch_rule.rc"
 viaLogViewerDefaultRuleInterForm = "share/VIA/Apps/PredefinedRules/UVM_OVM_i_rule.rc"
+viaLogViewerDefaultRuleOneSearchForm = "share/VIA/Apps/PredefinedRules/Misc/Onesearch_rule.rc"
 [VIA.interactiveDebug.preference]
 DefaultDisplayTimeUnit = "1.000000ns"
 DefaultLogTimeUnit = "1.000000ns"
@@ -706,27 +708,27 @@ DefaultLogTimeUnit = "1.000000ns"
 [VIA.oneSearch.preference.vgifColumnSettingRC.setting0]
 parRuleSets = ""
 [VIA.oneSearch.preference.vgifColumnSettingRC.setting0.column0]
-name = Code
-width = 60
-visualIndex = 2
-isHidden = TRUE
-isUserChangeColumnVisible = FALSE
-[VIA.oneSearch.preference.vgifColumnSettingRC.setting0.column1]
-name = Type
-width = 60
-visualIndex = 3
-isHidden = TRUE
-isUserChangeColumnVisible = FALSE
-[VIA.oneSearch.preference.vgifColumnSettingRC.setting0.column2]
 name = Message
 width = 2000
 visualIndex = 4
 isHidden = FALSE
 isUserChangeColumnVisible = FALSE
-[VIA.oneSearch.preference.vgifColumnSettingRC.setting0.column3]
+[VIA.oneSearch.preference.vgifColumnSettingRC.setting0.column1]
 name = Time
 width = 60
 visualIndex = 0
+isHidden = TRUE
+isUserChangeColumnVisible = FALSE
+[VIA.oneSearch.preference.vgifColumnSettingRC.setting0.column2]
+name = Code
+width = 60
+visualIndex = 2
+isHidden = TRUE
+isUserChangeColumnVisible = FALSE
+[VIA.oneSearch.preference.vgifColumnSettingRC.setting0.column3]
+name = Type
+width = 60
+visualIndex = 3
 isHidden = TRUE
 isUserChangeColumnVisible = FALSE
 [VIA.oneSearch.preference.vgifColumnSettingRC.setting0.column4]
@@ -754,7 +756,7 @@ scope_to_save_with_macro
 open_file_dir
 open_rc_file_dir
 getSignalForm = 0 0 800 479 100 30 100 30
-viewPort = 0 27 2484 192 394 275
+viewPort = 0 27 2490 648 339 129
 signalSpacing = 5
 digitalSignalHeight = 15
 analogSignalHeight = 98
@@ -1031,14 +1033,14 @@ open_file_time_range = FALSE
 value_window_aligment = Right
 signal_window_alignment = Auto
 ShowDeltaTime = TRUE
-legend_window_font = -f COURIER24 -c ID_CYAN5
-value_window_font = -f COURIER24 -c ID_CYAN5
-curve_window_font = -f COURIER24 -c ID_CYAN5
-group_name_font = -f COURIER24 -c ID_GREEN5
-ruler_value_font = -f COURIER24 -c ID_CYAN5
-analog_ruler_value_font = -f COURIER24 -c ID_CYAN5
-comment_string_font = -f COURIER24 -c ID_RED5
-getsignal_form_font = -f COURIER24
+legend_window_font = -f FIXED20 -c ID_CYAN5
+value_window_font = -f FIXED20 -c ID_CYAN5
+curve_window_font = -f FIXED20 -c ID_CYAN5
+group_name_font = -f FIXED20 -c ID_GREEN5
+ruler_value_font = -f FIXED20 -c ID_CYAN5
+analog_ruler_value_font = -f FIXED20 -c ID_CYAN5
+comment_string_font = -f FIXED20 -c ID_RED5
+getsignal_form_font = -f FIXED20
 SigsCheckNum = on 1000
 filter_synthesized_net = off n
 filterOutNet = on
@@ -1213,7 +1215,7 @@ showCellBitRangeWithAddr = TRUE
 wordsShownInOneRow = 8
 syncCursorTime = FALSE
 fixCellColumnWidth = FALSE
-font = Courier 24
+font = Fixed 20
 [planColors]
 plan_fillColor_inactive = lightGray
 plan_fillColor_warning = orange
@@ -1284,7 +1286,6 @@ PowerMapFile =
 GroundMapFile = 
 CopyScopeNameDelimiter = 
 RegNamingRule = 
-viewport = 0 27 1417 736
 schBackgroundColor = ID_BLACK lineSolid 1
 schBodyColor = ID_ORANGE6 lineSolid 1
 schAsmBodyColor = ID_BLUE7 lineSolid 1
@@ -1474,6 +1475,7 @@ IsShowConstantValue = True
 clockTreeBrowser-MarkerColor = ID_YELLOW5
 clockTreeBrowser-SelectedColor = ID_BLUE5
 clockTreeBrowser-ViolationColor = ID_RED5
+viewport = 0 27 1348 406
 [schematics_print]
 Signature = FALSE
 DesignName = PCU
@@ -1632,7 +1634,7 @@ AddImportArgument = FALSE
 LineBreakWithScope = TRUE
 StopAfterCompileOption = -s
 [wave.0]
-viewPort = 0 27 2484 192 394 275
+viewPort = 0 27 2490 648 339 129
 [wave.1]
 viewPort = 127 219 960 332 100 65
 [wave.2]
