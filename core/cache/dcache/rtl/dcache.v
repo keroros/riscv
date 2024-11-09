@@ -3,7 +3,7 @@
 // Author        : Qidc
 // Email         : qidc@stu.pku.edu.cn
 // Created On    : 2024/10/23 10:18
-// Last Modified : 2024/11/08 22:19
+// Last Modified : 2024/11/09 21:30
 // File Name     : dcache.v
 // Description   : DCache 模块
 //
@@ -105,7 +105,7 @@ module dcache (
     assign way0_load_word = way0_data[`DATA_WIDTH*req_buf_offset[3:2] +: `DATA_WIDTH];
     assign way1_load_word = way1_data[`DATA_WIDTH*req_buf_offset[3:2] +: `DATA_WIDTH];
     assign cache_load_word = {`DATA_WIDTH{way0_hit}} & way0_load_word |
-                       {`DATA_WIDTH{way1_hit}} & way1_load_word; // 读操作时，从读出的Data中选择Word
+                             {`DATA_WIDTH{way1_hit}} & way1_load_word; // 读操作时，从读出的Data中选择Word
 
     assign replace_data = miss_buf_replace_way ? way1_data : way0_data; // 替换时，选择要替换的Data
 
@@ -126,6 +126,27 @@ module dcache (
 
     reg [4:0] main_state;
     reg [4:0] next_main_state;
+
+    // 定义状态变量简化表达
+    wire idle_state;
+    wire lookup_state;
+    wire miss_state;
+    wire replace_state;
+    wire refill_state;
+
+    wire next_lookup_state;
+    wire next_replace_state;
+    wire next_refill_state;
+
+    assign idle_state    = main_state == MAIN_IDLE    ;
+    assign lookup_state  = main_state == MAIN_LOOKUP  ;
+    assign miss_state    = main_state == MAIN_MISS    ;
+    assign replace_state = main_state == MAIN_REPLACE ;
+    assign refill_state  = main_state == MAIN_REFILL  ;
+
+    assign next_lookup_state  = next_main_state == MAIN_LOOKUP  ;
+    assign next_replace_state = next_main_state == MAIN_REPLACE ;
+    assign next_refill_state  = next_main_state == MAIN_REFILL  ;
 
     // Main状态切换逻辑
     always @(*) begin
@@ -239,7 +260,7 @@ module dcache (
                     req_buf_wr_en        <= req_buf_wr_en;
                     req_buf_wr_data      <= req_buf_wr_data;
                     miss_buf_replace_way <= way0_lru | ~way1_lru;
-                    ram_wr_req           <= main_state == MAIN_MISS ? 1'b1 : 1'b0; // 写请求只在REPLACE第一拍发起
+                    ram_wr_req           <= miss_state ? 1'b1 : 1'b0; // 写请求只在REPLACE第一拍发起
                     ram_wr_req           <= 1'b1; // 发起写请求
                     ram_rd_req           <= 1'b1; // 发起读请求
                 end
@@ -279,11 +300,18 @@ module dcache (
     reg wrbuf_state;
     reg next_wrbuf_state;
 
+    // 定义状态变量简化表达
+    wire write_state;
+    wire next_write_state;
+
+    assign write_state = wrbuf_state == WRBUF_WRITE;
+    assign next_write_state = next_wrbuf_state == WRBUF_WRITE;
+
     // Write Buffer 状态切换逻辑
     always @(*) begin
         case (wrbuf_state)
             WRBUF_IDLE: begin
-                if (main_state == MAIN_LOOKUP &&
+                if (lookup_state &&
                     req_buf_op == 1'b1 &&
                     cache_hit  == 1'b1) begin // 在LOOKUP状态发现写请求命中
                     next_wrbuf_state = WRBUF_WRITE;
@@ -292,7 +320,7 @@ module dcache (
                 end
             end
             WRBUF_WRITE: begin
-                if (main_state == MAIN_LOOKUP &&
+                if (lookup_state &&
                     req_buf_op == 1'b1 &&
                     cache_hit  == 1'b1) begin // 在LOOKUP状态发现新的写请求
                     next_wrbuf_state = WRBUF_WRITE;
@@ -351,33 +379,6 @@ module dcache (
     end
 
 
-/* ------------------------ Cache RAM input select ------------------------ */
-
-    // 定义状态变量简化表达
-    wire idle_state;
-    wire lookup_state;
-    wire miss_state;
-    wire replace_state;
-    wire refill_state;
-    wire write_state;
-
-    wire next_lookup_state;
-    wire next_replace_state;
-    wire next_refill_state;
-    wire next_write_state;
-
-    assign idle_state    = main_state  == MAIN_IDLE    ? 1'b1 : 1'b0;
-    assign lookup_state  = main_state  == MAIN_LOOKUP  ? 1'b1 : 1'b0;
-    assign miss_state    = main_state  == MAIN_MISS    ? 1'b1 : 1'b0;
-    assign replace_state = main_state  == MAIN_REPLACE ? 1'b1 : 1'b0;
-    assign refill_state  = main_state  == MAIN_REFILL  ? 1'b1 : 1'b0;
-    assign write_state   = wrbuf_state == WRBUF_WRITE  ? 1'b1 : 1'b0;
-
-    assign next_lookup_state  = next_main_state  == MAIN_LOOKUP  ? 1'b1 : 1'b0;
-    assign next_replace_state = next_main_state  == MAIN_REPLACE ? 1'b1 : 1'b0;
-    assign next_refill_state  = next_main_state  == MAIN_REFILL  ? 1'b1 : 1'b0;
-    assign next_write_state   = next_wrbuf_state == WRBUF_WRITE  ? 1'b1 : 1'b0;
-
 /* ------------------------ Read/Write index select ------------------------ */
 
     // 生成所有表的索引地址，包括读和写
@@ -427,19 +428,19 @@ module dcache (
     wire                way0_wr_lru_en;
     wire                way1_wr_lru_en;
 
-    assign way0_wr_tag_en    = refill_state & way0_hit;
-    assign way1_wr_tag_en    = refill_state & way1_hit;
+    assign way0_wr_tag_en    = refill_state & ~miss_buf_replace_way;
+    assign way1_wr_tag_en    = refill_state & miss_buf_replace_way;
 
-    assign way0_wr_valid_en  = refill_state & way0_hit;
-    assign way1_wr_valid_en  = refill_state & way1_hit;
+    assign way0_wr_valid_en  = refill_state & ~miss_buf_replace_way;
+    assign way1_wr_valid_en  = refill_state & miss_buf_replace_way;
 
-    assign way0_wr_dirty_en  = (refill_state | write_state) & way0_hit;
-    assign way1_wr_dirty_en  = (refill_state | write_state) & way1_hit;
+    assign way0_wr_dirty_en  = write_state & way0_hit | refill_state & ~miss_buf_replace_way;
+    assign way1_wr_dirty_en  = write_state & way1_hit | refill_state & miss_buf_replace_way;
 
     assign way0_wr_data_en = {`RAM_NUM{write_state}} & wr_buf_wr_en | {`RAM_NUM{refill_state}} & {`RAM_NUM{~miss_buf_replace_way}};
     assign way1_wr_data_en = {`RAM_NUM{write_state}} & wr_buf_wr_en | {`RAM_NUM{refill_state}} & {`RAM_NUM{miss_buf_replace_way}};
 
-    assign way0_wr_lru_en  = lookup_state & cache_hit | refill_state;
+    assign way0_wr_lru_en  = lookup_state & cache_hit | refill_state; // 替换时，两个LRU都需要写，因此refill状态全部置位
     assign way1_wr_lru_en  = lookup_state & cache_hit | refill_state;
 
 /* ------------------------ Write data select ------------------------ */
@@ -462,8 +463,8 @@ module dcache (
     assign way0_valid_in = refill_state;
     assign way1_valid_in = refill_state;
 
-    assign way0_dirty_in = write_state | refill_state;
-    assign way1_dirty_in = write_state | refill_state;
+    assign way0_dirty_in = write_state | refill_state & req_buf_op; // refill状态，读置0，写置1
+    assign way1_dirty_in = write_state | refill_state & req_buf_op;
 
     assign way0_data_in = {`DATA_WIDTH{write_state}} & wr_buf_wr_data | {`DATA_WIDTH{refill_state}} & ram_load_word;
     assign way1_data_in = {`DATA_WIDTH{write_state}} & wr_buf_wr_data | {`DATA_WIDTH{refill_state}} & ram_load_word;
@@ -489,6 +490,9 @@ module dcache (
                          {`CACHE_OFFSET_AW{write_state}}        & wr_buf_offset  | 
                          {`CACHE_OFFSET_AW{next_replace_state}} & req_buf_offset | 
                          {`CACHE_OFFSET_AW{refill_state}}       & {ram_rd_offset[1:0], 2'b0};
+
+
+/* ------------------------ Instantiate module ------------------------ */
 
     // 实例化way0
     cache_way u_cache_way0 (
@@ -541,6 +545,7 @@ module dcache (
         .rd_data_o     (way1_data        ),
         .rd_lru_o      (way1_lru         )
     );
+
 
 /* ------------------------ Output ------------------------ */
 

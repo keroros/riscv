@@ -3,7 +3,7 @@
 // Author        : Qidc
 // Email         : qidc@stu.pku.edu.cn
 // Created On    : 2024/11/05 17:46
-// Last Modified : 2024/11/08 22:54
+// Last Modified : 2024/11/09 22:05
 // File Name     : dcache_tb.sv
 // Description   :
 //
@@ -57,10 +57,6 @@ module dcache_tb;
     wire [`DATA_WIDTH*4-1:0]     ram_wr_data_o  ;
     wire                         ram_dirty_o    ;
 
-    reg  [3:0] op_num;         // 表示第几次操作
-    wire [7:0] test_ram [0:255];
-
-    assign test_ram = `TB_WAY1_BANK2_RAM2;
 
     dcache u_dcache(/*autoinst*/
         // 时钟和复位
@@ -89,6 +85,48 @@ module dcache_tb;
         .ram_wr_data_o  (ram_wr_data_o  ), // 128bit
         .ram_dirty_o    (ram_dirty_o    )
     );
+
+    `define TB_WAY0_TAG        dcache_tb.u_dcache.u_cache_way0.u_tag.u_sp_ram.mem
+    `define TB_WAY0_VALID      dcache_tb.u_dcache.u_cache_way0.u_valid.valid
+    `define TB_WAY0_DIRTY      dcache_tb.u_dcache.u_cache_way0.u_dirty.dirty
+    `define TB_WAY0_BANK0_RAM0 dcache_tb.u_dcache.u_cache_way0.u_data.bank[0].u_bank.ram[0].u_simple_dp_ram.mem
+    `define TB_WAY0_BANK0_RAM1 dcache_tb.u_dcache.u_cache_way0.u_data.bank[0].u_bank.ram[1].u_simple_dp_ram.mem
+    `define TB_WAY0_BANK0_RAM2 dcache_tb.u_dcache.u_cache_way0.u_data.bank[0].u_bank.ram[2].u_simple_dp_ram.mem
+    `define TB_WAY0_BANK0_RAM3 dcache_tb.u_dcache.u_cache_way0.u_data.bank[0].u_bank.ram[3].u_simple_dp_ram.mem
+    `define TB_WAY0_BANK1_RAM0 dcache_tb.u_dcache.u_cache_way0.u_data.bank[1].u_bank.ram[0].u_simple_dp_ram.mem
+    `define TB_WAY0_BANK1_RAM1 dcache_tb.u_dcache.u_cache_way0.u_data.bank[1].u_bank.ram[1].u_simple_dp_ram.mem
+    `define TB_WAY0_BANK1_RAM2 dcache_tb.u_dcache.u_cache_way0.u_data.bank[1].u_bank.ram[2].u_simple_dp_ram.mem
+    `define TB_WAY0_BANK1_RAM3 dcache_tb.u_dcache.u_cache_way0.u_data.bank[1].u_bank.ram[3].u_simple_dp_ram.mem
+    `define TB_WAY0_BANK2_RAM0 dcache_tb.u_dcache.u_cache_way0.u_data.bank[2].u_bank.ram[0].u_simple_dp_ram.mem
+    `define TB_WAY0_BANK2_RAM1 dcache_tb.u_dcache.u_cache_way0.u_data.bank[2].u_bank.ram[1].u_simple_dp_ram.mem
+    `define TB_WAY0_BANK2_RAM2 dcache_tb.u_dcache.u_cache_way0.u_data.bank[2].u_bank.ram[2].u_simple_dp_ram.mem
+    `define TB_WAY0_BANK2_RAM3 dcache_tb.u_dcache.u_cache_way0.u_data.bank[2].u_bank.ram[3].u_simple_dp_ram.mem
+    `define TB_WAY0_BANK3_RAM0 dcache_tb.u_dcache.u_cache_way0.u_data.bank[3].u_bank.ram[0].u_simple_dp_ram.mem
+    `define TB_WAY0_BANK3_RAM1 dcache_tb.u_dcache.u_cache_way0.u_data.bank[3].u_bank.ram[1].u_simple_dp_ram.mem
+    `define TB_WAY0_BANK3_RAM2 dcache_tb.u_dcache.u_cache_way0.u_data.bank[3].u_bank.ram[2].u_simple_dp_ram.mem
+    `define TB_WAY0_BANK3_RAM3 dcache_tb.u_dcache.u_cache_way0.u_data.bank[3].u_bank.ram[3].u_simple_dp_ram.mem
+    `define TB_WAY0_LRU        dcache_tb.u_dcache.u_cache_way0.u_lru.lru
+
+    `define TB_WAY1_TAG        dcache_tb.u_dcache.u_cache_way1.u_tag.u_sp_ram.mem
+    `define TB_WAY1_VALID      dcache_tb.u_dcache.u_cache_way1.u_valid.valid
+    `define TB_WAY1_DIRTY      dcache_tb.u_dcache.u_cache_way1.u_dirty.dirty
+    `define TB_WAY1_BANK0_RAM0 dcache_tb.u_dcache.u_cache_way1.u_data.bank[0].u_bank.ram[0].u_simple_dp_ram.mem
+    `define TB_WAY1_BANK0_RAM1 dcache_tb.u_dcache.u_cache_way1.u_data.bank[0].u_bank.ram[1].u_simple_dp_ram.mem
+    `define TB_WAY1_BANK0_RAM2 dcache_tb.u_dcache.u_cache_way1.u_data.bank[0].u_bank.ram[2].u_simple_dp_ram.mem
+    `define TB_WAY1_BANK0_RAM3 dcache_tb.u_dcache.u_cache_way1.u_data.bank[0].u_bank.ram[3].u_simple_dp_ram.mem
+    `define TB_WAY1_BANK1_RAM0 dcache_tb.u_dcache.u_cache_way1.u_data.bank[1].u_bank.ram[0].u_simple_dp_ram.mem
+    `define TB_WAY1_BANK1_RAM1 dcache_tb.u_dcache.u_cache_way1.u_data.bank[1].u_bank.ram[1].u_simple_dp_ram.mem
+    `define TB_WAY1_BANK1_RAM2 dcache_tb.u_dcache.u_cache_way1.u_data.bank[1].u_bank.ram[2].u_simple_dp_ram.mem
+    `define TB_WAY1_BANK1_RAM3 dcache_tb.u_dcache.u_cache_way1.u_data.bank[1].u_bank.ram[3].u_simple_dp_ram.mem
+    `define TB_WAY1_BANK2_RAM0 dcache_tb.u_dcache.u_cache_way1.u_data.bank[2].u_bank.ram[0].u_simple_dp_ram.mem
+    `define TB_WAY1_BANK2_RAM1 dcache_tb.u_dcache.u_cache_way1.u_data.bank[2].u_bank.ram[1].u_simple_dp_ram.mem
+    `define TB_WAY1_BANK2_RAM2 dcache_tb.u_dcache.u_cache_way1.u_data.bank[2].u_bank.ram[2].u_simple_dp_ram.mem
+    `define TB_WAY1_BANK2_RAM3 dcache_tb.u_dcache.u_cache_way1.u_data.bank[2].u_bank.ram[3].u_simple_dp_ram.mem
+    `define TB_WAY1_BANK3_RAM0 dcache_tb.u_dcache.u_cache_way1.u_data.bank[3].u_bank.ram[0].u_simple_dp_ram.mem
+    `define TB_WAY1_BANK3_RAM1 dcache_tb.u_dcache.u_cache_way1.u_data.bank[3].u_bank.ram[1].u_simple_dp_ram.mem
+    `define TB_WAY1_BANK3_RAM2 dcache_tb.u_dcache.u_cache_way1.u_data.bank[3].u_bank.ram[2].u_simple_dp_ram.mem
+    `define TB_WAY1_BANK3_RAM3 dcache_tb.u_dcache.u_cache_way1.u_data.bank[3].u_bank.ram[3].u_simple_dp_ram.mem
+    `define TB_WAY1_LRU        dcache_tb.u_dcache.u_cache_way1.u_lru.lru
 
     // 时钟
     initial begin
@@ -141,7 +179,20 @@ module dcache_tb;
         $readmemh({`CACHE_DATA_PATH,  "way1_bank3_ram2.txt" }, `TB_WAY1_BANK3_RAM2 );
         $readmemh({`CACHE_DATA_PATH,  "way1_bank3_ram3.txt" }, `TB_WAY1_BANK3_RAM3 );
         $readmemh({`CACHE_LRU_PATH,   "way1_lru.txt"        }, `TB_WAY1_LRU        );
+    end
 
+    reg [3:0]  op_num; // 表示第几次操作
+
+    reg [7:0]  ram0;
+    reg [7:0]  ram1;
+    reg [7:0]  ram2;
+    reg [7:0]  ram3;
+    reg [31:0] bank0;
+    reg [31:0] bank1;
+    reg [31:0] bank2;
+    reg [31:0] bank3;
+
+    initial begin
         rst_n <= 0;
         #ClockPeriod rst_n <= 1;
 
@@ -192,7 +243,7 @@ module dcache_tb;
         ram_rd_num_i  <= 3'd0;
         ram_wr_rdy_i  <= 1'b1;
 
-        // 一次写， index01, way1, tag01010, bank2, 32'h00660000
+        // 3 一次写， index01, way1, tag01010, bank2, 32'h00660000
         #ClockPeriod;
         op_num        <= 4'd3;
         cpu_req_i     <= 1;
@@ -207,7 +258,7 @@ module dcache_tb;
         ram_rd_num_i  <= 3'd0;
         ram_wr_rdy_i  <= 1'b1;
 
-        // 连续写， index01, way1, tag01010, bank2, 32'h44332211
+        // 4 连续写， index01, way1, tag01010, bank2, 32'h44332211
         #ClockPeriod;
         op_num        <= 4'd4;
         cpu_req_i     <= 1;
@@ -222,7 +273,7 @@ module dcache_tb;
         ram_rd_num_i  <= 3'd0;
         ram_wr_rdy_i  <= 1'b1;
 
-        // 读后写，读写冲突，index01, way1, tag01010, bank2, 32'h44332211
+        // 5 写后读，读写冲突，index01, way1, tag01010, bank2, 32'h44332211
         #ClockPeriod;
         op_num        <= 4'd5;
         cpu_req_i     <= 1;
@@ -237,7 +288,7 @@ module dcache_tb;
         ram_rd_num_i  <= 3'd0;
         ram_wr_rdy_i  <= 1'b1;
 
-        // 读缺失，
+        // 6 读缺失，index01, tag11010, replace way0, 32'hffee_ddcc
         #ClockPeriod;
         op_num        <= 4'd6;
         cpu_req_i     <= 1;
@@ -252,9 +303,12 @@ module dcache_tb;
         ram_rd_num_i  <= 3'd0;
         ram_wr_rdy_i  <= 1'b1;
 
+
         #ClockPeriod;
         cpu_req_i     <= 0;
-        wait(dcache_tb.u_dcache.replace_state);
+
+        wait(dcache_tb.u_dcache.replace_state); // 等待到replace状态
+        ram_wr_rdy_i  <= 0; // 写请求置0
 
         #ClockPeriod;
         ram_rd_rdy_i  <= 1'b1;
@@ -263,7 +317,7 @@ module dcache_tb;
         ram_rd_rdy_i  <= 1'b0;
         ram_rd_data_i <= 32'h0000_0000;
         ram_rd_num_i  <= 3'd1;
-        
+
         #ClockPeriod;
         ram_rd_data_i <= 32'h0000_0000;
         ram_rd_num_i  <= 3'd2;
@@ -275,6 +329,99 @@ module dcache_tb;
         #ClockPeriod;
         ram_rd_data_i <= 32'h0000_0000;
         ram_rd_num_i  <= 3'd4;
+        ram_wr_rdy_i  <= 1; // 写请求置1
+
+        #ClockPeriod;
+        ram_rd_data_i <= 32'h0000_0000;
+        ram_rd_num_i  <= 3'd0;
+
+        // 7 连续读缺失，有dirty行，index01, tag01010, replace way1, 32'h2222_2222
+        #ClockPeriod;
+        op_num        <= 4'd7;
+        cpu_req_i     <= 1;
+        cpu_op_i      <= 0;
+        cpu_index_i   <= 8'h01;
+        cpu_tag_i     <= 20'h00010;
+        cpu_offset_i  <= 4'b1000;
+        cpu_wr_en_i   <= 4'b0000;
+        cpu_wr_data_i <= 32'h0000_0000;
+        ram_rd_rdy_i  <= 1'b0;
+        ram_rd_data_i <= 32'h0000_0000;
+        ram_rd_num_i  <= 3'd0;
+        ram_wr_rdy_i  <= 1'b1;
+
+        #ClockPeriod;
+        cpu_req_i     <= 0;
+
+        wait(dcache_tb.u_dcache.replace_state); // 等待到replace状态
+        ram_wr_rdy_i  <= 0; // 写请求置0
+
+        #ClockPeriod;
+        ram_rd_rdy_i  <= 1'b1;
+
+        #ClockPeriod;
+        ram_rd_rdy_i  <= 1'b0;
+        ram_rd_data_i <= 32'h0000_0000;
+        ram_rd_num_i  <= 3'd1;
+
+        #ClockPeriod;
+        ram_rd_data_i <= 32'h1111_1111;
+        ram_rd_num_i  <= 3'd2;
+
+        #ClockPeriod;
+        ram_rd_data_i <= 32'h2222_2222;
+        ram_rd_num_i  <= 3'd3;
+
+        #ClockPeriod;
+        ram_rd_data_i <= 32'h3333_3333;
+        ram_rd_num_i  <= 3'd4;
+        ram_wr_rdy_i  <= 1; // 写请求置1
+
+        #ClockPeriod;
+        ram_rd_data_i <= 32'h0000_0000;
+        ram_rd_num_i  <= 3'd0;
+
+        // 8 写缺失，index01, tag01010, replace way0, 32'h0066_0000
+        #ClockPeriod;
+        op_num        <= 4'd8;
+        cpu_req_i     <= 1;
+        cpu_op_i      <= 1;
+        cpu_index_i   <= 8'h01;
+        cpu_tag_i     <= 20'h01010;
+        cpu_offset_i  <= 4'b1000;
+        cpu_wr_en_i   <= 4'b0100;
+        cpu_wr_data_i <= 32'h0066_0000;
+        ram_rd_rdy_i  <= 1'b0;
+        ram_rd_data_i <= 32'h0000_0000;
+        ram_rd_num_i  <= 3'd0;
+        ram_wr_rdy_i  <= 1'b1;
+
+        #ClockPeriod;
+        cpu_req_i     <= 0;
+
+        wait(dcache_tb.u_dcache.replace_state); // 等待到replace状态
+        ram_wr_rdy_i  <= 0; // 写请求置0
+
+        #ClockPeriod;
+        ram_rd_rdy_i  <= 1'b1;
+
+        #ClockPeriod;
+        ram_rd_rdy_i  <= 1'b0;
+        ram_rd_data_i <= 32'h0000_0000;
+        ram_rd_num_i  <= 3'd1;
+
+        #ClockPeriod;
+        ram_rd_data_i <= 32'h1111_1111;
+        ram_rd_num_i  <= 3'd2;
+
+        #ClockPeriod;
+        ram_rd_data_i <= 32'h2222_2222;
+        ram_rd_num_i  <= 3'd3;
+
+        #ClockPeriod;
+        ram_rd_data_i <= 32'h3333_3333;
+        ram_rd_num_i  <= 3'd4;
+        ram_wr_rdy_i  <= 1; // 写请求置1
 
         #ClockPeriod;
         ram_rd_data_i <= 32'h0000_0000;
@@ -302,6 +449,8 @@ module dcache_tb;
         $finish;
 
     end
+
+
 
 	initial begin
 		$fsdbDumpfile("./rtl.fsdb");
