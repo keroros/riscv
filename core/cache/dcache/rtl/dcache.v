@@ -3,7 +3,7 @@
 // Author        : Qidc
 // Email         : qidc@stu.pku.edu.cn
 // Created On    : 2024/10/23 10:18
-// Last Modified : 2024/11/09 21:30
+// Last Modified : 2024/11/10 00:52
 // File Name     : dcache.v
 // Description   : DCache 模块
 //
@@ -110,9 +110,24 @@ module dcache (
     assign replace_data = miss_buf_replace_way ? way1_data : way0_data; // 替换时，选择要替换的Data
 
     // Data select from RAM
-    wire [`DATA_WIDTH-1:0] ram_load_word;
+    reg  [`DATA_WIDTH-1:0] ram_load_word; // 读写操作时从RAM返回的字
+    wire [2:0]             ram_rd_offset; // 中间变量
 
-    assign ram_load_word = (req_buf_op & (ram_rd_num_i-1'd1 == req_buf_offset)) ? req_buf_wr_data : ram_rd_data_i;
+    assign ram_rd_offset = ram_rd_num_i - 1'b1;
+
+    // 写操作时需要对部分字进行修改
+    always @(*) begin
+        if (req_buf_op == 1'b1 && ram_rd_offset == req_buf_offset[3:2]) begin
+            ram_load_word = {
+                req_buf_wr_en[3] ? req_buf_wr_data[31:24] : ram_rd_data_i[31:24],
+                req_buf_wr_en[2] ? req_buf_wr_data[23:16] : ram_rd_data_i[23:16],
+                req_buf_wr_en[1] ? req_buf_wr_data[15:8]  : ram_rd_data_i[15:8],
+                req_buf_wr_en[0] ? req_buf_wr_data[7:0]   : ram_rd_data_i[7:0]
+            };
+        end else begin
+            ram_load_word = ram_rd_data_i;
+        end
+    end
 
 
 /* ------------------------ Main state ------------------------ */
@@ -478,9 +493,6 @@ module dcache (
 
     wire [`CACHE_OFFSET_AW-1:0] way0_offset;
     wire [`CACHE_OFFSET_AW-1:0] way1_offset;
-    wire [2:0] ram_rd_offset;
-
-    assign ram_rd_offset = ram_rd_num_i - 1'b1;     // 中间变量
 
     assign way0_offset = {`CACHE_OFFSET_AW{next_lookup_state}}  & cpu_offset_i   | 
                          {`CACHE_OFFSET_AW{write_state}}        & wr_buf_offset  | 
@@ -566,7 +578,8 @@ module dcache (
     assign ram_dirty_o = miss_buf_replace_way ? way1_dirty : way0_dirty;
 
     assign cpu_addr_ack_o = idle_state || (lookup_state && cache_hit);
-    assign cpu_data_ack_o = (lookup_state && cache_hit) || (refill_state && (ram_rd_num_i-1'd1 == req_buf_offset[3:2]));
+    assign cpu_data_ack_o = (lookup_state && cache_hit) || (refill_state && (ram_rd_offset == req_buf_offset[3:2]));
+
 
 
 endmodule

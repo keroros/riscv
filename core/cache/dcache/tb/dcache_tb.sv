@@ -3,7 +3,7 @@
 // Author        : Qidc
 // Email         : qidc@stu.pku.edu.cn
 // Created On    : 2024/11/05 17:46
-// Last Modified : 2024/11/09 22:05
+// Last Modified : 2024/11/09 22:55
 // File Name     : dcache_tb.sv
 // Description   :
 //
@@ -449,8 +449,6 @@ module dcache_tb;
         $finish;
 
     end
-
-
 
 	initial begin
 		$fsdbDumpfile("./rtl.fsdb");

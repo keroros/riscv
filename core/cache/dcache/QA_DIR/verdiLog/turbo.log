@@ -1,6 +1,5 @@
 Command Line: /home/qidc/Synopsys/verdi/Verdi_O-2018.09-SP2/platform/LINUXAMD64/bin/Novas -ssf rtl.fsdb -sswr signal.rc
-uname(Linux qidc 6.8.0-45-generic #45~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Wed Sep 11 15:25:05 UTC 2 x86_64)
-Disabled AskUser2 Message (Response 0): Overwrite /home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/signal.rc?
+uname(Linux qidc 6.8.0-48-generic #48~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Mon Oct  7 11:24:13 UTC 2 x86_64)
 type= DS_SIGNAL element= 1 field= 2
 VERILOG dcache_tb
 VERILOG u_dcache
@@ -15,129 +14,6 @@ VERILOG mem[1][7:0]
 second field= signal
 type= DS_STRING
 mem[1][7:0]
-Disabled AskUser2 Message (Response 0): Overwrite /home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/signal.rc?
-Disabled AskUser2 Message (Response 0): Overwrite /home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/signal.rc?
-type= DS_SIGNAL element= 1 field= 2
-VERILOG dcache_tb
-VERILOG u_dcache
-VERILOG u_cache_way0
-VERILOG u_data
-VERILOG bank[0]
-VERILOG u_bank
-VERILOG ram[1]
-VERILOG u_simple_dp_ram
-VERILOG mem[1][7:0]
------
-second field= signal
-type= DS_STRING
-mem[1][7:0]
-type= DS_SIGNAL element= 1 field= 2
-VERILOG dcache_tb
-VERILOG u_dcache
-VERILOG u_cache_way0
-VERILOG u_data
-VERILOG bank[2]
-VERILOG u_bank
-VERILOG ram[2]
-VERILOG u_simple_dp_ram
-VERILOG mem[1][7:0]
------
-second field= signal
-type= DS_STRING
-mem[1][7:0]
-type= DS_SIGNAL element= 1 field= 2
-VERILOG dcache_tb
-VERILOG u_dcache
-VERILOG u_cache_way1
-VERILOG u_data
-VERILOG bank[1]
-VERILOG u_bank
-VERILOG ram[1]
-VERILOG u_simple_dp_ram
-VERILOG mem[1][7:0]
------
-second field= signal
-type= DS_STRING
-mem[1][7:0]
-type= DS_SIGNAL element= 1 field= 2
-VERILOG dcache_tb
-VERILOG u_dcache
-VERILOG u_cache_way1
-VERILOG u_data
-VERILOG bank[2]
-VERILOG u_bank
-VERILOG ram[1]
-VERILOG u_simple_dp_ram
-VERILOG mem[1][7:0]
------
-second field= signal
-type= DS_STRING
-mem[1][7:0]
-type= DS_SIGNAL element= 1 field= 2
-VERILOG dcache_tb
-VERILOG u_dcache
-VERILOG u_cache_way1
-VERILOG u_data
-VERILOG bank[3]
-VERILOG u_bank
-VERILOG ram[1]
-VERILOG u_simple_dp_ram
-VERILOG mem[1][7:0]
------
-second field= signal
-type= DS_STRING
-mem[1][7:0]
-type= DS_SIGNAL element= 1 field= 2
-VERILOG dcache_tb
-VERILOG u_dcache
-VERILOG u_cache_way0
-VERILOG u_lru
-VERILOG lru[1]
------
-second field= signal
-type= DS_STRING
-lru[1]
-type= DS_SIGNAL element= 1 field= 2
-VERILOG dcache_tb
-VERILOG u_dcache
-VERILOG u_cache_way0
-VERILOG u_lru
-VERILOG lru[1]
------
-second field= signal
-type= DS_STRING
-lru[1]
-type= DS_SIGNAL element= 1 field= 2
-VERILOG dcache_tb
-VERILOG u_dcache
-VERILOG u_cache_way1
-VERILOG u_lru
-VERILOG lru[1]
------
-second field= signal
-type= DS_STRING
-lru[1]
-type= DS_SIGNAL element= 1 field= 2
-VERILOG dcache_tb
-VERILOG u_dcache
-VERILOG u_cache_way1
-VERILOG u_dirty
-VERILOG dirty[1]
------
-second field= signal
-type= DS_STRING
-dirty[1]
-type= DS_SIGNAL element= 1 field= 2
-VERILOG dcache_tb
-VERILOG u_dcache
-VERILOG u_cache_way1
-VERILOG u_tag
-VERILOG u_sp_ram
-VERILOG mem[1][19:0]
------
-second field= signal
-type= DS_STRING
-mem[1][19:0]
 type= DS_SIGNAL element= 1 field= 2
 VERILOG dcache_tb
 VERILOG u_dcache
@@ -145,49 +21,49 @@ VERILOG u_cache_way0
 VERILOG u_data
 VERILOG bank[1]
 VERILOG u_bank
+VERILOG ram[3]
+VERILOG u_simple_dp_ram
+VERILOG mem[1][7:0]
+-----
+second field= signal
+type= DS_STRING
+mem[1][7:0]
+type= DS_SIGNAL element= 1 field= 2
+VERILOG dcache_tb
+VERILOG u_dcache
+VERILOG u_cache_way0
+VERILOG u_data
+VERILOG bank[1]
+VERILOG u_bank
+VERILOG ram[3]
+VERILOG u_simple_dp_ram
+VERILOG mem[1][7:0]
+-----
+second field= signal
+type= DS_STRING
+mem[1][7:0]
+type= DS_SIGNAL element= 1 field= 2
+VERILOG dcache_tb
+VERILOG u_dcache
+VERILOG u_cache_way0
+VERILOG u_data
+VERILOG bank[1]
+VERILOG u_bank
+VERILOG ram[2]
+VERILOG u_simple_dp_ram
+VERILOG mem[1][7:0]
+-----
+second field= signal
+type= DS_STRING
+mem[1][7:0]
+type= DS_SIGNAL element= 1 field= 2
+VERILOG dcache_tb
+VERILOG u_dcache
+VERILOG u_cache_way0
+VERILOG u_data
+VERILOG bank[2]
+VERILOG u_bank
 VERILOG ram[1]
-VERILOG u_simple_dp_ram
-VERILOG mem[1][7:0]
------
-second field= signal
-type= DS_STRING
-mem[1][7:0]
-type= DS_SIGNAL element= 1 field= 2
-VERILOG dcache_tb
-VERILOG u_dcache
-VERILOG u_cache_way0
-VERILOG u_data
-VERILOG bank[2]
-VERILOG u_bank
-VERILOG ram[0]
-VERILOG u_simple_dp_ram
-VERILOG mem[1][7:0]
------
-second field= signal
-type= DS_STRING
-mem[1][7:0]
-type= DS_SIGNAL element= 1 field= 2
-VERILOG dcache_tb
-VERILOG u_dcache
-VERILOG u_cache_way0
-VERILOG u_data
-VERILOG bank[2]
-VERILOG u_bank
-VERILOG ram[2]
-VERILOG u_simple_dp_ram
-VERILOG mem[1][7:0]
------
-second field= signal
-type= DS_STRING
-mem[1][7:0]
-type= DS_SIGNAL element= 1 field= 2
-VERILOG dcache_tb
-VERILOG u_dcache
-VERILOG u_cache_way0
-VERILOG u_data
-VERILOG bank[3]
-VERILOG u_bank
-VERILOG ram[2]
 VERILOG u_simple_dp_ram
 VERILOG mem[1][7:0]
 -----
@@ -236,48 +112,14 @@ VERILOG mem[1][7:0]
 second field= signal
 type= DS_STRING
 mem[1][7:0]
-Disabled AskUser2 Message (Response 0): Overwrite /home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/signal.rc?
 type= DS_SIGNAL element= 1 field= 2
 VERILOG dcache_tb
 VERILOG u_dcache
-VERILOG u_cache_way0
-VERILOG u_lru
-VERILOG lru[1]
+VERILOG cpu_rd_data_o[31:0]
 -----
 second field= signal
 type= DS_STRING
-lru[1]
-type= DS_SIGNAL element= 1 field= 2
-VERILOG dcache_tb
-VERILOG u_dcache
-VERILOG u_cache_way1
-VERILOG u_lru
-VERILOG lru[1]
------
-second field= signal
-type= DS_STRING
-lru[1]
-type= DS_SIGNAL element= 1 field= 2
-VERILOG dcache_tb
-VERILOG u_dcache
-VERILOG u_cache_way0
-VERILOG u_tag
-VERILOG u_sp_ram
-VERILOG mem[1][19:0]
------
-second field= signal
-type= DS_STRING
-mem[1][19:0]
-type= DS_SIGNAL element= 1 field= 2
-VERILOG dcache_tb
-VERILOG u_dcache
-VERILOG u_cache_way0
-VERILOG u_dirty
-VERILOG dirty[1]
------
-second field= signal
-type= DS_STRING
-dirty[1]
+cpu_rd_data_o[31:0]
 Disabled AskUser2 Message (Response 0): Overwrite /home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/signal.rc?
 Disabled AskUser2 Message (Response 0): Close all windows and exit verdi?
-au time 1337.565311 14.387864 28.159209 delta 879194112 879194112 total 1250586624 1250586624
+au time 449.577757 17.532996 9.582602 delta 692244480 692244480 total 1063636992 1063636992
