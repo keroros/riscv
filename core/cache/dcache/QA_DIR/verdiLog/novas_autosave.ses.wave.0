@@ -2,7 +2,7 @@ Magic 271485
 Revision Verdi_O-2018.09-SP2
 
 ; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
-viewPort 0 27 2490 700 304 183
+viewPort 0 27 2490 1064 304 183
 
 ; File list:
 ; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
@@ -53,11 +53,11 @@ curSTATUS ByChange
 
 
 aliasmapname dcache.main_state
-nalias MAIN_LOOKUP		5'b00010		NULL
 nalias MAIN_REPLACE		5'b01000		NULL
-nalias MAIN_IDLE		5'b00001		NULL
-nalias MAIN_MISS		5'b00100		NULL
+nalias MAIN_LOOKUP		5'b00010		NULL
 nalias MAIN_REFILL		5'b10000		NULL
+nalias MAIN_MISS		5'b00100		NULL
+nalias MAIN_IDLE		5'b00001		NULL
 
 aliasmapname dcache.wrbuf_state
 nalias WRBUF_IDLE		1'b0		NULL

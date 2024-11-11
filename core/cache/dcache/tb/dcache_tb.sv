@@ -3,7 +3,7 @@
 // Author        : Qidc
 // Email         : qidc@stu.pku.edu.cn
 // Created On    : 2024/11/05 17:46
-// Last Modified : 2024/11/09 22:55
+// Last Modified : 2024/11/11 18:56
 // File Name     : dcache_tb.sv
 // Description   :
 //
@@ -205,10 +205,10 @@ module dcache_tb;
         cpu_offset_i  <= 4'b0000;
         cpu_wr_en_i   <= 4'b0000;
         cpu_wr_data_i <= 32'h0000_0000;
-        ram_rd_rdy_i  <= 1'b0;
+        ram_rd_rdy_i  <= 0;
         ram_rd_data_i <= 32'h0000_0000;
         ram_rd_num_i  <= 3'd0;
-        ram_wr_rdy_i  <= 1'b1;
+        ram_wr_rdy_i  <= 1;
 
         #(ClockPeriod/2);
 
@@ -223,10 +223,10 @@ module dcache_tb;
         cpu_offset_i  <= 4'b0100;
         cpu_wr_en_i   <= 4'b0000;
         cpu_wr_data_i <= 32'h0000_0000;
-        ram_rd_rdy_i  <= 1'b0;
+        ram_rd_rdy_i  <= 0;
         ram_rd_data_i <= 32'h0000_0000;
         ram_rd_num_i  <= 3'd0;
-        ram_wr_rdy_i  <= 1'b1;
+        ram_wr_rdy_i  <= 1;
 
         // 连续读，index01, way1, tag01010, bank2: 32'hffeeddcc
         #ClockPeriod;
@@ -238,10 +238,10 @@ module dcache_tb;
         cpu_offset_i  <= 4'b1000;
         cpu_wr_en_i   <= 4'b0000;
         cpu_wr_data_i <= 32'h0000_0000;
-        ram_rd_rdy_i  <= 1'b0;
+        ram_rd_rdy_i  <= 0;
         ram_rd_data_i <= 32'h0000_0000;
         ram_rd_num_i  <= 3'd0;
-        ram_wr_rdy_i  <= 1'b1;
+        ram_wr_rdy_i  <= 1;
 
         // 3 一次写， index01, way1, tag01010, bank2, 32'h00660000
         #ClockPeriod;
@@ -253,10 +253,10 @@ module dcache_tb;
         cpu_offset_i  <= 4'b1000;
         cpu_wr_en_i   <= 4'b0100;
         cpu_wr_data_i <= 32'h0066_0000;
-        ram_rd_rdy_i  <= 1'b0;
+        ram_rd_rdy_i  <= 0;
         ram_rd_data_i <= 32'h0000_0000;
         ram_rd_num_i  <= 3'd0;
-        ram_wr_rdy_i  <= 1'b1;
+        ram_wr_rdy_i  <= 1;
 
         // 4 连续写， index01, way1, tag01010, bank2, 32'h44332211
         #ClockPeriod;
@@ -268,10 +268,10 @@ module dcache_tb;
         cpu_offset_i  <= 4'b1000;
         cpu_wr_en_i   <= 4'b1111;
         cpu_wr_data_i <= 32'h4433_2211;
-        ram_rd_rdy_i  <= 1'b0;
+        ram_rd_rdy_i  <= 0;
         ram_rd_data_i <= 32'h0000_0000;
         ram_rd_num_i  <= 3'd0;
-        ram_wr_rdy_i  <= 1'b1;
+        ram_wr_rdy_i  <= 1;
 
         // 5 写后读，读写冲突，index01, way1, tag01010, bank2, 32'h44332211
         #ClockPeriod;
@@ -283,10 +283,10 @@ module dcache_tb;
         cpu_offset_i  <= 4'b1000;
         cpu_wr_en_i   <= 4'b0000;
         cpu_wr_data_i <= 32'h0000_0000;
-        ram_rd_rdy_i  <= 1'b0;
+        ram_rd_rdy_i  <= 0;
         ram_rd_data_i <= 32'h0000_0000;
         ram_rd_num_i  <= 3'd0;
-        ram_wr_rdy_i  <= 1'b1;
+        ram_wr_rdy_i  <= 1;
 
         // 6 读缺失，index01, tag11010, replace way0, 32'hffee_ddcc
         #ClockPeriod;
@@ -298,10 +298,10 @@ module dcache_tb;
         cpu_offset_i  <= 4'b1000;
         cpu_wr_en_i   <= 4'b0000;
         cpu_wr_data_i <= 32'h0000_0000;
-        ram_rd_rdy_i  <= 1'b0;
+        ram_rd_rdy_i  <= 0;
         ram_rd_data_i <= 32'h0000_0000;
         ram_rd_num_i  <= 3'd0;
-        ram_wr_rdy_i  <= 1'b1;
+        ram_wr_rdy_i  <= 1;
 
 
         #ClockPeriod;
@@ -311,10 +311,10 @@ module dcache_tb;
         ram_wr_rdy_i  <= 0; // 写请求置0
 
         #ClockPeriod;
-        ram_rd_rdy_i  <= 1'b1;
+        ram_rd_rdy_i  <= 1;
 
         #ClockPeriod;
-        ram_rd_rdy_i  <= 1'b0;
+        ram_rd_rdy_i  <= 0;
         ram_rd_data_i <= 32'h0000_0000;
         ram_rd_num_i  <= 3'd1;
 
@@ -345,10 +345,10 @@ module dcache_tb;
         cpu_offset_i  <= 4'b1000;
         cpu_wr_en_i   <= 4'b0000;
         cpu_wr_data_i <= 32'h0000_0000;
-        ram_rd_rdy_i  <= 1'b0;
+        ram_rd_rdy_i  <= 0;
         ram_rd_data_i <= 32'h0000_0000;
         ram_rd_num_i  <= 3'd0;
-        ram_wr_rdy_i  <= 1'b1;
+        ram_wr_rdy_i  <= 1;
 
         #ClockPeriod;
         cpu_req_i     <= 0;
@@ -357,10 +357,10 @@ module dcache_tb;
         ram_wr_rdy_i  <= 0; // 写请求置0
 
         #ClockPeriod;
-        ram_rd_rdy_i  <= 1'b1;
+        ram_rd_rdy_i  <= 1;
 
         #ClockPeriod;
-        ram_rd_rdy_i  <= 1'b0;
+        ram_rd_rdy_i  <= 0;
         ram_rd_data_i <= 32'h0000_0000;
         ram_rd_num_i  <= 3'd1;
 
@@ -391,10 +391,10 @@ module dcache_tb;
         cpu_offset_i  <= 4'b1000;
         cpu_wr_en_i   <= 4'b0100;
         cpu_wr_data_i <= 32'h0066_0000;
-        ram_rd_rdy_i  <= 1'b0;
+        ram_rd_rdy_i  <= 0;
         ram_rd_data_i <= 32'h0000_0000;
         ram_rd_num_i  <= 3'd0;
-        ram_wr_rdy_i  <= 1'b1;
+        ram_wr_rdy_i  <= 1;
 
         #ClockPeriod;
         cpu_req_i     <= 0;
@@ -403,10 +403,10 @@ module dcache_tb;
         ram_wr_rdy_i  <= 0; // 写请求置0
 
         #ClockPeriod;
-        ram_rd_rdy_i  <= 1'b1;
+        ram_rd_rdy_i  <= 1;
 
         #ClockPeriod;
-        ram_rd_rdy_i  <= 1'b0;
+        ram_rd_rdy_i  <= 0;
         ram_rd_data_i <= 32'h0000_0000;
         ram_rd_num_i  <= 3'd1;
 
@@ -427,6 +427,54 @@ module dcache_tb;
         ram_rd_data_i <= 32'h0000_0000;
         ram_rd_num_i  <= 3'd0;
 
+        // 9 写缺失，index01, tag10010, replace way1, 32'hffee_ddcc
+        #ClockPeriod;
+        op_num        <= 4'd9;
+        cpu_req_i     <= 1;
+        cpu_op_i      <= 1;
+        cpu_index_i   <= 8'h01;
+        cpu_tag_i     <= 20'h10010;
+        cpu_offset_i  <= 4'b1000;
+        cpu_wr_en_i   <= 4'b1111;
+        cpu_wr_data_i <= 32'hffee_ddcc;
+        ram_rd_rdy_i  <= 0;
+        ram_rd_data_i <= 32'h0000_0000;
+        ram_rd_num_i  <= 3'd0;
+        ram_wr_rdy_i  <= 0; // 置0
+
+        #ClockPeriod;
+        cpu_req_i     <= 0;
+
+        wait(dcache_tb.u_dcache.miss_state); // 等待到miss状态
+        #ClockPeriod;
+        ram_wr_rdy_i  <= 1; // 置1
+
+        wait(dcache_tb.u_dcache.replace_state); // 等待到replace状态
+        ram_wr_rdy_i  <= 0; // 写请求置0
+        ram_rd_rdy_i  <= 1;
+
+        #ClockPeriod;
+        ram_rd_rdy_i  <= 0;
+        ram_rd_data_i <= 32'h3322_1100;
+        ram_rd_num_i  <= 3'd1;
+
+        #ClockPeriod;
+        ram_rd_data_i <= 32'h3322_1100;
+        ram_rd_num_i  <= 3'd2;
+
+        #ClockPeriod;
+        ram_rd_data_i <= 32'h3322_1100;
+        ram_rd_num_i  <= 3'd3;
+
+        #ClockPeriod;
+        ram_rd_data_i <= 32'h3322_1100;
+        ram_rd_num_i  <= 3'd4;
+        ram_wr_rdy_i  <= 1; // 写请求置1
+
+        #ClockPeriod;
+        ram_rd_data_i <= 32'h0000_0000;
+        ram_rd_num_i  <= 3'd0;
+
         // 结束请求
         #ClockPeriod;
         op_num        <= 4'd0;
@@ -437,10 +485,10 @@ module dcache_tb;
         cpu_offset_i  <= 4'b0000;
         cpu_wr_en_i   <= 4'b0000;
         cpu_wr_data_i <= 32'h0000_0000;
-        ram_rd_rdy_i  <= 1'b0;
+        ram_rd_rdy_i  <= 0;
         ram_rd_data_i <= 32'h0000_0000;
         ram_rd_num_i  <= 3'd0;
-        ram_wr_rdy_i  <= 1'b1;
+        ram_wr_rdy_i  <= 1;
 
         #(ClockPeriod*10);
 

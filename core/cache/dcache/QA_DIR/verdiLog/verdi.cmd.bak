@@ -1,68 +1,7 @@
 verdiDockWidgetDisplay -dock widgetDock_<Signal_List>
-simSetSimulator "-vcssv" -exec \
-           "/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/simv" \
-           -args
-debImport "-dbdir" \
-          "/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/simv.daidir"
-debLoadSimResult \
-           /home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/rtl.fsdb
 wvCreateWindow
+wvOpenFile -win $_nWave2 \
+           {/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/rtl.fsdb}
 wvRestoreSignal -win $_nWave2 "signal.rc" -overWriteAutoAlias on -appendSignals \
            on
-wvSelectGroup -win $_nWave2 {wr_buf}
-wvSelectGroup -win $_nWave2 {cache_out}
-wvSelectGroup -win $_nWave2 {req_buf}
-wvScrollDown -win $_nWave2 1
-wvScrollUp -win $_nWave2 1
-wvScrollDown -win $_nWave2 1
-wvSelectSignal -win $_nWave2 {( "cpu_buf" 5 )} 
-wvSelectAll -win $_nWave2
-wvSetOptions -win $_nWave2 -leadingZeros on
-wvSelectGroup -win $_nWave2 {temp}
-wvSelectSignal -win $_nWave2 {( "cpu_buf" 5 )} 
-srcDeselectAll -win $_nTrace1
-wvSetCursor -win $_nWave2 219502.579666 -snap {("cache_out" 0)}
-wvZoomIn -win $_nWave2
-wvScrollDown -win $_nWave2 0
-wvSelectSignal -win $_nWave2 {( "main_variable" 6 )} 
-srcDeselectAll -win $_nTrace1
-srcDeselectAll -win $_nTrace1
-srcDeselectAll -win $_nTrace1
-srcHBSelect "dcache_tb.u_dcache" -win $_nTrace1
-srcSetScope -win $_nTrace1 "dcache_tb.u_dcache" -delim "."
-srcHBSelect "dcache_tb.u_dcache" -win $_nTrace1
-srcDeselectAll -win $_nTrace1
-srcDeselectAll -win $_nTrace1
-srcSelect -word -line 454 -pos 5 -win $_nTrace1
-srcDeselectAll -win $_nTrace1
-srcDeselectAll -win $_nTrace1
-srcDeselectAll -win $_nTrace1
-srcSelect -signal "way0_data_in" -line 469 -pos 1 -win $_nTrace1
-srcDeselectAll -win $_nTrace1
-srcDeselectAll -win $_nTrace1
-srcSelect -signal "way0_data_in" -line 469 -pos 1 -win $_nTrace1
-srcDeselectAll -win $_nTrace1
-srcSelect -signal "ram_load_word" -line 469 -pos 1 -win $_nTrace1
-srcDeselectAll -win $_nTrace1
-srcSelect -signal "ram_load_word" -line 469 -pos 1 -win $_nTrace1
-srcAction -pos 468 39 6 -win $_nTrace1 -name "ram_load_word" -ctrlKey off
-srcDeselectAll -win $_nTrace1
-srcDeselectAll -win $_nTrace1
-srcDeselectAll -win $_nTrace1
-srcSelect -signal "ram_load_word" -line 115 -pos 1 -win $_nTrace1
-srcSetOptions -win $_nTrace1 -annotate on
-schSetOptions -win $_nSchema1 -annotate on
-srcDeselectAll -win $_nTrace1
-srcSelect -signal "ram_load_word" -line 115 -pos 1 -win $_nTrace1
-srcAddSelectedToWave -clipboard -win $_nTrace1
-wvDrop -win $_nWave2
-wvSetCursor -win $_nWave2 345504.172989 -snap {("main_variable" 6)}
-wvSetCursor -win $_nWave2 335507.966616 -snap {("main_variable" 7)}
-srcDeselectAll -win $_nTrace1
-srcDeselectAll -win $_nTrace1
-wvSaveSignal -win $_nWave2 \
-           "/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/signal.rc"
-wvSetPosition -win $_nWave2 {("main_variable" 7)}
-wvSetPosition -win $_nWave2 {("main_variable" 7)}
-wvSetPosition -win $_nWave2 {("main_variable" 7)}
 debExit
