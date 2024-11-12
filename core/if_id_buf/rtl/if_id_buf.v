@@ -15,6 +15,7 @@ module if_id_buf (
     input  wire                        clk,
     input  wire                        rst_n,
     input  wire                        pipeline_flush_i,
+    input  wire                        pipeline_stall_i,
     input  wire [`RV32_ADDR_WIDTH-1:0] inst_addr_i,
     input  wire [`RV32_INST_WIDTH-1:0] inst_i,
     output wire [`RV32_ADDR_WIDTH-1:0] inst_addr_o,
@@ -24,11 +25,12 @@ module if_id_buf (
     reg inst_flush; // 对指令的复位信号
 
     // 使用标准DFF模块，将指令地址打一拍输出
-    dff_rs #(
+    dff_rs_ld #(
         .WIDTH(`RV32_ADDR_WIDTH)
     ) dff_inst_addr (
         .clk     (clk),
         .rst_n   (rst_n && ~pipeline_flush_i),  // rst或流水线暂停时均复位
+        .load_en (~pipeline_stall_i),
         .rst_data(`RST_INST_ADDR),              // 复位时指向初始化地址
         .data_i  (inst_addr_i),
         .data_o  (inst_addr_o)
@@ -38,7 +40,7 @@ module if_id_buf (
     always @(posedge clk) begin
         if (!rst_n || pipeline_flush_i) begin
             inst_flush <= `FLUSH_ENABLE;
-        end else begin
+        end else if (~pipeline_stall_i) begin
             inst_flush <= `FLUSH_DISABLE;
         end
     end

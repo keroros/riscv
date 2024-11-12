@@ -1,4 +1,12 @@
 Command Line: /home/qidc/Synopsys/verdi/Verdi_O-2018.09-SP2/platform/LINUXAMD64/bin/Novas -ssf rtl.fsdb -sswr signal.rc
 uname(Linux qidc 6.8.0-45-generic #45~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Wed Sep 11 15:25:05 UTC 2 x86_64)
+type= DS_SIGNAL element= 1 field= 2
+VERILOG dcache_tb
+VERILOG u_dcache
+VERILOG cpu_wr_data_i[31:0]
+-----
+second field= signal
+type= DS_STRING
+cpu_wr_data_i[31:0]
 Disabled AskUser2 Message (Response 0): Close all windows and exit verdi?
-au time 4.856511 1.641936 0.579411 delta 538210304 538210304 total 909602816 909602816
+au time 2275.533904 7.052165 28.433802 delta 542584832 542584832 total 913977344 913977344

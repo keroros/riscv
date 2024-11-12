@@ -1,39 +1,45 @@
 version: (200506)
 
 available memory: 64M bytes
-used memory: 81920 bytes [need 80K bytes if disable swap]
+used memory: 163840 bytes [need 160K bytes if disable swap]
 
-used block: 3 [memory(3) file(0)]
-                 [ 8K(2) 64K(1) { total 80K bytes } ]
-overhead: (9522) bytes for (3) blocks [Average: (3174) bytes/block]
+used block: 6 [memory(6) file(0)]
+                 [ 8K(4) 64K(2) { total 160K bytes } ]
+overhead: (9531) bytes for (6) blocks [Average: (1588) bytes/block]
 
 write  => 0(times) 0K(bytes) [0K bytes to file]
-read   => 1(times) 8K(bytes) [1K bytes compressed data from file]
-access => 61004(times) 480M(bytes)
-          [hit ratio: 99.9984%]
+read   => 2(times) 71K(bytes) [10K bytes compressed data from file]
+access => 198538(times) 1559M(bytes)
+          [hit ratio: 99.999%]
 
 time: write(0) read(0)  unit: second
 
 swap file directory: (/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/verdiLog)
-used swap file number: (1)
+used swap file number: (3)
 
 
 
 swap file manager:
 arrSize: (256)
-idxCnt: (3)
+idxCnt: (5)
 closeHead: (1)
-closeTail: (2)
-openCnt: (2)
-fid(2): fd(29) fileName(/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/verdiLog/_swap_0001#1757367822#436233)
-	size(0) lastModTime(0) curModTime(1731324355)
-	mode(w+b)	hot(0) cool(1) pos(0)
+closeTail: (3)
+openCnt: (3)
+fid(4): fd(0) fileName(/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/simv.daidir/kdb.elab++/work.lib++/dcache_tb.sv.tdc)
+	size(16270) lastModTime(1731390918) curModTime(1731390918)
+	mode(rb)	hot(0) cool(0) pos(0)
+fid(3): fd(1073741825) fileName(/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/simv.daidir/kdb.elab++/work.lib++/dcache.v.tdc)
+	size(22562) lastModTime(1731390918) curModTime(1731390918)
+	mode(rb)	hot(0) cool(2) pos(0)
+fid(2): fd(29) fileName(/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/verdiLog/_swap_0001#1757367822#458692)
+	size(0) lastModTime(0) curModTime(1731390925)
+	mode(w+b)	hot(3) cool(1) pos(0)
 fid(1): fd(1073741824) fileName(/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/simv.daidir/kdb.elab++/work.lib++/true_dp_ram.v.tdc)
-	size(2921) lastModTime(1731324344) curModTime(1731324344)
+	size(2921) lastModTime(1731390918) curModTime(1731390918)
 	mode(rb)	hot(2) cool(0) pos(0)
 fid(0): fd(0) fileName(NULL)
 	mode(NULL)	hot(0) cool(0) pos(0)
 ==================================================
-mySelf(14dd4820) pre(13503d00) next(0)
+mySelf(14ec9d60) pre(13141570) next(0)
 version(200506)
 date(Feb 11 2019 22:10:27)

@@ -3,7 +3,7 @@
 // Author        : Qidc
 // Email         : qidc@stu.pku.edu.cn
 // Created On    : 2024/10/23 10:18
-// Last Modified : 2024/11/10 00:52
+// Last Modified : 2024/11/12 17:38
 // File Name     : dcache.v
 // Description   : DCache 模块
 //
@@ -16,7 +16,6 @@
 // ---------------------------------------------------------------------------------
 // 2024/10/23   Qidc            1.0                     Original
 // -FHDR----------------------------------------------------------------------------
-
 
 `timescale 1ns/1ps
 
@@ -54,7 +53,7 @@ module dcache (
     reg ram_rd_req;
     reg ram_wr_req;
 
-    // 获取当前Index索引到的两路Tag、V、D、Data
+    // 获取当前Index索引到的两路Tag、Valid、Dirty、Data
     wire [`CACHE_TAG_WIDTH-1:0] way0_tag;
     wire [`CACHE_TAG_WIDTH-1:0] way1_tag;
     wire                        way0_valid;
@@ -573,7 +572,8 @@ module dcache (
     assign ram_rd_req_o = ram_rd_req;
     assign ram_wr_req_o = ram_wr_req;
 
-    assign ram_wr_addr_o = req_buf_tag; // 物理地址保存在Tag中
+    assign ram_rd_addr_o = req_buf_tag;
+    assign ram_wr_addr_o = req_buf_tag;
     assign ram_wr_data_o = replace_data; // 输出要替换的128bit数据
     assign ram_dirty_o = miss_buf_replace_way ? way1_dirty : way0_dirty;
 

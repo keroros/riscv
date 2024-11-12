@@ -21,13 +21,13 @@ powerDumped = 0
 postSimFile = /home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/rtl.fsdb
 syncTime = 335000
 viewport = 70 27 2490 1376 0 0 216 2488
-activeNode = "true_dp_ram"
-activeScope = "true_dp_ram"
-activeFile = "/home/qidc/Nutstore/Project/config/cbb/true_dp_ram.v"
+activeNode = "dcache_tb.u_dcache"
+activeScope = "dcache_tb.u_dcache"
+activeFile = "/home/qidc/Nutstore/Project/riscv/core/cache/dcache/rtl/dcache.v"
 interactiveMode = False
 viewType = Source
 simulatorMode = False
-sourceBeginLine = 20
+sourceBeginLine = 29
 baMode = False
 srcLineNum = True
 AutoWrap = True
@@ -44,23 +44,23 @@ DnDtraceCrossHierOnly = True
 traceIncTopPort = False
 leadingZero = False
 signalPane = True
-Scope1 = "true_dp_ram"
-multipleSelection = 1 20 2 0 0
+Scope1 = "dcache_tb.u_dcache"
+Scope2 = "true_dp_ram"
 sdfCheckUndef = FALSE
 simFlow = FALSE
 [hb.design]
 importCmd = "-dbdir" "/home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/simv.daidir" 
 invokeDir = /home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR
 [hb.sourceTab.1]
-scope = true_dp_ram
-File = /home/qidc/Nutstore/Project/config/cbb/true_dp_ram.v
-Line = 21
+scope = dcache_tb.u_dcache
+File = /home/qidc/Nutstore/Project/riscv/core/cache/dcache/rtl/dcache.v
+Line = 30
 [nMemoryManager]
 WaveformFile = /home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/rtl.fsdb
 UserActionNum = 0
 nMemWindowNum = 0
 [wave.0]
-viewPort = 0 27 2490 1064 304 183
+viewPort = 0 27 2490 577 304 183
 primaryWindow = TRUE
 SessionFile = /home/qidc/Nutstore/Project/riscv/core/cache/dcache/QA_DIR/verdiLog/novas_autosave.ses.wave.0
 displayGrid = FALSE
