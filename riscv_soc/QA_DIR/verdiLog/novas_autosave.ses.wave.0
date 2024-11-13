@@ -2,7 +2,7 @@ Magic 271485
 Revision Verdi_O-2018.09-SP2
 
 ; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
-viewPort 0 27 2484 469 314 128
+viewPort 0 27 2490 623 314 128
 
 ; File list:
 ; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
@@ -16,16 +16,16 @@ signalSpacing 5
 
 ; windowTimeUnit is used for zoom, cursor & marker
 ; waveform viewport range
-zoom 32005.014337 141767.358866
-cursor 115000.000000
-marker 40000.000000
+zoom 1267506.601562 1365007.109375
+cursor 1285000.000000
+marker 0.000000
 
 ; user define markers
 ; userMarker time_pos marker_name color linestyle
 ; visible top row signal index
 top 0
 ; marker line index
-markerPos 12
+markerPos 10
 
 ; event list
 ; addEvent event_name event_expression
@@ -42,24 +42,22 @@ COMPLEX_EVENT_END
 
 ; toolbar current search type
 ; curSTATUS search_type
-curSTATUS ByValue
+curSTATUS ByChange
 
 
 addGroup "G1"
 activeDirFile "" "/home/qidc/Nutstore/Project/riscv/riscv_soc/QA_DIR/rtl.fsdb"
-addSignal -h 21 /riscv_soc_tb/u_riscv_soc/u_riscv_core/u_inst_decode/inst_addr_i[31:0]
-addSignal -h 21 -UNSIGNED -HEX -holdScope inst_i[31:0]
-addSignal -h 21 -holdScope rs1_data_i[31:0]
-addSignal -h 21 -holdScope rs2_data_i[31:0]
-addSignal -h 21 -holdScope rs1_addr_o[4:0]
-addSignal -h 21 -holdScope rs2_addr_o[4:0]
-addSignal -h 21 -holdScope op_data1_o[31:0]
-addSignal -h 21 -holdScope op_data2_o[31:0]
-addSignal -h 21 -holdScope imm_i[31:0]
-addSignal -h 21 /riscv_soc_tb/u_riscv_soc/u_riscv_core/u_register_file/reg1_rd_data_o[31:0]
+addSignal -h 21 /riscv_soc_tb/u_riscv_soc/u_riscv_core/clk
+addSignal -h 21 -holdScope rst_n
 addGroup "G2"
-addSignal -h 21 /riscv_soc_tb/u_riscv_soc/u_riscv_core/u_register_file/regs[0:31]
+addSignal -h 21 /riscv_soc_tb/u_riscv_soc/u_riscv_core/addr_rom_o[31:0]
 addGroup "G3"
+addSignal -h 21 -UNSIGNED -HEX /riscv_soc_tb/u_riscv_soc/u_riscv_core/id_inst_addr_i[31:0]
+addSignal -h 21 -UNSIGNED -HEX -holdScope id_inst_i[31:0]
+addGroup "G4"
+addSignal -h 21 -UNSIGNED -HEX /riscv_soc_tb/u_riscv_soc/u_riscv_core/ex_inst_addr_i[31:0]
+addSignal -h 21 -UNSIGNED -HEX -holdScope ex_inst_i[31:0]
+addGroup "G5"
 
 ; getSignalForm Scope Hierarchy Status
 ; active file of getSignalForm

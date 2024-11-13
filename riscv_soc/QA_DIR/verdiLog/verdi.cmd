@@ -189,3 +189,4 @@ wvSelectSignal -win $_nWave2 {( "G2" 2 )}
 wvCut -win $_nWave2
 wvSetPosition -win $_nWave2 {("G5" 0)}
 wvSetPosition -win $_nWave2 {("G4" 2)}
+debExit

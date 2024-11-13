@@ -1,0 +1,48 @@
+version: (200506)
+
+available memory: 64M bytes
+used memory: 311296 bytes [need 304K bytes if disable swap]
+
+used block: 10 [memory(10) file(0)]
+                 [ 8K(6) 64K(4) { total 304K bytes } ]
+overhead: (9531) bytes for (10) blocks [Average: (953) bytes/block]
+
+write  => 0(times) 0K(bytes) [0K bytes to file]
+read   => 4(times) 103K(bytes) [12K bytes compressed data from file]
+access => 874325(times) 6844M(bytes)
+          [hit ratio: 99.9995%]
+
+time: write(0) read(0)  unit: second
+
+swap file directory: (/home/qidc/Nutstore/Project/riscv/riscv_soc/QA_DIR/verdiLog)
+used swap file number: (5)
+
+
+
+swap file manager:
+arrSize: (256)
+idxCnt: (6)
+closeHead: (1)
+closeTail: (5)
+openCnt: (5)
+fid(5): fd(1073741827) fileName(/home/qidc/Nutstore/Project/riscv/riscv_soc/QA_DIR/simv.daidir/kdb.elab++/work.lib++/riscv_core.v.tdc)
+	size(6057) lastModTime(1731396518) curModTime(1731396518)
+	mode(rb)	hot(0) cool(4) pos(0)
+fid(4): fd(1073741826) fileName(/home/qidc/Nutstore/Project/riscv/riscv_soc/QA_DIR/simv.daidir/kdb.elab++/work.lib++/riscv_soc.v.tdc)
+	size(3084) lastModTime(1731396518) curModTime(1731396518)
+	mode(rb)	hot(5) cool(3) pos(0)
+fid(3): fd(1073741825) fileName(/home/qidc/Nutstore/Project/riscv/riscv_soc/QA_DIR/simv.daidir/kdb.elab++/work.lib++/riscv_soc_tb.sv.tdc)
+	size(16518) lastModTime(1731396518) curModTime(1731396518)
+	mode(rb)	hot(4) cool(2) pos(0)
+fid(2): fd(29) fileName(/home/qidc/Nutstore/Project/riscv/riscv_soc/QA_DIR/verdiLog/_swap_0001#1757367822#461572)
+	size(0) lastModTime(0) curModTime(1731396527)
+	mode(w+b)	hot(3) cool(1) pos(0)
+fid(1): fd(1073741824) fileName(/home/qidc/Nutstore/Project/riscv/riscv_soc/QA_DIR/simv.daidir/kdb.elab++/work.lib++/sp_ram.v.tdc)
+	size(2426) lastModTime(1731396518) curModTime(1731396518)
+	mode(rb)	hot(2) cool(0) pos(0)
+fid(0): fd(0) fileName(NULL)
+	mode(NULL)	hot(0) cool(0) pos(0)
+==================================================
+mySelf(14a9a4c0) pre(12df9610) next(0)
+version(200506)
+date(Feb 11 2019 22:10:27)

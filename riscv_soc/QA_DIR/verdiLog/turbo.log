@@ -78,3 +78,5 @@ VERILOG addr_rom_o[31:0]
 second field= signal
 type= DS_STRING
 addr_rom_o[31:0]
+Disabled AskUser2 Message (Response 0): Close all windows and exit verdi?
+au time 7819.502907 18.942316 99.096229 delta 266207232 266207232 total 637599744 637599744
