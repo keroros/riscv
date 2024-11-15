@@ -6,12 +6,13 @@
 // File Name: inst_decode.v
 // Versions: v3.2
 // Description: 译码模块，根据 if_id_buf 缓冲模块送进来的指令进行译码
-// 
+//
 //////////////////////////////////////////////////////////////////////////////////
 
 `include "/home/qidc/Nutstore/Project/riscv/defines/defines.v"
 
 module inst_decode (
+    input  wire                        pipeline_stall_i,
     // from if_id
     input  wire [`RV32_INST_WIDTH-1:0] inst_i,         // 指令输入
     input  wire [`RV32_ADDR_WIDTH-1:0] inst_addr_i,    // 指令地址输入
@@ -26,6 +27,8 @@ module inst_decode (
     output wire [`RV32_ADDR_WIDTH-1:0] ram_wr_addr_o,  // ram写地址
     output wire [     `DATA_WIDTH-1:0] ram_wr_data_o,  // 写入ram的数据
     output wire [                 3:0] ram_wr_en_o,    // ram写使能
+    output wire                        ram_rd_req_o,   // RAM读请求
+    output wire                        ram_wr_req_o,   // RAM写请求
     // to ex
     output wire [     `DATA_WIDTH-1:0] op_data1_o,     // 操作数1
     output wire [     `DATA_WIDTH-1:0] op_data2_o,     // 操作数2
@@ -50,6 +53,8 @@ module inst_decode (
 
     reg  [`RV32_ADDR_WIDTH-1:0] ram_rd_addr;  // ram读地址
     reg  [     `DATA_WIDTH-1:0] ram_wr_data;  // 写入ram的数据
+    reg                         ram_rd_req;
+    reg                         ram_wr_req;
 
     // 解析指令
     assign opcode        = inst_i[6:0];
@@ -74,6 +79,8 @@ module inst_decode (
     assign ram_wr_addr_o = ram_wr_addr;
     assign ram_wr_data_o = ram_wr_data;
     assign ram_wr_en_o   = ram_wr_en;
+    assign ram_rd_req_o  = ram_rd_req;
+    assign ram_wr_req_o  = ram_wr_req;
 
     always @(*) begin
         case (opcode)
@@ -85,6 +92,8 @@ module inst_decode (
                         ram_rd_addr = `RST_RAM_ADDR;
                         ram_wr_en   = `RAM_WR_DISABLE;
                         ram_wr_data = `RST_DATA;
+                        ram_rd_req  = 1'b0;
+                        ram_wr_req  = 1'b0;
                     end
                     `INST_SLL, `INST_SRL_SRA: begin
                         op_data1    = rs1_data_i;
@@ -92,6 +101,8 @@ module inst_decode (
                         ram_rd_addr = `RST_RAM_ADDR;
                         ram_wr_en   = `RAM_WR_DISABLE;
                         ram_wr_data = `RST_DATA;
+                        ram_rd_req  = 1'b0;
+                        ram_wr_req  = 1'b0;
                     end
                     default: begin
                         op_data1    = `RST_DATA;
@@ -99,6 +110,8 @@ module inst_decode (
                         ram_rd_addr = `RST_RAM_ADDR;
                         ram_wr_en   = `RAM_WR_DISABLE;
                         ram_wr_data = `RST_DATA;
+                        ram_rd_req  = 1'b0;
+                        ram_wr_req  = 1'b0;
                     end
                 endcase
             end
@@ -110,6 +123,8 @@ module inst_decode (
                         ram_rd_addr = `RST_RAM_ADDR;
                         ram_wr_en   = `RAM_WR_DISABLE;
                         ram_wr_data = `RST_DATA;
+                        ram_rd_req  = 1'b0;
+                        ram_wr_req  = 1'b0;
                     end
                     `INST_SLLI, `INST_SRLI_SRAI: begin
                         op_data1    = rs1_data_i;
@@ -117,6 +132,8 @@ module inst_decode (
                         ram_rd_addr = `RST_RAM_ADDR;
                         ram_wr_en   = `RAM_WR_DISABLE;
                         ram_wr_data = `RST_DATA;
+                        ram_rd_req  = 1'b0;
+                        ram_wr_req  = 1'b0;
                     end
                     default: begin
                         op_data1    = `RST_DATA;
@@ -124,6 +141,8 @@ module inst_decode (
                         ram_rd_addr = `RST_RAM_ADDR;
                         ram_wr_en   = `RAM_WR_DISABLE;
                         ram_wr_data = `RST_DATA;
+                        ram_rd_req  = 1'b0;
+                        ram_wr_req  = 1'b0;
                     end
                 endcase
             end
@@ -135,6 +154,8 @@ module inst_decode (
                         ram_rd_addr = op_data1 + op_data2;
                         ram_wr_en   = `RAM_WR_DISABLE;
                         ram_wr_data = `RST_DATA;
+                        ram_rd_req  = ~pipeline_stall_i; // 如果流水线没有阻塞，就发出读请求
+                        ram_wr_req  = 1'b0;
                     end
                     default: begin
                         op_data1    = `RST_DATA;
@@ -142,6 +163,8 @@ module inst_decode (
                         ram_rd_addr = `RST_RAM_ADDR;
                         ram_wr_en   = `RAM_WR_DISABLE;
                         ram_wr_data = `RST_DATA;
+                        ram_rd_req  = 1'b0;
+                        ram_wr_req  = 1'b0;
                     end
                 endcase
             end
@@ -151,6 +174,8 @@ module inst_decode (
                         op_data1    = `RST_DATA;
                         op_data2    = `RST_DATA;
                         ram_rd_addr = `RST_RAM_ADDR;
+                        ram_rd_req  = 1'b0;
+                        ram_wr_req  = ~pipeline_stall_i;
                         case (ram_wr_addr[1:0])
                             2'b00: begin
                                 ram_wr_en   = 4'b0001;
@@ -178,6 +203,8 @@ module inst_decode (
                         op_data1    = `RST_DATA;
                         op_data2    = `RST_DATA;
                         ram_rd_addr = `RST_RAM_ADDR;
+                        ram_rd_req  = 1'b0;
+                        ram_wr_req  = ~pipeline_stall_i;
                         case (ram_wr_addr[1])
                             1'b0: begin
                                 ram_wr_en   = 4'b0011;
@@ -199,6 +226,8 @@ module inst_decode (
                         ram_rd_addr = `RST_RAM_ADDR;
                         ram_wr_en   = 4'b1111;
                         ram_wr_data = rs2_data_i;
+                        ram_rd_req  = 1'b0;
+                        ram_wr_req  = ~pipeline_stall_i;
                     end
                     default: begin
                         op_data1    = `RST_DATA;
@@ -206,6 +235,8 @@ module inst_decode (
                         ram_rd_addr = `RST_RAM_ADDR;
                         ram_wr_en   = `RAM_WR_DISABLE;
                         ram_wr_data = `RST_DATA;
+                        ram_rd_req  = 1'b0;
+                        ram_wr_req  = 1'b0;
                     end
                 endcase
             end
@@ -217,6 +248,8 @@ module inst_decode (
                         ram_rd_addr = `RST_RAM_ADDR;
                         ram_wr_en   = `RAM_WR_DISABLE;
                         ram_wr_data = `RST_DATA;
+                        ram_rd_req  = 1'b0;
+                        ram_wr_req  = 1'b0;
                     end
                     default: begin
                         op_data1    = `RST_DATA;
@@ -224,6 +257,8 @@ module inst_decode (
                         ram_rd_addr = `RST_RAM_ADDR;
                         ram_wr_en   = `RAM_WR_DISABLE;
                         ram_wr_data = `RST_DATA;
+                        ram_rd_req  = 1'b0;
+                        ram_wr_req  = 1'b0;
                     end
                 endcase
             end
@@ -233,6 +268,8 @@ module inst_decode (
                 ram_rd_addr = `RST_RAM_ADDR;
                 ram_wr_en   = `RAM_WR_DISABLE;
                 ram_wr_data = `RST_DATA;
+                ram_rd_req  = 1'b0;
+                ram_wr_req  = 1'b0;
             end
             `INST_TYPE_I_JALR: begin
                 op_data1    = rs1_data_i;
@@ -240,6 +277,8 @@ module inst_decode (
                 ram_rd_addr = `RST_RAM_ADDR;
                 ram_wr_en   = `RAM_WR_DISABLE;
                 ram_wr_data = `RST_DATA;
+                ram_rd_req  = 1'b0;
+                ram_wr_req  = 1'b0;
             end
             `INST_TYPE_SYS: begin
                 case (funct3)
@@ -249,6 +288,8 @@ module inst_decode (
                         ram_rd_addr = `RST_RAM_ADDR;
                         ram_wr_en   = `RAM_WR_DISABLE;
                         ram_wr_data = `RST_DATA;
+                        ram_rd_req  = 1'b0;
+                        ram_wr_req  = 1'b0;
                     end
                     default: begin
                         op_data1    = `RST_DATA;
@@ -256,6 +297,8 @@ module inst_decode (
                         ram_rd_addr = `RST_RAM_ADDR;
                         ram_wr_en   = `RAM_WR_DISABLE;
                         ram_wr_data = `RST_DATA;
+                        ram_rd_req  = 1'b0;
+                        ram_wr_req  = 1'b0;
                     end
                 endcase
             end
@@ -265,6 +308,8 @@ module inst_decode (
                 ram_rd_addr = `RST_RAM_ADDR;
                 ram_wr_en   = `RAM_WR_DISABLE;
                 ram_wr_data = `RST_DATA;
+                ram_rd_req  = 1'b0;
+                ram_wr_req  = 1'b0;
             end
         endcase
     end

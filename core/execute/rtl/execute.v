@@ -21,6 +21,7 @@ module execute (
     input  wire [`RV32_ADDR_WIDTH-1:0] offset_addr_i,    // 偏移地址
     // from ram
     input  wire [     `DATA_WIDTH-1:0] ram_rd_data_i,    // ram读出的数据
+    input  wire                        ram_data_ack_i,   // RAM或Cache中的数据读或写已完成
     // to reg
     output wire                        reg_wr_en_o,      // 寄存器写使能
     output wire [ `REG_ADDR_WIDTH-1:0] rd_addr_o,        // 寄存器rd的地址
@@ -306,7 +307,7 @@ module execute (
                                 rd_data = `RST_DATA;
                             end
                         endcase
-                        reg_wr_en      = `WR_ENABLE;
+                        reg_wr_en      = ram_data_ack_i;
                         jump_en        = `JUMP_DISABLE;
                         jump_addr      = `RST_INST_ADDR;
                         pipeline_flush = `FLUSH_DISABLE;
@@ -323,14 +324,14 @@ module execute (
                                 rd_data = `RST_DATA;
                             end
                         endcase
-                        reg_wr_en      = `WR_ENABLE;
+                        reg_wr_en      = ram_data_ack_i;
                         jump_en        = `JUMP_DISABLE;
                         jump_addr      = `RST_INST_ADDR;
                         pipeline_flush = `FLUSH_DISABLE;
                     end
                     `INST_LW: begin  // rd = M[rs1+imm][0:31]
                         rd_data        = ram_rd_data_i;
-                        reg_wr_en      = `WR_ENABLE;
+                        reg_wr_en      = ram_data_ack_i;
                         jump_en        = `JUMP_DISABLE;
                         jump_addr      = `RST_INST_ADDR;
                         pipeline_flush = `FLUSH_DISABLE;
@@ -353,7 +354,7 @@ module execute (
                                 rd_data = `RST_DATA;
                             end
                         endcase
-                        reg_wr_en      = `WR_ENABLE;
+                        reg_wr_en      = ram_data_ack_i;
                         jump_en        = `JUMP_DISABLE;
                         jump_addr      = `RST_INST_ADDR;
                         pipeline_flush = `FLUSH_DISABLE;
@@ -370,7 +371,7 @@ module execute (
                                 rd_data = `RST_DATA;
                             end
                         endcase
-                        reg_wr_en      = `WR_ENABLE;
+                        reg_wr_en      = ram_data_ack_i;
                         jump_en        = `JUMP_DISABLE;
                         jump_addr      = `RST_INST_ADDR;
                         pipeline_flush = `FLUSH_DISABLE;

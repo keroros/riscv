@@ -17,7 +17,6 @@ module pc_reg (
     input  wire [`RV32_ADDR_WIDTH-1:0] jump_addr_i,  // 跳转地址输出
     input  wire                        jump_en_i,    // 跳转使能输出
     input  wire                        pipeline_stall_i,
-    input  wire                        ,      // 加载
     output wire [`RV32_ADDR_WIDTH-1:0] pc_addr_o     // 指令地址输出
 );
 

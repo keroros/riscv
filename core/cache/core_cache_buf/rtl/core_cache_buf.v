@@ -3,7 +3,7 @@
 // Author        : Qidc
 // Email         : qidc@stu.pku.edu.cn
 // Created On    : 2024/10/23 11:06
-// Last Modified : 2024/11/13 09:39
+// Last Modified : 2024/11/15 10:37
 // File Name     : core_cache_buf.v
 // Description   :
 //
@@ -26,6 +26,7 @@ module core_cache_buf (
     input  wire                        clk              ,
     input  wire                        rst_n            ,
 
+    // core to buf
     input  wire                        cpu_rd_req_i     ,
     input  wire                        cpu_wr_req_i     ,
     input  wire [`RV32_ADDR_WIDTH-1:0] cpu_rd_addr_i    ,
@@ -33,8 +34,10 @@ module core_cache_buf (
     input  wire [`DATA_WIDTH-1:0]      cpu_wr_data_i    ,
     input  wire [3:0]                  cpu_wr_en_i      ,
     output wire [`DATA_WIDTH-1:0]      cpu_rd_data_o    ,
-    output wire                        pipeline_stall_i ,
+    output wire                        pipeline_stall_o ,
+    output wire                        cache_data_ack_o ,
 
+    // buf to cache
     output wire                        cache_req_o        ,
     output wire                        cache_op_o         ,
     output wire [`CACHE_INDEX_AW-1:0]  cache_index_o      ,
@@ -53,7 +56,6 @@ module core_cache_buf (
     assign cpu_req = cpu_rd_req_i | cpu_wr_req_i;
     assign cpu_op  = ~cpu_rd_req_i & cpu_wr_req_i;
 
-
     assign cache_req_o = cpu_req;
     assign cache_op_o = cpu_op;
     assign cache_index_o = {`CACHE_INDEX_AW{cpu_rd_req_i}} & cpu_rd_addr_i[11:4] |
@@ -67,7 +69,8 @@ module core_cache_buf (
 
     assign cpu_rd_data_o = cache_rd_data_i;
 
-    assign pipeline_stall_i = ~cache_addr_ack_i;
+    assign pipeline_stall_o = ~cache_addr_ack_i;
+    assign cache_data_ack_o = cache_data_ack_i;
 
 
 endmodule
