@@ -3,7 +3,7 @@
 // Author        : Qidc
 // Email         : qidc@stu.pku.edu.cn
 // Created On    : 2024/10/23 10:18
-// Last Modified : 2024/11/12 14:58
+// Last Modified : 2024/12/13 17:05
 // File Name     : cache_ram_buf.v
 // Description   :
 //         
@@ -72,7 +72,7 @@ module cache_ram_buf (
     assign cache_rd_rdy_o = cache_rd_rdy;
     assign cache_rd_num_o = cache_rd_num;
 
-    assign ram_rd_addr_o = cache_rd_addr_i + (cache_rd_num-1'b1) << 2; // start addr + 4
+    assign ram_rd_addr_o   = cache_rd_addr_i + (cache_rd_num-1'b1) << 2; // start addr + 4
     assign cache_rd_data_o = ram_rd_data_i;
 
 
@@ -86,31 +86,31 @@ module cache_ram_buf (
     // Write to RAM
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
-            state <= IDLE;
-            wr_cnt <= 3'd0;
+            state       <= IDLE;
+            wr_cnt      <= 3'd0;
             ram_wr_data <= `RST_DATA;
         end else begin
             case (state)
                 IDLE: begin
                     if (cache_wr_req_i && ~cache_dirty_i) begin
-                        state <= WRITE;
-                        wr_cnt <= 3'd1;
+                        state       <= WRITE;
+                        wr_cnt      <= 3'd1;
                         ram_wr_data <= cache_wr_data_i[`DATA_WIDTH-1:0];
                     end
                 end
                 WRITE: begin
                     if (wr_cnt < 3'd4) begin
-                        state <= WRITE;
-                        wr_cnt <= wr_cnt + 1'd1;
+                        state       <= WRITE;
+                        wr_cnt      <= wr_cnt + 1'd1;
                         ram_wr_data <= `RST_DATA;
                     end else begin
-                        state <= IDLE;
-                        wr_cnt <= 3'd1;
+                        state       <= IDLE;
+                        wr_cnt      <= 3'd1;
                         ram_wr_data <= cache_wr_data_i >> `DATA_WIDTH;
                     end
                 end
                 default: begin
-                    state <= IDLE;
+                    state  <= IDLE;
                     wr_cnt <= 3'd0;
                 end
             endcase
@@ -119,7 +119,7 @@ module cache_ram_buf (
 
     assign cache_wr_rdy_o = state == IDLE;
 
-    assign ram_wr_en_o = state == WRITE ? 4'b1111 : 4'b0000;
+    assign ram_wr_en_o   = state == WRITE ? 4'b1111 : 4'b0000;
     assign ram_wr_addr_o = cache_wr_addr_i + (wr_cnt-1'b1) << 2; // start addr + 4
     assign ram_wr_data_o = ram_wr_data;
 

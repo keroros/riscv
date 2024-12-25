@@ -3,7 +3,7 @@
 // Author        : Qidc
 // Email         : qidc@stu.pku.edu.cn
 // Created On    : 2024/10/23 10:18
-// Last Modified : 2024/11/13 09:39
+// Last Modified : 2024/12/13 17:14
 // File Name     : dcache.v
 // Description   : DCache 模块
 //
@@ -579,7 +579,6 @@ module dcache (
 
     assign cpu_addr_ack_o = idle_state || (lookup_state && cache_hit);
     assign cpu_data_ack_o = (lookup_state && cache_hit) || (refill_state && (ram_rd_offset == req_buf_offset[3:2]));
-
 
 
 endmodule
