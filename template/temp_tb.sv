@@ -76,9 +76,9 @@ module module_name_tb;
     end
 
     // 生成波形文件
-    initial begin
-        $dumpfile("module_name_tb.vcd");  // 创建VCD文件
-        $dumpvars(0, module_name_tb);  // 记录波形
-    end
+	initial begin
+		$fsdbDumpfile("./rtl.fsdb");
+		$fsdbDumpvars("+all");
+	end
 
 endmodule
