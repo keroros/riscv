@@ -3,7 +3,7 @@
 // Author        : Qidc
 // Email         : qidc@stu.pku.edu.cn
 // Created On    : 2024/10/23 10:18
-// Last Modified : 2024/12/13 17:14
+// Last Modified : 2025/01/09 22:12
 // File Name     : dcache.v
 // Description   : DCache 模块
 //
@@ -574,8 +574,8 @@ module dcache (
 
     assign ram_rd_addr_o = req_buf_tag;
     assign ram_wr_addr_o = req_buf_tag;
-    assign ram_wr_data_o = replace_data; // 输出要替换的128bit数据
-    assign ram_dirty_o = miss_buf_replace_way ? way1_dirty : way0_dirty;
+    assign ram_wr_data_o = replace_data;        // 输出要替换的128bit数据
+    assign ram_dirty_o   = miss_buf_replace_way ? way1_dirty : way0_dirty;
 
     assign cpu_addr_ack_o = idle_state || (lookup_state && cache_hit);
     assign cpu_data_ack_o = (lookup_state && cache_hit) || (refill_state && (ram_rd_offset == req_buf_offset[3:2]));
